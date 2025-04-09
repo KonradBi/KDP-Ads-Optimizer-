@@ -1,0 +1,137 @@
+/**
+ * Sample data in CommonJS format for testing
+ */
+const sampleAdsData = [
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Main Keywords",
+    keyword: "mystery novel kindle",
+    matchType: "broad",
+    impressions: 1250,
+    clicks: 11,
+    ctr: 0.0088,
+    spend: 3.52,
+    orders: 0,
+    sales: 0,
+    acos: 0
+  },
+  {
+    campaignName: "Book 1 - Exact",
+    adGroup: "Main Keywords",
+    keyword: "mystery novel kindle",
+    matchType: "exact",
+    impressions: 450,
+    clicks: 6,
+    ctr: 0.0133,
+    spend: 1.92,
+    orders: 1,
+    sales: 4.99,
+    acos: 0.3847
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Main Keywords",
+    keyword: "detective fiction",
+    matchType: "broad",
+    impressions: 980,
+    clicks: 8,
+    ctr: 0.0082,
+    spend: 2.56,
+    orders: 2,
+    sales: 9.98,
+    acos: 0.2565
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Main Keywords",
+    keyword: "thriller books bestseller",
+    matchType: "broad",
+    impressions: 2100,
+    clicks: 15,
+    ctr: 0.0071,
+    spend: 4.80,
+    orders: 1,
+    sales: 4.99,
+    acos: 0.9619
+  },
+  {
+    campaignName: "Book 1 - Phrase",
+    adGroup: "Main Keywords",
+    keyword: "thriller books bestseller",
+    matchType: "phrase",
+    impressions: 850,
+    clicks: 7,
+    ctr: 0.0082,
+    spend: 2.24,
+    orders: 1,
+    sales: 4.99,
+    acos: 0.4489
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Secondary Keywords",
+    keyword: "crime fiction novels",
+    matchType: "broad",
+    impressions: 1500,
+    clicks: 9,
+    ctr: 0.0060,
+    spend: 2.88,
+    orders: 0,
+    sales: 0,
+    acos: 0
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Secondary Keywords",
+    keyword: "murder mystery books",
+    matchType: "broad",
+    impressions: 1800,
+    clicks: 12,
+    ctr: 0.0067,
+    spend: 3.84,
+    orders: 2,
+    sales: 9.98,
+    acos: 0.3847
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Secondary Keywords",
+    keyword: "suspense novels",
+    matchType: "broad",
+    impressions: 3000,
+    clicks: 4,
+    ctr: 0.0013,
+    spend: 1.28,
+    orders: 0,
+    sales: 0,
+    acos: 0
+  },
+  {
+    campaignName: "Book 1 - Exact",
+    adGroup: "Secondary Keywords",
+    keyword: "suspense novels",
+    matchType: "exact",
+    impressions: 200,
+    clicks: 1,
+    ctr: 0.0050,
+    spend: 0.32,
+    orders: 0,
+    sales: 0,
+    acos: 0
+  },
+  {
+    campaignName: "Book 1 - Broad",
+    adGroup: "Secondary Keywords",
+    keyword: "kindle unlimited books mystery",
+    matchType: "broad",
+    impressions: 2500,
+    clicks: 18,
+    ctr: 0.0072,
+    spend: 5.76,
+    orders: 3,
+    sales: 14.97,
+    acos: 0.3847
+  }
+];
+
+module.exports = { sampleAdsData };
