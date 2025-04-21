@@ -4,8 +4,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-// Client-side Supabase client (anon key) for API routes or SSR
-export const supabase: SupabaseClient = createSupabaseClient(supabaseUrl, supabaseAnonKey);
+// Client-side Supabase client (anon key) is now created ONLY within SupabaseProvider
 
 // Server-side Supabase client (service role key) only when running on the server
 export let supabaseAdmin: SupabaseClient;
