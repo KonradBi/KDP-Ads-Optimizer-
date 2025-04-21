@@ -1,6 +1,4 @@
-export const dynamic = 'force-dynamic';
 'use client';
-
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import FullResults from '@/components/FullResults';
