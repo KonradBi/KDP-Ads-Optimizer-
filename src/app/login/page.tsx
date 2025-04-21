@@ -31,7 +31,8 @@ export default function LoginPage() {
           appearance={{ theme: ThemeSupa }}
           theme="dark"
           providers={[]} // Nur Email/Passwort/MagicLink, keine Social Logins
-          showLinks={false} // Versteckt explizit Social Login Links (sicherheitshalber)
+          view="magic_link" // Nur Magic Link anzeigen
+          showLinks={false} // Sicherstellen, dass keine anderen Links angezeigt werden
           // Ensure this matches your Supabase Auth settings Callback URL
           redirectTo={`${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback`}
         />
