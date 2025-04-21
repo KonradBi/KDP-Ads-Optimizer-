@@ -24,6 +24,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Construct success and cancel URLs, including analysisResultId in success_url
+    const successUrl = `${siteUrl}/results?session_id={CHECKOUT_SESSION_ID}&analysis_id=${analysisResultId}`;
+    const cancelUrl = `${siteUrl}/upload`; // Or another appropriate cancel page
+
     // Create a checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -34,12 +38,19 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'payment',
-      success_url: `${siteUrl}/results?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}`,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
       metadata: {
+        // Include analysisResultId in metadata for potential webhook use or verification
         analysis_result_id: analysisResultId,
+        // Optionally include user ID if available and needed
+        // user_id: userId, 
       },
     });
+
+    if (!session.url) {
+      return NextResponse.json({ error: 'Failed to create Stripe session.' }, { status: 500 });
+    }
 
     // --- Get User ID --- 
     const cookieStore = cookies();

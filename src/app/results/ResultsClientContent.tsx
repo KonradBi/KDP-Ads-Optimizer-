@@ -151,49 +151,60 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
   // Main effect to load analysis data
   useEffect(() => {
     const sessionId = searchParams.get('session_id');
-    if (!sessionId) {
-      const storedAnalysis = sessionStorage.getItem('analysisResult');
-      if (storedAnalysis) {
-        try {
-          setAnalysisResult(JSON.parse(storedAnalysis));
-          setIsPaid(true);
-          setIsLoading(false);
-        } catch (err) {
-          setError('Failed to load analysis results.');
-          setIsLoading(false);
-        }
-      } else {
-        setError('No analysis results found. Please upload your CSV file first.');
-        setIsLoading(false);
-      }
+    const analysisId = searchParams.get('analysis_id'); // <-- Get analysis_id
+
+    // --- If NO session ID or analysis ID, show error --- 
+    if (!sessionId || !analysisId) {
+      // Removed sessionStorage fallback logic
+      setError('Missing required information to load results. Please ensure you followed the payment link correctly, or try uploading again.');
+      setIsLoading(false);
       return;
     }
 
-    const verifyPayment = async () => {
+    // --- If session ID and analysis ID are present, verify and fetch ---
+    const verifyAndFetch = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
-        const response = await fetch(`/api/payment/verify?session_id=${sessionId}`);
-        if (!response.ok) throw new Error('Payment verification failed');
-        const result = await response.json();
-        if (result.paid) {
-          setIsPaid(true);
-          const storedAnalysis = sessionStorage.getItem('analysisResult');
-          if (storedAnalysis) {
-            setAnalysisResult(JSON.parse(storedAnalysis));
-          } else {
-            setError('Analysis results not found. Please try uploading your CSV again.');
-          }
-        } else {
-          setError('Payment has not been completed.');
+        // 1. Verify Payment
+        const verifyResponse = await fetch(`/api/payment/verify?session_id=${sessionId}`);
+        if (!verifyResponse.ok) {
+            const verifyError = await verifyResponse.json().catch(() => ({error: 'Payment verification failed'}));
+            throw new Error(verifyError.error || 'Payment verification failed');
         }
-      } catch (err) {
-        console.error('Payment verification error:', err);
-        setError('An error occurred while verifying payment.');
+        const verifyResult = await verifyResponse.json();
+
+        if (verifyResult.paid) {
+          setIsPaid(true);
+          
+          // 2. Fetch Analysis Result using analysisId
+          const analysisResponse = await fetch(`/api/analysis/${analysisId}`);
+          if (!analysisResponse.ok) {
+              const analysisError = await analysisResponse.json().catch(() => ({error: 'Failed to load analysis results'}));
+              throw new Error(analysisError.error || 'Failed to load analysis results');
+          }
+          const analysisData = await analysisResponse.json();
+          setAnalysisResult(analysisData); // <-- Set state with fetched data
+
+        } else {
+          // Payment not completed or verification issue
+           setError('Payment has not been completed or could not be verified.');
+           setIsPaid(false); // Ensure isPaid is false
+        }
+
+      } catch (err: any) {
+        console.error('Error verifying payment or fetching analysis:', err);
+        setError(err.message || 'An error occurred while loading results.');
+        setAnalysisResult(null); // Clear results on error
+        setIsPaid(false); // Ensure isPaid is false
       } finally {
         setIsLoading(false);
       }
     };
-    verifyPayment();
-  }, [searchParams]);
+
+    verifyAndFetch();
+
+  }, [searchParams]); // Dependency array remains the same
 
   const handleRoyaltySave = useCallback(() => {
     const newRoyalty = parseFloat(royaltyInput);
