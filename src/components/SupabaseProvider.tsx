@@ -1,12 +1,12 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { supabase } from '@/lib/utils/supabase';
+import { createSupabaseClient, publicSupabaseUrl, publicSupabaseAnonKey } from '@/lib/utils/supabase';
 import LoginModal from './LoginModal.tsx';
-import { Session } from '@supabase/supabase-js';
+import { Session, SupabaseClient } from '@supabase/supabase-js';
 
 interface SupabaseContextValue {
-  supabaseClient: typeof supabase;
+  supabaseClient: SupabaseClient;
   session: Session | null;
   openLogin: () => void;
   closeLogin: () => void;
@@ -14,7 +14,18 @@ interface SupabaseContextValue {
 
 const SupabaseContext = createContext<SupabaseContextValue | undefined>(undefined);
 
+// Function to create the client - ensures required env vars are present
+const createClient = () => {
+  if (!publicSupabaseUrl || !publicSupabaseAnonKey) {
+    // This check now happens definitively on the client side within the provider
+    throw new Error('Missing Supabase URL or Anon Key for client creation.');
+  }
+  return createSupabaseClient(publicSupabaseUrl, publicSupabaseAnonKey);
+};
+
 export function SupabaseProvider({ children }: { children: ReactNode }) {
+  // Create the Supabase client instance only once using useState
+  const [supabaseClient] = useState(() => createClient());
   const [session, setSession] = useState<Session | null>(null);
   const [loginOpen, setLoginOpen] = useState(false);
 
@@ -22,19 +33,21 @@ export function SupabaseProvider({ children }: { children: ReactNode }) {
   const closeLogin = () => setLoginOpen(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Use the stateful client instance
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabaseClient.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [supabaseClient]); // Add supabaseClient as dependency
 
   return (
-    <SupabaseContext.Provider value={{ supabaseClient: supabase, session, openLogin, closeLogin }}>
+    // Pass the stateful client instance via context
+    <SupabaseContext.Provider value={{ supabaseClient, session, openLogin, closeLogin }}>
       {children}
       <LoginModal isOpen={loginOpen} onClose={closeLogin} />
     </SupabaseContext.Provider>
