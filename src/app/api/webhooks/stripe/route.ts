@@ -17,7 +17,8 @@ export async function POST(request: Request) {
   }
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.Checkout.Session;
+    // Cast to any since Stripe types are not recognized at build time
+    const session = event.data.object as any;
     const userId = session.metadata?.user_id;
     await supabaseAdmin
       .from('purchases')
