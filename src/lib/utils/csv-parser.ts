@@ -71,7 +71,7 @@ export const parseAmazonAdsCsv = (file: File): Promise<AmazonAdData[]> => {
             const suggestedBidMedian = parseFloatSafe(getVal(['Suggested bid (median)', 'Suggested bid (median)(USD)']));
             const suggestedBidHigh = parseFloatSafe(getVal(['Suggested bid (high)', 'Suggested bid (high)(USD)']));
             const topOfSearchISValue = getVal(['Top-of-search IS', 'top-of-search is']);
-            const topOfSearchIS = topOfSearchISValue ? parseFloatSafe(topOfSearchISValue.replace('%', '')) / 100 : null; // Handle percentage and convert to decimal
+            const topOfSearchIS = topOfSearchISValue ? parseFloatSafe(topOfSearchISValue.replace('%', '')) / 100 : undefined; // Handle percentage and convert to decimal
             const kenpRead = parseIntSafe(getVal(['KENP read', 'kenp read']));
             const estimatedKenpRoyalties = parseFloatSafe(getVal(['Estimated KENP royalties', 'Estimated KENP royalties(USD)']));
 
@@ -90,13 +90,13 @@ export const parseAmazonAdsCsv = (file: File): Promise<AmazonAdData[]> => {
               // Add new fields
               state,
               status,
-              keywordBid: keywordBid > 0 ? keywordBid : null,
-              suggestedBidLow: suggestedBidLow > 0 ? suggestedBidLow : null,
-              suggestedBidMedian: suggestedBidMedian > 0 ? suggestedBidMedian : null,
-              suggestedBidHigh: suggestedBidHigh > 0 ? suggestedBidHigh : null,
+              keywordBid: keywordBid > 0 ? keywordBid : undefined,
+              suggestedBidLow: suggestedBidLow > 0 ? suggestedBidLow : undefined,
+              suggestedBidMedian: suggestedBidMedian > 0 ? suggestedBidMedian : undefined,
+              suggestedBidHigh: suggestedBidHigh > 0 ? suggestedBidHigh : undefined,
               topOfSearchIS,
-              kenpRead: !isNaN(parseIntSafe(getVal(['KENP read', 'kenp read']))) ? parseIntSafe(getVal(['KENP read', 'kenp read'])) : null,
-              estimatedKenpRoyalties: !isNaN(parseFloatSafe(getVal(['Estimated KENP royalties', 'Estimated KENP royalties(USD)']))) ? parseFloatSafe(getVal(['Estimated KENP royalties', 'Estimated KENP royalties(USD)'])) : null,
+              kenpRead: !isNaN(parseIntSafe(getVal(['KENP read', 'kenp read']))) ? parseIntSafe(getVal(['KENP read', 'kenp read'])) : undefined,
+              estimatedKenpRoyalties: !isNaN(parseFloatSafe(getVal(['Estimated KENP royalties', 'Estimated KENP royalties(USD)']))) ? parseFloatSafe(getVal(['Estimated KENP royalties', 'Estimated KENP royalties(USD)'])) : undefined,
             };
           });
           
