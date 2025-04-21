@@ -23,6 +23,9 @@ export interface AmazonAdData {
   kenpRead?: number; // KENP pages read
   estimatedKenpRoyalties?: number; // Estimated KENP royalties
   targeting?: string; // Targeting type
+  state?: string; // Ad state (e.g., enabled, paused)
+  status?: string; // Ad status from CSV
+  topOfSearchIS?: number; // Top-of-search impression share as decimal
 }
 
 // --- Analysis Result Structures ---
