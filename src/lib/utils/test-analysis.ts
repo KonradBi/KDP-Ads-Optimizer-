@@ -15,10 +15,14 @@ console.log(`- Wasted spend: ${analysisResult.painPoints.wastedSpend.toFixed(2)}
 console.log(`- Keywords with low CTR: ${analysisResult.painPoints.keywordsWithLowCtr}`);
 
 console.log('\nFree Recommendation:');
-console.log(`- Keyword: ${analysisResult.freeRecommendation.keyword}`);
-console.log(`- Clicks: ${analysisResult.freeRecommendation.clicks}`);
-console.log(`- Orders: ${analysisResult.freeRecommendation.orders}`);
-console.log(`- Action: ${analysisResult.freeRecommendation.action}`);
+if (analysisResult.freeRecommendation) {
+  console.log(`- Keyword: ${analysisResult.freeRecommendation.keyword}`);
+  console.log(`- Clicks: ${analysisResult.freeRecommendation.clicks}`);
+  console.log(`- Orders: ${analysisResult.freeRecommendation.orders}`);
+  console.log(`- Action: ${analysisResult.freeRecommendation.action}`);
+} else {
+  console.log('- No free recommendation available');
+}
 
 console.log('\nFull Analysis:');
 console.log(`- Total keywords analyzed: ${analysisResult.fullAnalysis.data.length}`);
