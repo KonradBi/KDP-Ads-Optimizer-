@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/utils/stripe';
-import { supabase } from '@/lib/utils/supabase';
+import { supabaseAdmin } from '@/lib/utils/supabase';
 
 export async function GET(request: NextRequest) {
   try {
@@ -26,11 +26,11 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    // Update the session status in Supabase (optional)
-    await supabase.from('payment_sessions').update({
-      status: 'completed',
-      updated_at: new Date().toISOString(),
-    }).eq('session_id', sessionId);
+    // Update the purchase status in Supabase
+    await supabaseAdmin
+      .from('purchases')
+      .update({ status: 'completed', updated_at: new Date().toISOString() })
+      .eq('stripe_session_id', sessionId);
     
     // Return success
     return NextResponse.json({

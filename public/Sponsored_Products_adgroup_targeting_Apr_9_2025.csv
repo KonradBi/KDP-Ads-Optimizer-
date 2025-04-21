@@ -1,0 +1,605 @@
+﻿State,Keyword,Match type,Status,Suggested bid (low)(USD),Suggested bid (median)(USD),Suggested bid (high)(USD),Estimated Impressions (low) From Suggested Bid (median),Estimated Impressions (high) From Suggested Bid (median),Keyword bid(USD),Top-of-search IS,Impressions,Clicks,CTR,Spend(USD),CPC(USD),Orders,Sales(USD),ACOS,KENP read,Estimated KENP royalties(USD)
+ENABLED,ai for,BROAD,CAMPAIGN_PAUSED,0.91,1.24,1.50,,,0.67,,3366,10,0.003,8.60,0.86,2,23.94,0.3592,0,0.00
+ENABLED,artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.69,0.96,1.09,,,0.65,,1470,8,0.0054,7.78,0.97,2,22.98,0.3386,0,0.00
+ENABLED,the teacher,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,5114,8,0.0016,8.04,1.00,1,12.99,0.6189,0,0.00
+ENABLED,the emotional lives of teenagers,BROAD,CAMPAIGN_PAUSED,0.42,0.56,0.70,,,0.65,,1943,1,0.0005,0.78,0.78,1,10.95,0.0712,0,0.00
+ENABLED,atlas of ai,BROAD,CAMPAIGN_PAUSED,0.48,0.55,0.74,,,0.65,,155,1,0.0065,0.97,0.97,1,10.95,0.0886,0,0.00
+ENABLED,the ai classroom,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,563,3,0.0053,1.46,0.49,1,10.95,0.1333,0,0.00
+ENABLED,ai books,BROAD,CAMPAIGN_PAUSED,0.91,1.21,1.34,,,0.65,,805,2,0.0025,1.53,0.77,1,10.95,0.1397,0,0.00
+ENABLED,social skills for kids,BROAD,CAMPAIGN_PAUSED,0.36,0.48,0.60,,,0.65,,145,1,0.0069,0.97,0.97,1,10.95,0.0886,0,0.00
+ENABLED,chatgpt and artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.58,0.77,0.96,,,0.65,,1,1,1,0.69,0.69,1,10.95,0.063,0,0.00
+ENABLED,parenting book,BROAD,CAMPAIGN_PAUSED,0.31,0.44,0.56,,,0.65,,7650,13,0.0017,11.57,0.89,1,10.95,1.0566,0,0.00
+ENABLED,chatgpt,BROAD,CAMPAIGN_PAUSED,0.92,1.23,1.54,,,0.65,,2978,7,0.0024,6.15,0.88,1,10.95,0.5616,0,0.00
+ENABLED,raising kid,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,3289,13,0.004,11.72,0.90,1,10.95,1.0703,0,0.00
+ENABLED,human compatible,BROAD,CAMPAIGN_PAUSED,0.55,0.73,0.91,,,0.65,,40,1,0.025,0.97,0.97,1,9.99,0.0971,0,0.00
+ENABLED,teacher of the year,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,385,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,sol safety online,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a letter from your teacher,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,38,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,lies my teacher told me,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,190,1,0.0053,0.85,0.85,0,0.00,,0,0.00
+ENABLED,10 online safety tips for children,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,scam proof your online shopping safety tips for shopping,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety with ralph,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,our final invention,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,43,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the field manual for online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,cross site scripting attacks,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,safety online,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,14,1,0.0714,0.24,0.24,0,0.00,,0,0.00
+ENABLED,tor browser,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,9,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,anonymous' guide to online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,internet safety guide for children and teens,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy and mass surveillance,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,privacy in the age of big data,BROAD,CAMPAIGN_PAUSED,1.88,2.53,3.27,,,0.65,,26,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the happy teacher habits,BROAD,CAMPAIGN_PAUSED,0.67,0.89,1.11,,,0.65,,17,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety in roblox,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety essential guide,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety for coders,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,safety first,BROAD,CAMPAIGN_PAUSED,1.40,1.87,2.32,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online child safety,BROAD,CAMPAIGN_PAUSED,0.29,0.39,0.49,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to protect your privacy and security online when using,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,introduction to online safety,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teachers,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,complete guide to internet privacy anonymity security,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,children's online safety,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,buzzy's adventures in online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,kids online safety,BROAD,CAMPAIGN_PAUSED,0.29,0.39,0.49,,,0.65,,20,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the basics of artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.72,0.89,1.19,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,your guide to online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the age of ai,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,517,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,applying artificial intelligence to project management,BROAD,CAMPAIGN_PAUSED,0.69,1.05,1.33,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,bully on campus online,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,internet security,BROAD,CAMPAIGN_PAUSED,0.47,0.83,1.08,,,0.65,,47,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online dating safety guide for women,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the little handbook of online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,unauthorized access,BROAD,CAMPAIGN_PAUSED,0.73,1.12,1.35,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the smart girl's guide to privacy,BROAD,CAMPAIGN_PAUSED,0.11,0.15,0.19,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety for kids,BROAD,CAMPAIGN_PAUSED,0.29,0.39,0.49,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,privacy online,BROAD,CAMPAIGN_PAUSED,1.66,2.21,3.25,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online etiquette and safety,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,cyberspies,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety for kids a parental guide,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,alice uploads a picture,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child and adolescent psychology,BROAD,CAMPAIGN_PAUSED,0.21,0.25,0.28,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology 101,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety for gen i x and z,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,simply artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.89,1.18,1.48,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,achieve online privacy ultimate guide to help you achieve,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ask leo guide to online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,internet security safety,BROAD,CAMPAIGN_PAUSED,0.51,0.68,0.85,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety infamous hack 2,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,senior online safety,BROAD,CAMPAIGN_PAUSED,0.21,0.31,0.35,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,customer data and privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child online safety secrets,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,not safe for work,BROAD,CAMPAIGN_PAUSED,1.26,1.68,2.10,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,cyber safety for everyone,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,5,1,0.2,0.12,0.12,0,0.00,,0,0.00
+ENABLED,books for teachers,BROAD,CAMPAIGN_PAUSED,0.53,0.68,0.78,,,0.65,,2496,3,0.0012,2.31,0.77,0,0.00,,0,0.00
+ENABLED,artificial intelligence and machine learning,BROAD,CAMPAIGN_PAUSED,0.88,1.17,1.46,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the art of prompts for artificial intelligence,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,get cyber safe,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,i wish my teacher knew,BROAD,CAMPAIGN_PAUSED,0.18,0.21,0.26,,,0.65,,262,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital identity and privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,be safe online,BROAD,CAMPAIGN_PAUSED,0.17,0.23,0.29,,,0.65,,27,1,0.037,0.97,0.97,0,0.00,,0,0.00
+PAUSED,on the internet,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.51,,,0.65,,824,1,0.0012,0.65,0.65,0,0.00,,0,0.00
+ENABLED,power and prediction,BROAD,CAMPAIGN_PAUSED,0.73,0.97,1.21,,,0.65,,65,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,protecting your child on internet,BROAD,CAMPAIGN_PAUSED,0.11,0.13,0.16,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,dara the dormouse online safety,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy secrets revealed,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,management of child development centers,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the everything new teacher book,BROAD,CAMPAIGN_PAUSED,0.55,0.73,0.91,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,best kids online safety article,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy,BROAD,CAMPAIGN_PAUSED,1.66,2.21,3.25,,,0.65,,41,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the art of invisibility,BROAD,CAMPAIGN_PAUSED,0.17,0.22,0.28,,,0.65,,297,1,0.0034,0.65,0.65,0,0.00,,0,0.00
+ENABLED,school consultation,BROAD,CAMPAIGN_PAUSED,0.11,0.15,0.21,,,0.65,,71,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the identity trade,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development from infancy to adolescence,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the complete guide to online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,introducing artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.73,0.97,1.21,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy everything you need to know,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the dance teacher of paris,BROAD,CAMPAIGN_PAUSED,0.16,0.20,0.23,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,hacked,BROAD,CAMPAIGN_PAUSED,2.15,2.40,3.12,,,0.65,,29,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to protect your privacy,BROAD,CAMPAIGN_PAUSED,0.17,0.22,0.28,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,troll stinks,BROAD,CAMPAIGN_PAUSED,0.12,0.16,0.22,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,your safety and privacy online,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the online world what you think you know and what,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,11,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital privacy,BROAD,CAMPAIGN_PAUSED,1.19,1.59,1.99,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the chatgpt prompt library,BROAD,CAMPAIGN_PAUSED,0.46,0.77,0.90,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,chicken clicking,BROAD,CAMPAIGN_PAUSED,0.38,0.51,0.64,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,polyvagal theory and the developing child,BROAD,CAMPAIGN_PAUSED,0.30,0.40,0.50,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online safety digital tlc,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy for journalists,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the architecture of privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,goldilocks,BROAD,CAMPAIGN_PAUSED,0.32,0.42,0.53,,,0.65,,14,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,my online privacy for seniors,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.36,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,my data my privacy my choice,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,understanding ai and children,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting preschool,BROAD,CAMPAIGN_PAUSED,0.47,0.62,0.78,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,pretty ugly promises,BROAD,CAMPAIGN_PAUSED,0.66,0.88,1.18,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting program,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.03,,,0.65,,16,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting a teen who has intense emotions,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.94,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the sleepover,BROAD,CAMPAIGN_PAUSED,0.48,0.64,0.80,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to talk so kids will listen listen so,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,71,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,mean little people,BROAD,CAMPAIGN_PAUSED,0.13,0.17,0.21,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting on pu,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,positive parenting skills to understanding and raising your kids,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,life skills for teens,BROAD,CAMPAIGN_PAUSED,0.57,0.74,0.95,,,0.65,,481,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting your newborn,BROAD,CAMPAIGN_PAUSED,0.47,0.63,0.79,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,real food for pregnancy,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,21,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,everything i know about love,BROAD,CAMPAIGN_PAUSED,0.14,0.18,0.22,,,0.65,,14,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting paul david tripp,BROAD,CAMPAIGN_PAUSED,0.50,0.66,0.83,,,0.65,,100,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how not to hate your husband after kids,BROAD,CAMPAIGN_PAUSED,0.25,0.33,0.41,,,0.65,,33,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting te,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.40,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to talk so little kids will listen,BROAD,CAMPAIGN_PAUSED,0.19,0.25,0.31,,,0.65,,61,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the book you wish your parents had read,BROAD,CAMPAIGN_PAUSED,0.29,0.38,0.48,,,0.65,,38,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting newborn,BROAD,CAMPAIGN_PAUSED,0.46,0.51,0.74,,,0.65,,11,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting on,BROAD,CAMPAIGN_PAUSED,0.44,0.56,0.69,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting your,BROAD,CAMPAIGN_PAUSED,0.55,0.74,0.93,,,0.65,,140,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,no drama discipline,BROAD,CAMPAIGN_PAUSED,0.30,0.40,0.50,,,0.65,,116,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting your adult child,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting odd,BROAD,CAMPAIGN_PAUSED,0.36,0.56,0.64,,,0.65,,25,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,what to expect when you're expecting,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,47,1,0.0213,0.87,0.87,0,0.00,,0,0.00
+ENABLED,never too late,BROAD,CAMPAIGN_PAUSED,0.53,0.71,0.89,,,0.65,,43,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,7 vital parenting skills for improving child behavior and positive,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the tender bar,BROAD,CAMPAIGN_PAUSED,0.67,0.79,0.92,,,0.65,,78,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,raising good humans,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,1158,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,cribsheet,BROAD,CAMPAIGN_PAUSED,0.14,0.19,0.24,,,0.65,,107,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parenting strong willed child,BROAD,CAMPAIGN_PAUSED,0.61,0.81,1.01,,,0.65,,48,1,0.0208,0.49,0.49,0,0.00,,0,0.00
+ENABLED,1 2-3 magic,BROAD,CAMPAIGN_PAUSED,0.74,0.98,1.23,,,0.65,,186,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting w,BROAD,CAMPAIGN_PAUSED,0.23,0.27,0.39,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting o,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,when the body says no,BROAD,CAMPAIGN_PAUSED,0.33,0.44,0.55,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting tripp,BROAD,CAMPAIGN_PAUSED,0.43,0.58,0.73,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,overcoming the co parenting trap,BROAD,CAMPAIGN_PAUSED,0.56,0.71,0.81,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting skills not,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,habits of the household,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,1275,2,0.0016,1.93,0.97,0,0.00,,0,0.00
+ENABLED,life skills for parenting young adults,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting preschoolers,BROAD,CAMPAIGN_PAUSED,0.34,0.54,0.64,,,0.65,,16,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting beyond belief,BROAD,CAMPAIGN_PAUSED,0.20,0.27,0.34,,,0.65,,62,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a limited run,BROAD,CAMPAIGN_PAUSED,0.38,0.51,0.64,,,0.65,,30,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,uniquely human,BROAD,CAMPAIGN_PAUSED,0.24,0.34,0.38,,,0.65,,131,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,when smiles fade,BROAD,CAMPAIGN_PAUSED,0.20,0.27,0.34,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,great parenting skills for navigating your kid's personality,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,just the way you are,BROAD,CAMPAIGN_PAUSED,0.20,0.26,0.33,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,untangled,BROAD,CAMPAIGN_PAUSED,0.37,0.49,0.61,,,0.65,,507,1,0.002,0.47,0.47,0,0.00,,0,0.00
+PAUSED,the family firm,BROAD,CAMPAIGN_PAUSED,0.14,0.19,0.24,,,0.65,,374,1,0.0027,0.69,0.69,0,0.00,,0,0.00
+ENABLED,parenting special needs,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,52,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,the vaccine friendly plan,BROAD,CAMPAIGN_PAUSED,0.16,0.21,0.26,,,0.65,,660,1,0.0015,0.97,0.97,0,0.00,,0,0.00
+ENABLED,good parenting skills,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting hell,BROAD,CAMPAIGN_PAUSED,0.29,0.39,0.49,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting rewired,BROAD,CAMPAIGN_PAUSED,0.47,0.62,0.78,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting plans,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,44,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting stanley,BROAD,CAMPAIGN_PAUSED,0.31,0.37,0.45,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting teens with love and logic,BROAD,CAMPAIGN_PAUSED,0.51,0.66,0.75,,,0.65,,71,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the 7 vital parenting skills and confident kids box set,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the whole brain child,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.46,,,0.65,,404,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting wit,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parenting siblings,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,2,1,0.5,1.30,1.30,0,0.00,,0,0.00
+ENABLED,parenting on purpose,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,45,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the dbt skills workbook for teens,BROAD,CAMPAIGN_PAUSED,0.70,0.93,1.16,,,0.65,,23,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting outside the lines,BROAD,CAMPAIGN_PAUSED,0.58,0.77,0.96,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting the strong willed child,BROAD,CAMPAIGN_PAUSED,0.61,0.81,1.01,,,0.65,,50,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting scripts,BROAD,CAMPAIGN_PAUSED,0.58,0.71,0.81,,,0.65,,20,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with wisdom and skill,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting help,BROAD,CAMPAIGN_PAUSED,0.32,0.44,0.55,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,permission to feel,BROAD,CAMPAIGN_PAUSED,0.49,0.65,0.81,,,0.65,,282,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,never be alone,BROAD,CAMPAIGN_PAUSED,0.11,0.13,0.17,,,0.65,,20,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting pre,BROAD,CAMPAIGN_PAUSED,0.64,0.75,0.85,,,0.65,,11,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the hands on workbook for adhd children,BROAD,CAMPAIGN_PAUSED,0.55,0.73,0.91,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting sons,BROAD,CAMPAIGN_PAUSED,0.42,0.56,0.70,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting twins,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting the new teen in the age of anxiety,BROAD,CAMPAIGN_PAUSED,0.46,0.61,0.75,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,bringing up bébé,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,118,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,raising toddler parenting,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.86,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting t,BROAD,CAMPAIGN_PAUSED,0.16,0.25,0.33,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting skills,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.86,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,life skills for tweens,BROAD,CAMPAIGN_PAUSED,0.40,0.53,0.66,,,0.65,,137,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting skills homework planner,BROAD,CAMPAIGN_PAUSED,0.49,0.65,0.81,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,oh crap potty training,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,300,1,0.0033,0.80,0.80,0,0.00,,0,0.00
+PAUSED,parenting to,BROAD,CAMPAIGN_PAUSED,0.44,0.56,0.69,,,0.65,,3397,9,0.0026,8.63,0.96,0,0.00,,0,0.00
+PAUSED,good inside,BROAD,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.65,,127,1,0.0079,0.97,0.97,0,0.00,,0,0.00
+ENABLED,what to expect the first year,BROAD,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.65,,194,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,beautiful country,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,25,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting for dummies,BROAD,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.65,,20,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting wi,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,scattered minds,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,249,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting toddlers free,BROAD,CAMPAIGN_PAUSED,0.86,1.14,1.42,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to raise a leader,BROAD,CAMPAIGN_PAUSED,0.40,0.50,0.70,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting paul,BROAD,CAMPAIGN_PAUSED,0.50,0.66,0.83,,,0.65,,19,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting your adult children,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting styles,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,80,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the deepest well,BROAD,CAMPAIGN_PAUSED,0.16,0.21,0.26,,,0.65,,51,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,believe like a child,BROAD,CAMPAIGN_PAUSED,0.19,0.25,0.31,,,0.65,,41,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,7 vital skills for parenting teen boys and communicating with,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting your powerful child,BROAD,CAMPAIGN_PAUSED,0.25,0.46,0.58,,,0.65,,25,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to beat procrastination in the digital age,BROAD,CAMPAIGN_PAUSED,0.32,0.42,0.53,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai bikini,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.63,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,1000 years of joys and sorrows,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,living in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai trading bots,BROAD,CAMPAIGN_PAUSED,0.29,0.42,0.48,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the filmmaker's handbook,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,impromptu,BROAD,CAMPAIGN_PAUSED,0.13,0.17,0.21,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teacher and the soldier,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,classroom management in the digital age,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ecologies of faith in a digital age,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,21,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,principles of marketing for a digital age,BROAD,CAMPAIGN_PAUSED,0.64,0.85,1.06,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,following jesus in a digital age,BROAD,CAMPAIGN_PAUSED,0.40,0.53,0.66,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,p ai-r programming,BROAD,CAMPAIGN_PAUSED,0.30,0.40,0.50,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,multilingual families in a digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai ship cassiopia,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a.i. apocalypse,BROAD,CAMPAIGN_PAUSED,0.54,0.72,0.90,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,l d's playbook for the digital age,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,winning in the digital age,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,reinventing capitalism in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai author assistant,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the new digital age,BROAD,CAMPAIGN_PAUSED,1.27,1.70,2.13,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the neuropreneur,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ogilvy on advertising in the digital age,BROAD,CAMPAIGN_PAUSED,0.54,0.64,0.77,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the challenge of effective speaking in a digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,photorealism in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai takeover,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,personal connections in the digital age,BROAD,CAMPAIGN_PAUSED,0.14,0.18,0.22,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,text to image ai,BROAD,CAMPAIGN_PAUSED,0.37,0.49,0.61,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai revolution in medicine,BROAD,CAMPAIGN_PAUSED,0.39,0.45,0.60,,,0.65,,193,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,dignity in a digital age,BROAD,CAMPAIGN_PAUSED,0.54,0.65,0.79,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai tech,BROAD,CAMPAIGN_PAUSED,0.49,0.84,1.20,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,fresh expressions in a digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai superpowers,BROAD,CAMPAIGN_PAUSED,0.70,0.93,1.16,,,0.65,,30,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,reimagining literacies in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,raising resilient children in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai unraveled,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai side hustles,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.07,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the digital transformation playbook,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai uehara,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,9,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,psychology of the digital age,BROAD,CAMPAIGN_PAUSED,0.82,1.09,1.36,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,designing for the digital age,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,generative ai art,BROAD,CAMPAIGN_PAUSED,0.78,0.99,1.24,,,0.65,,9,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,justice in the age of judgment,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital age resistance,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai thriller,BROAD,CAMPAIGN_PAUSED,0.47,0.62,0.78,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the beginner's guide to ai,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.39,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the digital age,BROAD,CAMPAIGN_PAUSED,0.54,0.83,1.05,,,0.65,,109,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,chatgpt's warning,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,reclaiming conversation,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,47,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai series,BROAD,CAMPAIGN_PAUSED,0.50,0.67,0.84,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai gold rush,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the age of digital transformation,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai yazawa,BROAD,CAMPAIGN_PAUSED,0.16,0.21,0.26,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the business case for ai,BROAD,CAMPAIGN_PAUSED,0.79,1.05,1.31,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the chatgpt fitness plan,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,index a history of the,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,museum diplomacy in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital agency,BROAD,CAMPAIGN_PAUSED,1.11,1.48,1.85,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital age,BROAD,CAMPAIGN_PAUSED,0.54,0.83,1.05,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,tools and weapons,BROAD,CAMPAIGN_PAUSED,0.48,0.66,0.86,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to win friends and influence people in the digital,BROAD,CAMPAIGN_PAUSED,0.34,0.45,0.56,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai photo japanese,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,t minus ai,BROAD,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai prompts,BROAD,CAMPAIGN_PAUSED,0.69,0.92,1.15,,,0.65,,131,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai babes,BROAD,CAMPAIGN_PAUSED,0.15,0.20,0.25,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai programming,BROAD,CAMPAIGN_PAUSED,0.79,1.05,1.31,,,0.65,,27,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a.i. ship cassiopeia,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,digital age teaching for english learners,BROAD,CAMPAIGN_PAUSED,0.20,0.27,0.34,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,competing in the age of ai,BROAD,CAMPAIGN_PAUSED,0.83,1.11,1.39,,,0.65,,22,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai spaceship,BROAD,CAMPAIGN_PAUSED,0.73,0.97,1.21,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai basics,BROAD,CAMPAIGN_PAUSED,0.80,1.06,1.20,,,0.65,,34,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai technology,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,learning supercharged,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,30,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,black white photography,BROAD,CAMPAIGN_PAUSED,0.25,0.41,0.49,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,judaism in a digital age,BROAD,CAMPAIGN_PAUSED,0.62,0.82,1.02,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,gen z explained,BROAD,CAMPAIGN_PAUSED,0.29,0.39,0.49,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,literature in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai ship,BROAD,CAMPAIGN_PAUSED,0.85,1.25,1.63,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the mcdonaldization of society,BROAD,CAMPAIGN_PAUSED,0.39,0.52,0.65,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai whisperer's code,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.13,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the digital age on the couch,BROAD,CAMPAIGN_PAUSED,0.62,0.82,1.02,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ultimate guide to midjourney ai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai wars,BROAD,CAMPAIGN_PAUSED,0.49,0.67,0.79,,,0.65,,11,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai for authors,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.50,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai 2041,BROAD,CAMPAIGN_PAUSED,0.77,1.02,1.20,,,0.65,,147,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,legal practice in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,spiritual freedom in the digital age,BROAD,CAMPAIGN_PAUSED,0.38,0.51,0.64,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai factor,BROAD,CAMPAIGN_PAUSED,0.14,0.23,0.26,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai writing,BROAD,CAMPAIGN_PAUSED,0.67,0.90,1.22,,,0.65,,45,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the ai chronicles,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai written books,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.50,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the trilisk ai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the rise of the mutant learner,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,political theory of the digital age,BROAD,CAMPAIGN_PAUSED,0.12,0.16,0.20,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,where the money is,BROAD,CAMPAIGN_PAUSED,0.21,0.28,0.35,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,chatgpt meets midjourney ai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the centipede's mate,BROAD,CAMPAIGN_PAUSED,0.48,0.64,0.80,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,understand digital wellness in the overwhelming digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teacher's christmas secret,BROAD,CAMPAIGN_PAUSED,0.17,0.23,0.29,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai fo,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.50,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai illustration,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai i,BROAD,CAMPAIGN_PAUSED,0.60,0.80,1.00,,,0.65,,14,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,memoirs of a mediocre teacher,BROAD,CAMPAIGN_PAUSED,0.17,0.22,0.28,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai fiction,BROAD,CAMPAIGN_PAUSED,1.14,1.33,1.66,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the fantastic book of teacher jokes,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai for dummies,BROAD,CAMPAIGN_PAUSED,1.12,1.49,1.86,,,0.65,,84,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai dice,BROAD,CAMPAIGN_PAUSED,0.29,0.33,0.42,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai destroyer,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the last teacher,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,16,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai music,BROAD,CAMPAIGN_PAUSED,0.92,1.22,1.53,,,0.65,,27,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the reading teacher's book of lists,BROAD,CAMPAIGN_PAUSED,0.15,0.22,0.28,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai drug discovery,BROAD,CAMPAIGN_PAUSED,0.54,0.72,0.90,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,teacher scandal,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai no kusa,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai cg,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a teacher's heart of gold,BROAD,CAMPAIGN_PAUSED,0.55,0.73,0.83,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai d,BROAD,CAMPAIGN_PAUSED,0.52,0.60,0.73,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the english teacher,BROAD,CAMPAIGN_PAUSED,0.39,0.52,0.58,,,0.65,,125,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teacher of nothing,BROAD,CAMPAIGN_PAUSED,0.27,0.47,0.60,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,loving the teacher,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.48,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,teacher lesson planner 2022 2023,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai cassiopeia,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai investing,BROAD,CAMPAIGN_PAUSED,0.90,1.50,1.80,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,teach reading with orton gillingham,BROAD,CAMPAIGN_PAUSED,0.19,0.25,0.31,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai masters,BROAD,CAMPAIGN_PAUSED,0.56,0.86,0.95,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai photi,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai im,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,ai for beginners,BROAD,CAMPAIGN_PAUSED,1.05,1.32,1.49,,,0.65,,31,1,0.0323,0.73,0.73,0,0.00,,0,0.00
+ENABLED,ai for ux,BROAD,CAMPAIGN_PAUSED,0.45,0.60,0.75,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai gravure,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,46,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai mukai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai economy,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.15,,,0.65,,37,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai artificial intelligence,BROAD,CAMPAIGN_PAUSED,1.01,1.37,2.02,,,0.65,,18,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teacher's big book of graphic organizers,BROAD,CAMPAIGN_PAUSED,0.30,0.40,0.50,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,online privacy law,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,mass address guide to online privacy,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai harem,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai no,BROAD,CAMPAIGN_PAUSED,0.81,1.08,1.35,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,take control of the noisy class,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the art teacher's book of lists,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai capone,BROAD,CAMPAIGN_PAUSED,0.11,0.12,0.13,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai imag,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,what great teachers do differently,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.40,,,0.65,,64,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai business case,BROAD,CAMPAIGN_PAUSED,0.79,1.05,1.31,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,teacher,BROAD,CAMPAIGN_PAUSED,0.43,0.57,0.71,,,0.65,,3553,1,0.0003,0.96,0.96,0,0.00,,0,0.00
+ENABLED,the practical book about online privacy for young people and,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai n,BROAD,CAMPAIGN_PAUSED,1.08,1.68,2.28,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai imagw,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the new teacher book,BROAD,CAMPAIGN_PAUSED,0.52,0.70,0.88,,,0.65,,36,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai art prompts,BROAD,CAMPAIGN_PAUSED,0.86,1.14,1.42,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai development,BROAD,CAMPAIGN_PAUSED,0.83,1.29,1.68,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai marketing,BROAD,CAMPAIGN_PAUSED,0.80,1.06,1.33,,,0.65,,23,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the teacher wars,BROAD,CAMPAIGN_PAUSED,0.34,0.47,0.59,,,0.65,,36,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai martin,BROAD,CAMPAIGN_PAUSED,0.88,1.17,1.46,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai beauty,BROAD,CAMPAIGN_PAUSED,0.59,0.76,0.84,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai content creation,BROAD,CAMPAIGN_PAUSED,0.41,0.73,0.93,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai art,BROAD,CAMPAIGN_PAUSED,0.51,0.73,1.00,,,0.65,,147,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai first contact,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai dream about humanity,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai engineering,BROAD,CAMPAIGN_PAUSED,0.55,0.73,0.91,,,0.65,,41,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai content,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.94,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai,BROAD,CAMPAIGN_PAUSED,0.91,1.24,1.50,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai c,BROAD,CAMPAIGN_PAUSED,0.49,0.68,0.86,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai in healthcare,BROAD,CAMPAIGN_PAUSED,1.70,2.27,2.84,,,0.65,,106,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai grant writing,BROAD,CAMPAIGN_PAUSED,0.78,1.21,1.48,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai image,BROAD,CAMPAIGN_PAUSED,0.72,0.90,1.20,,,0.65,,27,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai chat,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai ph,BROAD,CAMPAIGN_PAUSED,0.67,0.89,1.11,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai p,BROAD,CAMPAIGN_PAUSED,0.44,0.59,0.71,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai in architecture,BROAD,CAMPAIGN_PAUSED,0.89,1.18,1.48,,,0.65,,26,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,sheriff's treasured teacher,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai nasser,BROAD,CAMPAIGN_PAUSED,0.20,0.27,0.34,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai at the edge,BROAD,CAMPAIGN_PAUSED,0.49,0.77,0.98,,,0.65,,19,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai phot,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai di,BROAD,CAMPAIGN_PAUSED,0.31,0.36,0.45,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai photo,BROAD,CAMPAIGN_PAUSED,0.46,0.63,0.83,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the italian teacher,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai digital marketing secrets,BROAD,CAMPAIGN_PAUSED,0.80,1.07,1.34,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai artwork,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting high tech kids,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,get lost,BROAD,CAMPAIGN_PAUSED,0.17,0.22,0.28,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai ml,BROAD,CAMPAIGN_PAUSED,0.52,0.97,1.21,,,0.65,,43,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai baed investor,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai destiny series,BROAD,CAMPAIGN_PAUSED,0.23,0.32,0.45,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai hazelwood,BROAD,CAMPAIGN_PAUSED,0.57,0.76,0.95,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,what do teachers do,BROAD,CAMPAIGN_PAUSED,0.25,0.31,0.39,,,0.65,,138,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai pho,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai digital marketing,BROAD,CAMPAIGN_PAUSED,0.96,1.10,1.22,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai nonprofit,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.13,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai h,BROAD,CAMPAIGN_PAUSED,0.32,0.36,0.40,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai books by paul,BROAD,CAMPAIGN_PAUSED,0.94,1.25,1.56,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai ethics,BROAD,CAMPAIGN_PAUSED,2.47,3.29,4.11,,,0.65,,136,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai millionaire,BROAD,CAMPAIGN_PAUSED,0.43,0.48,0.66,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai magazine,BROAD,CAMPAIGN_PAUSED,0.37,0.49,0.61,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai f,BROAD,CAMPAIGN_PAUSED,0.35,0.58,0.85,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai prompting,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.50,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,life 3.0,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.63,,,0.65,,112,1,0.0089,0.97,0.97,0,0.00,,0,0.00
+ENABLED,all in on ai,BROAD,CAMPAIGN_PAUSED,0.41,0.70,0.87,,,0.65,,98,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,positive parenting communication skills,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,applied artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.69,0.90,1.15,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,education of character,BROAD,CAMPAIGN_PAUSED,0.50,0.66,0.83,,,0.65,,70,1,0.0143,0.13,0.13,0,0.00,,0,0.00
+ENABLED,child psychology in twelve questions,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence and deep learning,BROAD,CAMPAIGN_PAUSED,0.36,0.54,0.68,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,marketing artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.71,0.94,1.17,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,introduction to child psychology and development,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,working with parents of aggressive children,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,guiding children's social development and learning,BROAD,CAMPAIGN_PAUSED,0.12,0.16,0.20,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,potty training in 3 days,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,424,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,positive discipline,BROAD,CAMPAIGN_PAUSED,0.18,0.32,0.42,,,0.65,,198,1,0.0051,0.37,0.37,0,0.00,,0,0.00
+ENABLED,artificial intelligence in healthcare,BROAD,CAMPAIGN_PAUSED,2.00,2.67,3.34,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence programming,BROAD,CAMPAIGN_PAUSED,0.54,0.76,1.05,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the development of children,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,696,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development worldwide,BROAD,CAMPAIGN_PAUSED,1.07,1.43,1.79,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence marketing,BROAD,CAMPAIGN_PAUSED,0.71,0.94,1.17,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,an introduction to child development,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence simplified,BROAD,CAMPAIGN_PAUSED,0.51,0.81,0.98,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence an illustrated history,BROAD,CAMPAIGN_PAUSED,0.37,0.49,0.61,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,four battlegrounds,BROAD,CAMPAIGN_PAUSED,0.71,0.89,1.20,,,0.65,,87,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,what if everybody understood child development,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence fiction,BROAD,CAMPAIGN_PAUSED,0.68,0.91,1.14,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence basics,BROAD,CAMPAIGN_PAUSED,0.72,0.89,1.19,,,0.65,,28,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology free books,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how children succeed,BROAD,CAMPAIGN_PAUSED,0.49,0.65,0.81,,,0.65,,47,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the montessori baby,BROAD,CAMPAIGN_PAUSED,0.60,0.80,1.00,,,0.65,,697,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the neuroscience of the developing child,BROAD,CAMPAIGN_PAUSED,0.73,0.97,1.11,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the psychology of the child,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,249,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting skills book,BROAD,CAMPAIGN_PAUSED,0.59,0.78,0.98,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,the self driven child,BROAD,CAMPAIGN_PAUSED,0.38,0.46,0.54,,,0.65,,386,1,0.0026,0.51,0.51,0,0.00,,0,0.00
+ENABLED,thinking critically about child development,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.94,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the drama of the gifted child,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,180,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,assessing and guiding young children's development and learning,BROAD,CAMPAIGN_PAUSED,0.12,0.16,0.20,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development for parents,BROAD,CAMPAIGN_PAUSED,0.62,0.83,1.04,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,essential adulting life skills for teens,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence awakening,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.63,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence a,BROAD,CAMPAIGN_PAUSED,0.69,0.96,1.09,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,children development,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,what's my child thinking,BROAD,CAMPAIGN_PAUSED,0.79,1.05,1.31,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development an active learning approach,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,4,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence business,BROAD,CAMPAIGN_PAUSED,0.74,0.98,1.23,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence guide,BROAD,CAMPAIGN_PAUSED,0.91,1.23,1.37,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence m,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.63,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,on becoming babywise,BROAD,CAMPAIGN_PAUSED,6.43,7.14,7.85,,,0.65,,384,1,0.0026,0.31,0.31,0,0.00,,0,0.00
+ENABLED,smart until it's dumb,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,a practical guide to child psychology,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence a guide for thinking humans,BROAD,CAMPAIGN_PAUSED,0.68,0.86,0.95,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,abnormal child psychology,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology and development for dummies,BROAD,CAMPAIGN_PAUSED,0.48,0.64,0.80,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parental alienation,BROAD,CAMPAIGN_PAUSED,0.37,0.49,0.61,,,0.65,,289,1,0.0035,1.30,1.30,0,0.00,,0,0.00
+ENABLED,helping children develop a positive relationship with food,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the myth of artificial intelligence,BROAD,CAMPAIGN_PAUSED,0.50,0.67,0.84,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence and generative ai for beginners,BROAD,CAMPAIGN_PAUSED,1.01,1.34,1.68,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child and family advocacy,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.40,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai for educators,BROAD,CAMPAIGN_PAUSED,0.19,0.29,0.36,,,0.65,,111,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,understanding child development,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence f,BROAD,CAMPAIGN_PAUSED,0.90,1.20,1.50,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,what's going on in there,BROAD,CAMPAIGN_PAUSED,0.14,0.18,0.22,,,0.65,,34,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,understand child development,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology primer,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,dbt skills workbook for parents of teens a proven,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence in practice,BROAD,CAMPAIGN_PAUSED,0.72,1.08,1.20,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,case studies in abnormal child and adolescent psychology,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,developing child the,BROAD,CAMPAIGN_PAUSED,0.23,0.29,0.36,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,101 tips for helping with your child's learning,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the boy who was raised as a dog,BROAD,CAMPAIGN_PAUSED,0.12,0.16,0.20,,,0.65,,445,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development in educational settings,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the 21st century parenting skills,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development for mothers,BROAD,CAMPAIGN_PAUSED,0.47,0.63,0.79,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child psychology and psychiatry,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.63,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the child psychology of money and happiness,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,abnormal child and adolescent psychology,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,helping others help children,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the developing child,BROAD,CAMPAIGN_PAUSED,0.23,0.29,0.36,,,0.65,,42,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development and education,BROAD,CAMPAIGN_PAUSED,0.41,0.55,0.69,,,0.65,,91,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,forensic child psychology,BROAD,CAMPAIGN_PAUSED,0.18,0.24,0.30,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the psychology of harry potter,BROAD,CAMPAIGN_PAUSED,0.28,0.37,0.46,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development for teachers,BROAD,CAMPAIGN_PAUSED,0.54,0.72,0.90,,,0.65,,9,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development an introduction,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,beyond behaviors,BROAD,CAMPAIGN_PAUSED,0.20,0.26,0.33,,,0.65,,288,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,children's psychology,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how children develop,BROAD,CAMPAIGN_PAUSED,0.74,0.99,1.09,,,0.65,,20,1,0.05,0.97,0.97,0,0.00,,0,0.00
+ENABLED,practical strategies to parenting children with adhd,BROAD,CAMPAIGN_PAUSED,0.26,0.34,0.43,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,heads up psychology,BROAD,CAMPAIGN_PAUSED,0.31,0.41,0.51,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,101 tips for child development,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,things about adopting,BROAD,CAMPAIGN_PAUSED,0.14,0.19,0.24,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,how to help children with asperger's in social skills and,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the artificial intelligence question and answer book,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development psychology,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,18,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence for dummies,BROAD,CAMPAIGN_PAUSED,0.91,1.21,1.51,,,0.65,,33,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,the development of children and adolescents,BROAD,CAMPAIGN_PAUSED,0.36,0.48,0.69,,,0.65,,131,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,hold on to your kids,BROAD,CAMPAIGN_PAUSED,0.33,0.44,0.55,,,0.65,,344,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parent child interaction therapy,BROAD,CAMPAIGN_PAUSED,0.34,0.45,0.56,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai driven business transformation,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting babies,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,61,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with words of grace,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting a strong willed child,BROAD,CAMPAIGN_PAUSED,0.61,0.81,1.01,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting ad,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting kids with autism,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting adh,BROAD,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting without borders,BROAD,CAMPAIGN_PAUSED,0.35,0.47,0.59,,,0.65,,10,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting for dads,BROAD,CAMPAIGN_PAUSED,0.58,0.83,1.12,,,0.65,,36,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting chil,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,gentle parenting,BROAD,CAMPAIGN_PAUSED,0.63,0.84,1.05,,,0.65,,191,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,adhd,BROAD,CAMPAIGN_PAUSED,0.82,1.09,1.36,,,0.65,,1579,1,0.0006,0.93,0.93,0,0.00,,0,0.00
+ENABLED,parenting adhd kids,BROAD,CAMPAIGN_PAUSED,0.75,1.00,1.25,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with impact,BROAD,CAMPAIGN_PAUSED,0.15,0.20,0.25,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting for anxious children,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,22,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,get ready for the future of ai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting ma,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting difficult children,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.13,,,0.65,,24,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting c,BROAD,CAMPAIGN_PAUSED,0.63,0.84,1.05,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting books for toddlers,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,696,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parenting books for free,BROAD,CAMPAIGN_PAUSED,0.42,0.56,0.70,,,0.65,,18,1,0.0556,0.97,0.97,0,0.00,,0,0.00
+PAUSED,parenting teens,BROAD,CAMPAIGN_PAUSED,0.63,0.75,0.85,,,0.65,,444,1,0.0023,0.89,0.89,0,0.00,,0,0.00
+ENABLED,parenting b,BROAD,CAMPAIGN_PAUSED,0.16,0.21,0.26,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting children with autism,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,19,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting christian,BROAD,CAMPAIGN_PAUSED,0.41,0.59,0.72,,,0.65,,202,1,0.005,0.76,0.76,0,0.00,,0,0.00
+ENABLED,parenting highly sensitive,BROAD,CAMPAIGN_PAUSED,0.47,0.55,0.61,,,0.65,,35,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,protecting children's privacy online,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,ai education for parents and teachers,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting gett,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting map shefali,BROAD,CAMPAIGN_PAUSED,0.38,0.50,0.71,,,0.65,,154,1,0.0065,0.97,0.97,0,0.00,,0,0.00
+ENABLED,parenting toddlers,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,232,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting a child who has intense emotions,BROAD,CAMPAIGN_PAUSED,0.21,0.28,0.35,,,0.65,,6,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parenting challenge,BROAD,CAMPAIGN_PAUSED,0.30,0.41,0.51,,,0.65,,11,1,0.0909,0.90,0.90,0,0.00,,0,0.00
+ENABLED,parenting in digital age,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.94,,,0.65,,7,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting is heart work,BROAD,CAMPAIGN_PAUSED,0.22,0.29,0.36,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting from the inside out daniel siegel,BROAD,CAMPAIGN_PAUSED,0.54,0.70,0.81,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,child development books parents,BROAD,CAMPAIGN_PAUSED,0.62,0.83,1.04,,,0.65,,250,1,0.004,0.97,0.97,0,0.00,,0,0.00
+ENABLED,parenting fr,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting children with trauma,BROAD,CAMPAIGN_PAUSED,0.46,0.52,0.65,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting isn't for cowards,BROAD,CAMPAIGN_PAUSED,0.36,0.48,0.70,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting getting,BROAD,CAMPAIGN_PAUSED,0.47,0.63,0.79,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting kids with adhd,BROAD,CAMPAIGN_PAUSED,0.76,1.01,1.26,,,0.65,,12,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting defiant child,BROAD,CAMPAIGN_PAUSED,0.36,0.47,0.55,,,0.65,,27,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting girls,BROAD,CAMPAIGN_PAUSED,0.64,0.85,1.06,,,0.65,,447,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting gospel,BROAD,CAMPAIGN_PAUSED,0.40,0.53,0.66,,,0.65,,41,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence for parents,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting adult children,BROAD,CAMPAIGN_PAUSED,0.68,0.90,1.13,,,0.65,,193,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting guide,BROAD,CAMPAIGN_PAUSED,0.56,0.78,0.98,,,0.65,,148,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,kids and ai technology,BROAD,CAMPAIGN_PAUSED,0.17,0.23,0.29,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting boys,BROAD,CAMPAIGN_PAUSED,0.62,0.87,1.14,,,0.65,,312,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting children with oppositional defiant disorder,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting d,BROAD,CAMPAIGN_PAUSED,0.26,0.30,0.34,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with grace,BROAD,CAMPAIGN_PAUSED,0.52,0.70,0.88,,,0.65,,11,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,top parenting books,BROAD,CAMPAIGN_PAUSED,0.23,0.31,0.39,,,0.65,,52,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with presence,BROAD,CAMPAIGN_PAUSED,0.35,0.46,0.58,,,0.65,,73,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,must read books about ai,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,advice for good parents,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting fo,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting is hard and then you die,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with love and,BROAD,CAMPAIGN_PAUSED,0.30,0.38,0.56,,,0.65,,9,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting free,BROAD,CAMPAIGN_PAUSED,0.72,0.96,1.20,,,0.65,,84,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting in the digital age,BROAD,CAMPAIGN_PAUSED,0.56,0.75,0.94,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting boo,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting de,BROAD,CAMPAIGN_PAUSED,0.29,0.38,0.48,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,navigating ai with children,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting kids with emotional and behavioral issues,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,5,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting get it right,BROAD,CAMPAIGN_PAUSED,0.25,0.33,0.41,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting explosive children,BROAD,CAMPAIGN_PAUSED,0.24,0.32,0.40,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting love and logic,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,50,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with,BROAD,CAMPAIGN_PAUSED,0.46,0.53,0.68,,,0.65,,427,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting children wit,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,modern parenting books,BROAD,CAMPAIGN_PAUSED,0.33,0.44,0.55,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+PAUSED,parenting from the inside out,BROAD,CAMPAIGN_PAUSED,0.30,0.50,0.55,,,0.65,,203,1,0.0049,0.92,0.92,0,0.00,,0,0.00
+ENABLED,parenting g,BROAD,CAMPAIGN_PAUSED,0.13,0.17,0.21,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting,BROAD,CAMPAIGN_PAUSED,0.44,0.56,0.69,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting magazine,BROAD,CAMPAIGN_PAUSED,0.26,0.35,0.44,,,0.65,,28,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting books for new parents,BROAD,CAMPAIGN_PAUSED,0.60,0.80,1.00,,,0.65,,311,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting kids with odd,BROAD,CAMPAIGN_PAUSED,0.27,0.36,0.45,,,0.65,,2,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting from,BROAD,CAMPAIGN_PAUSED,0.39,0.52,0.65,,,0.65,,66,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting nature,BROAD,CAMPAIGN_PAUSED,0.45,0.60,0.75,,,0.65,,13,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting from the inside,BROAD,CAMPAIGN_PAUSED,0.30,0.50,0.55,,,0.65,,214,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting books unlimited,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting a,BROAD,CAMPAIGN_PAUSED,0.44,0.56,0.69,,,0.65,,2980,6,0.002,6.59,1.10,0,0.00,,0,0.00
+ENABLED,parenting divorce,BROAD,CAMPAIGN_PAUSED,0.70,0.93,1.16,,,0.65,,27,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting without power struggle,BROAD,CAMPAIGN_PAUSED,0.41,0.54,0.68,,,0.65,,36,0,0,0.00,0.00,0,0.00,,0,0.00
+PAUSED,simplicity parenting,BROAD,CAMPAIGN_PAUSED,0.20,0.27,0.34,,,0.65,,302,1,0.0033,0.90,0.90,0,0.00,,0,0.00
+ENABLED,the parenting map,BROAD,CAMPAIGN_PAUSED,0.30,0.46,0.58,,,0.65,,303,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting childre,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting devotional,BROAD,CAMPAIGN_PAUSED,0.20,0.26,0.33,,,0.65,,8,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting inside out,BROAD,CAMPAIGN_PAUSED,0.42,0.56,0.70,,,0.65,,15,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting unlimited,BROAD,CAMPAIGN_PAUSED,0.22,0.30,0.38,,,0.65,,3,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting with love and logic,BROAD,CAMPAIGN_PAUSED,0.30,0.38,0.56,,,0.65,,134,1,0.0075,0.93,0.93,0,0.00,,0,0.00
+ENABLED,how to parent in the digital age,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting made complicated,BROAD,CAMPAIGN_PAUSED,,,,,,0.65,,1,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting books for moms,BROAD,CAMPAIGN_PAUSED,0.55,0.74,0.93,,,0.65,,266,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting david paul tripp,BROAD,CAMPAIGN_PAUSED,0.50,0.66,0.83,,,0.65,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting andy stanley,BROAD,CAMPAIGN_PAUSED,0.33,0.44,0.55,,,0.65,,147,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,parenting getting it right,BROAD,CAMPAIGN_PAUSED,0.17,0.23,0.29,,,0.65,,55,0,0,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence children,BROAD,CAMPAIGN_PAUSED,0.55,0.74,0.93,,,0.80,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence children,PHRASE,CAMPAIGN_PAUSED,0.53,0.71,0.89,,,0.76,,0,0,,0.00,0.00,0,0.00,,0,0.00
+ENABLED,artificial intelligence children,EXACT,CAMPAIGN_PAUSED,0.52,0.69,0.86,,,0.66,,0,0,,0.00,0.00,0,0.00,,0,0.00

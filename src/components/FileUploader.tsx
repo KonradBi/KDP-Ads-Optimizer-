@@ -59,20 +59,20 @@ export default function FileUploader({ onDataParsed, onError }: FileUploaderProp
   return (
     <div 
       {...getRootProps()} 
-      className={`p-10 border-2 border-dashed rounded-lg text-center cursor-pointer transition-colors
+      className={`p-20 border-3 border-dashed rounded-2xl text-center cursor-pointer transition-colors
         ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400'}`}
     >
       <input {...getInputProps()} />
       
       {isLoading ? (
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
-          <p className="mt-2 text-gray-600">Processing your CSV file...</p>
+          <div className="inline-block animate-spin rounded-full h-14 w-14 border-4 border-blue-500 border-t-transparent"></div>
+          <p className="mt-4 text-gray-600 text-xl">Processing your CSV file...</p>
         </div>
       ) : (
         <>
           <svg 
-            className="mx-auto h-12 w-12 text-gray-400" 
+            className="mx-auto h-24 w-24 text-gray-400" 
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24" 
@@ -86,17 +86,17 @@ export default function FileUploader({ onDataParsed, onError }: FileUploaderProp
             />
           </svg>
           
-          <p className="mt-2 text-sm font-medium text-gray-900">
+          <p className="mt-5 text-xl font-medium text-gray-900">
             {isDragActive ? 'Drop your CSV file here' : 'Drag & drop your Amazon Ads CSV file here'}
           </p>
           
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-3 text-base text-gray-500">
             Download your Amazon Ads CSV export from 'Sponsored Products – Targeting' and upload it here
           </p>
           
           <button
             type="button"
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="mt-8 inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Select CSV File
           </button>
