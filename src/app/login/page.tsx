@@ -30,8 +30,8 @@ export default function LoginPage() {
           supabaseClient={supabaseClient}
           appearance={{ theme: ThemeSupa }}
           theme="dark"
-          // Optional: Add social providers like Google, GitHub, etc.
-          // providers={['google', 'github']}
+          providers={[]} // Nur Email/Passwort/MagicLink, keine Social Logins
+          showLinks={false} // Versteckt explizit Social Login Links (sicherheitshalber)
           // Ensure this matches your Supabase Auth settings Callback URL
           redirectTo={`${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback`}
         />
