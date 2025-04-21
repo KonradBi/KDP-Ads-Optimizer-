@@ -24,15 +24,28 @@ const createClient = () => {
 };
 
 export function SupabaseProvider({ children }: { children: ReactNode }) {
-  // Create the Supabase client instance only once using useState
-  const [supabaseClient] = useState(() => createClient());
+  // Create the Supabase client instance in useEffect to ensure env vars are ready
+  const [supabaseClient, setSupabaseClient] = useState<SupabaseClient | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loginOpen, setLoginOpen] = useState(false);
 
   const openLogin = () => setLoginOpen(true);
   const closeLogin = () => setLoginOpen(false);
 
+  // Initialize Supabase client after mount
   useEffect(() => {
+    if (publicSupabaseUrl && publicSupabaseAnonKey) {
+      const client = createClient();
+      console.log("Anon Key in provider:", publicSupabaseAnonKey);
+      setSupabaseClient(client);
+    } else {
+      console.error("Missing publicSupabaseUrl or publicSupabaseAnonKey", { publicSupabaseUrl, publicSupabaseAnonKey });
+    }
+  }, []);
+
+  // Sync session once client is ready
+  useEffect(() => {
+    if (!supabaseClient) return;
     // Use the stateful client instance
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -44,6 +57,11 @@ export function SupabaseProvider({ children }: { children: ReactNode }) {
       subscription.unsubscribe();
     };
   }, [supabaseClient]); // Add supabaseClient as dependency
+
+  // Don’t render children until client is initialized
+  if (!supabaseClient) {
+    return null;
+  }
 
   return (
     // Pass the stateful client instance via context
