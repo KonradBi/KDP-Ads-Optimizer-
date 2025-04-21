@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/utils/stripe';
 import { supabaseAdmin } from '@/lib/utils/supabase';
 
+// Force dynamic SSR for this API route to avoid static prerender errors
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // Get the session ID from the URL
