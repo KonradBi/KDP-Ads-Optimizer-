@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import FileUploader from '@/components/FileUploader';
 import FreePreview from '@/components/FreePreview';
 import { AmazonAdData, AnalysisResult } from '@/types';
+import { useSupabase } from '@/components/SupabaseProvider';
 
 export default function UploadPage() {
   const router = useRouter();
+  const { session, openLogin } = useSupabase();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [csvData, setCsvData] = useState<AmazonAdData[] | null>(null);
@@ -81,6 +83,11 @@ export default function UploadPage() {
   };
 
   const handleUnlock = async () => {
+    if (!session) {
+      openLogin();
+      return;
+    }
+
     if (!analysisResultId) {
       setError('Analysis Result ID is missing. Cannot proceed to payment. Please try re-analyzing.');
       console.error('Attempted to unlock without analysisResultId');
