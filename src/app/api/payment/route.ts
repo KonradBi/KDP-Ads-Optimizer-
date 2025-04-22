@@ -5,25 +5,25 @@ import { cookies } from 'next/headers';
 import { supabaseAdmin } from '@/lib/utils/supabase'; // Use admin for insertion
 
 export async function POST(request: NextRequest) {
+  console.log('--- Payment API route started ---'); // Added for context
+  console.log('Reading STRIPE_PRICE_ID:', process.env.STRIPE_PRICE_ID); // Debug log for Price ID
+
   try {
     // Get the site URL from environment variables
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     // Use non-public environment variable for Price ID
     const priceId = process.env.STRIPE_PRICE_ID; 
 
+    if (!priceId) {
+      console.error('Error: STRIPE_PRICE_ID environment variable is not set or accessible.'); // More specific error log
+      return NextResponse.json({ error: 'Price ID is not configured.' }, { status: 500 });
+    }
+
     // --- Get analysisResultId from request body ---
     const { analysisResultId }: { analysisResultId?: string } = await request.json();
 
     if (!analysisResultId) {
       return NextResponse.json({ error: 'Analysis Result ID is required.' }, { status: 400 });
-    }
-
-    if (!priceId) {
-      console.error('Stripe Price ID is not configured in environment variables (STRIPE_PRICE_ID).');
-      return NextResponse.json(
-        { error: 'Price ID is not configured.' },
-        { status: 500 }
-      );
     }
 
     // --- Get User ID --- 
