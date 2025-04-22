@@ -282,8 +282,8 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
   // --- The entire return (...) JSX remains here --- 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="pt-8 pb-20">
+      <div className="container mx-auto px-4 max-w-7xl space-y-8">
         {isPaid ? (
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg">
@@ -415,7 +415,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
         {!isLoading && !error && isPaid && analysisResultWithProfitBids && (
           <>
             {console.log('Rendering FullResults with:', analysisResultWithProfitBids)}
-            <div className="w-full">
+            <div className="w-full" style={{ overflow: 'visible', minHeight: '100%' }}>
               <FullResults 
                 analysisResult={analysisResultWithProfitBids} 
                 isProfitOptimized={royaltyPerSale !== null}
