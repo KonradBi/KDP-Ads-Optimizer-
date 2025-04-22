@@ -32,7 +32,9 @@ export default function UploadPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(session?.access_token && { Authorization: `Bearer ${session.access_token}` }),
         },
+        credentials: 'include',
         body: JSON.stringify(data),
       });
 
@@ -48,7 +50,9 @@ export default function UploadPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(session?.access_token && { Authorization: `Bearer ${session.access_token}` }),
         },
+        credentials: 'include',
         body: JSON.stringify(result),
       });
 
@@ -107,10 +111,11 @@ export default function UploadPage() {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
+          ...(session?.access_token && { Authorization: `Bearer ${session.access_token}` }),
         },
         credentials: 'include',
         body: JSON.stringify({ 
-          analysisResultId: targetAnalysisId, 
+          analysisId: targetAnalysisId, 
         }), 
       });
 
