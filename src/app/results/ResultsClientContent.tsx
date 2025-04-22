@@ -253,27 +253,29 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
   // Memoize the analysis result with calculated profit bids AND recalculated potential
   const analysisResultWithProfitBids = useMemo(() => {
-    if (!analysisResult) return null;
-    
-    // Deep copy to avoid modifying the original state
-    const updatedResult = JSON.parse(JSON.stringify(analysisResult));
-    
+    // Ensure we have the result and the nested fullAnalysis structure (using correct camelCase)
+    if (!analysisResult || !analysisResult.fullAnalysis || !analysisResult.fullAnalysis.data) {
+      return null;
+    }
+    // Access data from the correct nested path (using correct camelCase)
+    const keywords = analysisResult.fullAnalysis.data;
+
     // Calculate profit-optimized bids for each keyword
-    const keywordsWithProfitBids = updatedResult.fullAnalysis.data.map((item: AnalyzedKeyword) => ({
+    const keywordsWithProfitBids = keywords.map((item: AnalyzedKeyword) => ({
       ...item,
       profitOptimizedBid: calculateProfitOptimizedBid(item, royaltyPerSale)
     }));
-    
     // Recalculate net potential based on potentially updated bids
     const newNetPotential = recalculateNetOptimizationPotential(
       keywordsWithProfitBids, 
-      analysisResult.painPoints.wastedSpend, // Pass original wasted spend
+      analysisResult.painPoints.wastedSpend || 0, // Pass original wasted spend (using correct camelCase)
       royaltyPerSale // Pass the current royalty
     );
 
-    // Update the result object
-    updatedResult.fullAnalysis.data = keywordsWithProfitBids;
-    (updatedResult.fullAnalysis as any).netOptimizationPotential = newNetPotential;
+    // Apply updates to a copy of the result
+    const updatedResult = JSON.parse(JSON.stringify(analysisResult));
+    updatedResult.fullAnalysis.data = keywordsWithProfitBids; // Use camelCase
+    (updatedResult.fullAnalysis as any).netOptimizationPotential = newNetPotential; // Use camelCase
     
     return updatedResult;
   }, [analysisResult, royaltyPerSale]);
