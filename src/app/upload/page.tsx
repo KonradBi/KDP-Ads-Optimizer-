@@ -109,7 +109,7 @@ export default function UploadPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          analysisId: targetAnalysisId, 
+          analysisResultId: targetAnalysisId, 
         }), 
       });
 
