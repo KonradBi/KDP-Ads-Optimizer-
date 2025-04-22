@@ -108,6 +108,7 @@ export default function UploadPage() {
         headers: { 
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ 
           analysisResultId: targetAnalysisId, 
         }), 
