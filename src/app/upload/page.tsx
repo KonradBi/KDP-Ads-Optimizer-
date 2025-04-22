@@ -83,15 +83,18 @@ export default function UploadPage() {
     setAnalysisResultId(null);
   };
 
-  const handleUnlock = useCallback(async () => {
+  const handleUnlock = useCallback(async (idFromUrl?: string | null) => {
+    const targetAnalysisId = idFromUrl || analysisResultId;
+
     if (!session) {
-      openLogin();
+      console.log('handleUnlock called without session, opening login.');
+      openLogin(); 
       return;
     }
 
-    if (!analysisResultId) {
+    if (!targetAnalysisId) {
       setError('Analysis Result ID is missing. Cannot proceed to payment. Please try re-analyzing.');
-      console.error('Attempted to unlock without analysisResultId');
+      console.error('Attempted to unlock without targetAnalysisId (from state or URL).');
       return;
     }
 
@@ -99,14 +102,14 @@ export default function UploadPage() {
     setError(null);
 
     try {
-      console.log('Initiating Stripe checkout session creation for analysis:', analysisResultId);
+      console.log('Initiating Stripe checkout session creation for analysis:', targetAnalysisId);
       const paymentResponse = await fetch('/api/payment', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          analysisId: analysisResultId, 
+          analysisId: targetAnalysisId, 
         }), 
       });
 
@@ -129,19 +132,24 @@ export default function UploadPage() {
       setError(err.message || 'An error occurred while initiating payment. Please try again.');
       setIsLoading(false);
     }
-  }, [session, analysisResultId]);
+  }, [session, analysisResultId, openLogin]);
 
   useEffect(() => {
     const action = searchParams.get('action');
-    console.log('Upload page effect check. Action:', action, 'Session:', !!session);
+    const analysisIdFromUrl = searchParams.get('analysisResultId');
+    console.log('Upload page effect check. Action:', action, 'analysisIdFromUrl:', analysisIdFromUrl, 'Session:', !!session);
 
-    if (session && action === 'complete_unlock') {
-      console.log('Detected post-login action: complete_unlock');
+    if (session && action === 'complete_unlock' && analysisIdFromUrl) {
+      console.log('Detected post-login action: complete_unlock with analysisId:', analysisIdFromUrl);
       
-      handleUnlock();
+      handleUnlock(analysisIdFromUrl);
 
-      const newPath = window.location.pathname;
-      router.replace(newPath, { scroll: false });
+      const currentPath = window.location.pathname;
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.delete('action');
+      newSearchParams.delete('analysisResultId');
+      const newUrl = `${currentPath}${newSearchParams.size > 0 ? `?${newSearchParams.toString()}` : ''}`;
+      router.replace(newUrl, { scroll: false });
     }
 
   }, [session, searchParams, router, handleUnlock]);
@@ -152,12 +160,17 @@ export default function UploadPage() {
       setError('Please upload and analyze a file first.');
       return;
     }
+    if (!analysisResultId) { 
+      setError('Analysis ID is missing. Cannot proceed. Please re-analyze.');
+      console.error('handleUnlockClick: analysisResultId is missing!');
+      return;
+    }
 
     if (session) {
       handleUnlock();
     } else {
-      const redirectUrl = `${window.location.origin}${window.location.pathname}?action=complete_unlock`;
-      setLoginRedirectUrl(redirectUrl);
+      const redirectUrl = `${window.location.origin}/upload?action=complete_unlock&analysisResultId=${analysisResultId}`;
+      setLoginRedirectUrl(redirectUrl); 
       setIsLoginModalOpen(true);
     }
   };

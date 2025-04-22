@@ -65,7 +65,15 @@ export default function LoginModal({ isOpen, onClose, redirectTo }: LoginModalPr
         }
       } else {
         // Registrierung
-        const { error } = await supabaseClient.auth.signUp({ email, password });
+        // Construct the redirect URL. Use the passed redirectTo prop or default to the origin.
+        // IMPORTANT: Ensure the page receiving the redirect (e.g., /upload) correctly handles the session and potential actions.
+        const redirectUrl = redirectTo || `${window.location.origin}/`; // Default to origin if not provided
+        
+        const { error } = await supabaseClient.auth.signUp({
+           email,
+           password,
+           options: { emailRedirectTo: redirectUrl } 
+        });
         if (error) {
           if (error.message.toLowerCase().includes('user already registered')) {
             setError('Diese E-Mail ist bereits registriert.');
