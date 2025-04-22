@@ -253,37 +253,43 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
   // Memoize the analysis result with calculated profit bids AND recalculated potential
   const analysisResultWithProfitBids = useMemo(() => {
-    // Ensure we have the result and the nested fullAnalysis structure (using correct camelCase)
-    if (!analysisResult || !analysisResult.fullAnalysis || !analysisResult.fullAnalysis.data) {
+    if (!analysisResult) return null;
+
+    // Support both snake_case (from Supabase) and camelCase (internal)
+    const rawFullAnalysis: any = (analysisResult as any).fullAnalysis ?? (analysisResult as any).full_analysis;
+    const rawPainPoints: any = (analysisResult as any).painPoints ?? (analysisResult as any).pain_points;
+
+    if (!rawFullAnalysis || !rawFullAnalysis.data) {
       return null;
     }
-    // Access data from the correct nested path (using correct camelCase)
-    const keywords = analysisResult.fullAnalysis.data;
 
-    // Calculate profit-optimized bids for each keyword
+    const keywords = rawFullAnalysis.data;
+
     const keywordsWithProfitBids = keywords.map((item: AnalyzedKeyword) => ({
       ...item,
       profitOptimizedBid: calculateProfitOptimizedBid(item, royaltyPerSale)
     }));
-    // Recalculate net potential based on potentially updated bids
+
     const newNetPotential = recalculateNetOptimizationPotential(
-      keywordsWithProfitBids, 
-      analysisResult.painPoints.wastedSpend || 0, // Pass original wasted spend (using correct camelCase)
-      royaltyPerSale // Pass the current royalty
+      keywordsWithProfitBids,
+      rawPainPoints?.wastedSpend || 0,
+      royaltyPerSale
     );
 
-    // Apply updates to a copy of the result
-    const updatedResult = JSON.parse(JSON.stringify(analysisResult));
-    updatedResult.fullAnalysis.data = keywordsWithProfitBids; // Use camelCase
-    (updatedResult.fullAnalysis as any).netOptimizationPotential = newNetPotential; // Use camelCase
-    
-    return updatedResult;
+    // Build a new result object consistently using camelCase to simplify downstream components
+    const updatedResult: any = {
+      ...analysisResult,
+      fullAnalysis: { ...rawFullAnalysis, data: keywordsWithProfitBids, netOptimizationPotential: newNetPotential },
+      painPoints: rawPainPoints,
+    };
+
+    return updatedResult as AnalysisResult;
   }, [analysisResult, royaltyPerSale]);
 
   // --- The entire return (...) JSX remains here --- 
   return (
-    <div className="pt-8 pb-20">
-      <div className="container mx-auto px-4 max-w-7xl space-y-8">
+    <div className="min-h-screen">
+      <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {isPaid ? (
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg">
@@ -415,7 +421,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
         {!isLoading && !error && isPaid && analysisResultWithProfitBids && (
           <>
             {console.log('Rendering FullResults with:', analysisResultWithProfitBids)}
-            <div className="w-full" style={{ overflow: 'visible', minHeight: '100%' }}>
+            <div className="w-full">
               <FullResults 
                 analysisResult={analysisResultWithProfitBids} 
                 isProfitOptimized={royaltyPerSale !== null}
