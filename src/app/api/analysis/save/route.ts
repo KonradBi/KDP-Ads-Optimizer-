@@ -7,8 +7,8 @@ export async function POST(request: Request) {
     // Read analysisResult directly from request body (no auth required for free preview)
     const analysisResult: AnalysisResult = await request.json();
 
-    // Basic validation of payload
-    if (!analysisResult || !analysisResult.painPoints || !analysisResult.freeRecommendation || !analysisResult.fullAnalysis) {
+    // Basic validation of payload (freeRecommendation is optional)
+    if (!analysisResult || !analysisResult.painPoints || !analysisResult.fullAnalysis) {
       console.error('Save analysis error: Invalid analysisResult data received.');
       return NextResponse.json({ error: 'Invalid analysis data' }, { status: 400 });
     }
