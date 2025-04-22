@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import FullResults from '@/components/FullResults';
 import { AnalysisResult, AmazonAdData, AnalyzedKeyword } from '@/types';
 import Link from 'next/link';
+import { useSupabase } from '@/components/SupabaseProvider';
 
 // --- HELPER FUNCTIONS (moved here or keep them separate) ---
 
@@ -127,6 +128,7 @@ const recalculateNetOptimizationPotential = (
 // --- MAIN CLIENT COMPONENT ---
 export default function ResultsClientContent() { // Renamed from ResultsPage
   const searchParams = useSearchParams(); // Moved useSearchParams here
+  const { session } = useSupabase();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -178,7 +180,12 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
           setIsPaid(true);
           
           // 2. Fetch Analysis Result using analysisId
-          const analysisResponse = await fetch(`/api/analysis/${analysisId}`);
+          const analysisResponse = await fetch(`/api/analysis/${analysisId}`, {
+            headers: {
+              ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+            },
+            credentials: 'include',
+          });
           if (!analysisResponse.ok) {
               const analysisError = await analysisResponse.json().catch(() => ({error: 'Failed to load analysis results'}));
               throw new Error(analysisError.error || 'Failed to load analysis results');
@@ -204,7 +211,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
     verifyAndFetch();
 
-  }, [searchParams]); // Dependency array remains the same
+  }, [searchParams, session]); // Dependency array remains the same
 
   const handleRoyaltySave = useCallback(() => {
     const newRoyalty = parseFloat(royaltyInput);
