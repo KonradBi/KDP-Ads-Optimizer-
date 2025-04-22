@@ -31,11 +31,29 @@ export async function GET(
 
   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
-  if (sessionError || !session?.user) {
-      if (sessionError) console.error('Session Error:', sessionError);
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  let userId: string | null = null;
+
+  if (session?.user) {
+    userId = session.user.id;
+  } else {
+    // Fallback: Bearer token via Authorization header
+    const authHeader = request.headers.get('authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      const token = authHeader.slice(7);
+      const { data: userData, error: userError } = await supabaseAdmin.auth.getUser(token);
+      if (userError) {
+        console.error('Auth header verification error:', userError);
+      }
+      if (userData?.user) {
+        userId = userData.user.id;
+      }
+    }
   }
-  const userId = session.user.id;
+
+  if (!userId) {
+    if (sessionError) console.error('Session Error:', sessionError);
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     // Fetch the analysis result using admin client to bypass RLS initially
