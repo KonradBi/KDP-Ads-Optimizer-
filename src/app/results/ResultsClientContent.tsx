@@ -413,7 +413,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
         {/* Display Full Results */} 
         {!isLoading && !error && isPaid && analysisResultWithProfitBids && (
-          <div className="w-full overflow-hidden">
+          <div className="w-full">
             <FullResults 
               analysisResult={analysisResultWithProfitBids} 
               isProfitOptimized={royaltyPerSale !== null}
