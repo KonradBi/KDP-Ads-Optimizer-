@@ -1,23 +1,24 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useSupabase } from '@/components/SupabaseProvider';
 import FileUploader from '@/components/FileUploader';
 import FreePreview from '@/components/FreePreview';
+import LoginModal from '@/components/LoginModal';
 import { AmazonAdData, AnalysisResult } from '@/types';
-import { useSupabase } from '@/components/SupabaseProvider';
 
 export default function UploadPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { session, openLogin } = useSupabase();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [csvData, setCsvData] = useState<AmazonAdData[] | null>(null);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [analysisResultId, setAnalysisResultId] = useState<string | null>(null);
-
-  // Removed parallax scroll effect as it might interfere with dark theme
-  // useEffect(() => { ... scroll effect ... }, []);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [loginRedirectUrl, setLoginRedirectUrl] = useState<string | undefined>(undefined);
 
   const handleDataParsed = async (data: AmazonAdData[]) => {
     setCsvData(data);
@@ -82,7 +83,7 @@ export default function UploadPage() {
     setAnalysisResultId(null);
   };
 
-  const handleUnlock = async () => {
+  const handleUnlock = useCallback(async () => {
     if (!session) {
       openLogin();
       return;
@@ -98,30 +99,66 @@ export default function UploadPage() {
     setError(null);
 
     try {
-      const response = await fetch('/api/payment', {
+      console.log('Initiating Stripe checkout session creation for analysis:', analysisResultId);
+      const paymentResponse = await fetch('/api/payment', {
         method: 'POST',
-        headers: {
+        headers: { 
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ analysisResultId }),
+        body: JSON.stringify({ 
+          analysisId: analysisResultId, 
+        }), 
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: 'Failed to initiate payment session.' }));
-        throw new Error(errorData.error || 'Failed to initiate payment session.');
+      if (!paymentResponse.ok) {
+        const errorData = await paymentResponse.json();
+        throw new Error(errorData.error || `Failed to create checkout session: ${paymentResponse.status}`);
       }
 
-      const session = await response.json();
+      const { sessionId, url } = await paymentResponse.json(); // Expecting session URL or ID
+      console.log('Stripe Checkout session created:', sessionId);
 
-      if (session.url) {
-        window.location.href = session.url;
+      // Redirect user to Stripe Checkout
+      if (url) {
+        window.location.href = url; // Redirect to Stripe's checkout page
       } else {
-        throw new Error('Failed to get payment session URL.');
+        throw new Error('Stripe checkout URL or Session ID not received.');
       }
     } catch (err: any) {
       console.error('Payment initiation error:', err);
       setError(err.message || 'An error occurred while initiating payment. Please try again.');
       setIsLoading(false);
+    }
+  }, [session, analysisResultId]);
+
+  useEffect(() => {
+    const action = searchParams.get('action');
+    console.log('Upload page effect check. Action:', action, 'Session:', !!session);
+
+    if (session && action === 'complete_unlock') {
+      console.log('Detected post-login action: complete_unlock');
+      
+      handleUnlock();
+
+      const newPath = window.location.pathname;
+      router.replace(newPath, { scroll: false });
+    }
+
+  }, [session, searchParams, router, handleUnlock]);
+
+  const handleUnlockClick = () => {
+    console.log('handleUnlockClick triggered.');
+    if (!analysisResult) {
+      setError('Please upload and analyze a file first.');
+      return;
+    }
+
+    if (session) {
+      handleUnlock();
+    } else {
+      const redirectUrl = `${window.location.origin}${window.location.pathname}?action=complete_unlock`;
+      setLoginRedirectUrl(redirectUrl);
+      setIsLoginModalOpen(true);
     }
   };
 
@@ -154,7 +191,7 @@ export default function UploadPage() {
           </div>
         ) : (
           <div className="mt-8 w-full">
-            <FreePreview analysisResult={analysisResult} onUnlock={handleUnlock} />
+            <FreePreview analysisResult={analysisResult} onUnlock={handleUnlockClick} />
           </div>
         )}
 
@@ -163,6 +200,14 @@ export default function UploadPage() {
             <div className="animate-spin rounded-full h-16 w-16 border-4 border-indigo-400 border-t-transparent mb-4"></div>
             <p className="text-xl text-slate-200 font-semibold">Analyzing your data...</p>
           </div>
+        )}
+
+        {isLoginModalOpen && (
+          <LoginModal
+            isOpen={isLoginModalOpen}
+            onClose={() => setIsLoginModalOpen(false)}
+            redirectTo={loginRedirectUrl}
+          />
         )}
       </div>
     </div>

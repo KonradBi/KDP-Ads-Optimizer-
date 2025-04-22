@@ -8,7 +8,8 @@ export async function POST(request: NextRequest) {
   try {
     // Get the site URL from environment variables
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const priceId = process.env.NEXT_PUBLIC_PRICE_ID;
+    // Use non-public environment variable for Price ID
+    const priceId = process.env.STRIPE_PRICE_ID; 
 
     // --- Get analysisResultId from request body ---
     const { analysisResultId }: { analysisResultId?: string } = await request.json();
@@ -18,38 +19,11 @@ export async function POST(request: NextRequest) {
     }
 
     if (!priceId) {
+      console.error('Stripe Price ID is not configured in environment variables (STRIPE_PRICE_ID).');
       return NextResponse.json(
         { error: 'Price ID is not configured.' },
         { status: 500 }
       );
-    }
-
-    // Construct success and cancel URLs, including analysisResultId in success_url
-    const successUrl = `${siteUrl}/results?session_id={CHECKOUT_SESSION_ID}&analysis_id=${analysisResultId}`;
-    const cancelUrl = `${siteUrl}/upload`; // Or another appropriate cancel page
-
-    // Create a checkout session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: successUrl,
-      cancel_url: cancelUrl,
-      metadata: {
-        // Include analysisResultId in metadata for potential webhook use or verification
-        analysis_result_id: analysisResultId,
-        // Optionally include user ID if available and needed
-        // user_id: userId, 
-      },
-    });
-
-    if (!session.url) {
-      return NextResponse.json({ error: 'Failed to create Stripe session.' }, { status: 500 });
     }
 
     // --- Get User ID --- 
@@ -68,9 +42,38 @@ export async function POST(request: NextRequest) {
     const { data: { session: userSession }, error: sessionError } = await supabase.auth.getSession();
     if (sessionError || !userSession?.user) {
       if (sessionError) console.error('Auth Error:', sessionError);
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized. User must be logged in to proceed with payment.' }, { status: 401 });
     }
     const userId = userSession.user.id;
+
+    // Construct success and cancel URLs
+    // Redirect to the specific analysis page upon success
+    const successUrl = `${siteUrl}/analysis/${analysisResultId}?session_id={CHECKOUT_SESSION_ID}`;
+    const cancelUrl = `${siteUrl}/upload`; // Back to upload page on cancel
+
+    // Create a checkout session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+      // Add customer_email for prefill if user is logged in
+      customer_email: userSession.user.email,
+      metadata: {
+        analysis_result_id: analysisResultId,
+        user_id: userId, // Include user ID in metadata
+      },
+    });
+
+    if (!session.url) {
+      return NextResponse.json({ error: 'Failed to create Stripe session.' }, { status: 500 });
+    }
 
     // --- Store the initial purchase record in Supabase --- 
     if (session.id && session.amount_total != null) {
@@ -93,6 +96,7 @@ export async function POST(request: NextRequest) {
           { status: 500 }
         );
       }
+      console.log('Initial purchase record created for session:', session.id);
     }
 
     // Return the session ID and URL
@@ -100,10 +104,11 @@ export async function POST(request: NextRequest) {
       id: session.id,
       url: session.url,
     });
-  } catch (error) {
-    console.error('Error creating payment session:', error);
+
+  } catch (error: any) {
+    console.error('Error creating Stripe checkout session:', error);
     return NextResponse.json(
-      { error: 'An error occurred while creating the payment session.' },
+      { error: `Internal Server Error: ${error.message}` },
       { status: 500 }
     );
   }
