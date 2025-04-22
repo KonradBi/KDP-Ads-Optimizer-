@@ -50,11 +50,35 @@ export async function POST(request: NextRequest) {
         },
       }
     );
-    const { data: { session: userSession }, error: sessionError } = await supabase.auth.getSession();
-    if (sessionError || !userSession?.user) {
-      if (sessionError) console.error('Auth Error:', sessionError);
-      return NextResponse.json({ error: 'Unauthorized. User must be logged in to proceed with payment.' }, { status: 401 });
+    let { data: { session: userSession }, error: sessionError } = await supabase.auth.getSession();
+
+    // Fallback: if no cookie session, try Authorization header (Bearer <token>)
+    if (!userSession?.user) {
+      const authHeader = request.headers.get('authorization');
+      const bearerToken = authHeader?.startsWith('Bearer ')
+        ? authHeader.split(' ')[1]
+        : undefined;
+
+      if (bearerToken) {
+        const { data: userData, error: tokenError } = await supabase.auth.getUser(bearerToken);
+        if (tokenError) {
+          console.error('Token auth error:', tokenError);
+        }
+        if (userData?.user) {
+          // Create a pseudo-session object with the user
+          userSession = { user: userData.user } as any;
+        }
+      }
     }
+
+    if (!userSession?.user) {
+      if (sessionError) console.error('Auth Error:', sessionError);
+      return NextResponse.json(
+        { error: 'Unauthorized. User must be logged in to proceed with payment.' },
+        { status: 401 }
+      );
+    }
+
     const userId = userSession.user.id;
 
     // Construct success and cancel URLs
