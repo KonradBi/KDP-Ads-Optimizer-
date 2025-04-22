@@ -155,55 +155,83 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
     const sessionId = searchParams.get('session_id');
     const analysisId = searchParams.get('analysis_id'); // <-- Get analysis_id
 
-    // --- If NO session ID or analysis ID, show error --- 
-    if (!sessionId || !analysisId) {
-      // Removed sessionStorage fallback logic
-      setError('Missing required information to load results. Please ensure you followed the payment link correctly, or try uploading again.');
-      setIsLoading(false);
+    // Wait until session is loaded and has an access token, AND we have the required IDs
+    if (!sessionId || !analysisId || !session) {
+      // If session is explicitly null (loading done, but no session), or IDs missing
+      if ((session === null && !isLoading) || !sessionId || !analysisId) {
+           setError('Missing required information or session. Please ensure you are logged in and followed the payment link correctly, or try uploading again.');
+           setIsLoading(false);
+      }
+      // Still loading session or missing IDs, wait
       return;
     }
 
-    // --- If session ID and analysis ID are present, verify and fetch ---
+    // Check specifically for the access token now that session is guaranteed to be an object
+    if (!session.access_token) {
+        console.warn('Session exists, but access token is missing. Waiting...');
+        // Optionally set loading or error state here if needed
+        // setError('Authentication token not yet available. Please wait or refresh.');
+        // setIsLoading(false);
+        return; // Wait for the token
+    }
+
+    // --- If session ID, analysis ID, and token are present, verify and fetch ---
     const verifyAndFetch = async () => {
       setIsLoading(true);
       setError(null);
       try {
         // 1. Verify Payment
+        console.log('Verifying payment for session:', sessionId);
         const verifyResponse = await fetch(`/api/payment/verify?session_id=${sessionId}`);
         if (!verifyResponse.ok) {
             const verifyError = await verifyResponse.json().catch(() => ({error: 'Payment verification failed'}));
-            throw new Error(verifyError.error || 'Payment verification failed');
+            // Differentiate 401/403 errors if the verify endpoint uses them
+            if (verifyResponse.status === 401 || verifyResponse.status === 403) {
+                 throw new Error('Unauthorized to verify payment. Please ensure you are logged in.');
+            } else {
+                 throw new Error(verifyError.error || 'Payment verification failed');
+            }
         }
         const verifyResult = await verifyResponse.json();
+        console.log('Payment verification result:', verifyResult);
 
         if (verifyResult.paid) {
           setIsPaid(true);
-          
+          console.log('Payment verified. Fetching analysis for ID:', analysisId, 'with token:', session.access_token ? 'present' : 'MISSING'); // Log token presence
+
           // 2. Fetch Analysis Result using analysisId
           const analysisResponse = await fetch(`/api/analysis/${analysisId}`, {
             headers: {
-              ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+              Authorization: `Bearer ${session.access_token}`, // Token is guaranteed here
             },
-            credentials: 'include',
+            // Removed credentials: 'include' - Supabase handles auth via header
           });
+
           if (!analysisResponse.ok) {
               const analysisError = await analysisResponse.json().catch(() => ({error: 'Failed to load analysis results'}));
+              // Be more specific about auth errors
+              if (analysisResponse.status === 401) {
+                  throw new Error('Unauthorized: Invalid or expired token. Please log in again.');
+              } else if (analysisResponse.status === 403) {
+                  throw new Error('Forbidden: You do not have permission to access this analysis.');
+              }
               throw new Error(analysisError.error || 'Failed to load analysis results');
           }
           const analysisData = await analysisResponse.json();
+          console.log('Analysis data fetched successfully:', analysisData);
           setAnalysisResult(analysisData); // <-- Set state with fetched data
 
         } else {
           // Payment not completed or verification issue
+           console.warn('Payment not verified as paid.');
            setError('Payment has not been completed or could not be verified.');
            setIsPaid(false); // Ensure isPaid is false
         }
 
       } catch (err: any) {
         console.error('Error verifying payment or fetching analysis:', err);
-        setError(err.message || 'An error occurred while loading results.');
-        setAnalysisResult(null); // Clear results on error
-        setIsPaid(false); // Ensure isPaid is false
+        setError(err.message || 'An unexpected error occurred.');
+        setIsPaid(false); // Ensure isPaid is false on error
       } finally {
         setIsLoading(false);
       }
@@ -211,7 +239,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
     verifyAndFetch();
 
-  }, [searchParams, session]); // Dependency array remains the same
+  }, [searchParams, session, isLoading]); // <-- Added session and isLoading as dependencies
 
   const handleRoyaltySave = useCallback(() => {
     const newRoyalty = parseFloat(royaltyInput);
