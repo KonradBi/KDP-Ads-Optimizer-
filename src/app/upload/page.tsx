@@ -107,6 +107,9 @@ export default function UploadPage() {
 
     try {
       console.log('Initiating Stripe checkout session creation for analysis:', targetAnalysisId);
+      const requestBody = { analysisId: targetAnalysisId };
+      console.log('Frontend: Sending payment request with body:', JSON.stringify(requestBody));
+
       const paymentResponse = await fetch('/api/payment', {
         method: 'POST',
         headers: { 
@@ -114,9 +117,7 @@ export default function UploadPage() {
           ...(session?.access_token && { Authorization: `Bearer ${session.access_token}` }),
         },
         credentials: 'include',
-        body: JSON.stringify({ 
-          analysisId: targetAnalysisId, 
-        }), 
+        body: JSON.stringify(requestBody), 
       });
 
       if (!paymentResponse.ok) {

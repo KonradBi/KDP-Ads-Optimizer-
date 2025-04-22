@@ -7,6 +7,16 @@ import { supabaseAdmin } from '@/lib/utils/supabase'; // Use admin for insertion
 export async function POST(request: NextRequest) {
   console.log('--- Payment API route started ---'); // Added for context
   console.log('Reading STRIPE_PRICE_ID:', process.env.STRIPE_PRICE_ID); // Debug log for Price ID
+  console.log('Backend: Received request headers:', JSON.stringify(Object.fromEntries(request.headers.entries()))); // Log headers for debugging auth
+
+  // Clone the request to read the body, as it can only be read once
+  const requestClone = request.clone();
+  try {
+    const rawBody = await requestClone.text(); // Read as text first
+    console.log('Backend: Received raw request body:', rawBody);
+  } catch (e) {
+    console.error('Backend: Error reading raw request body:', e);
+  }
 
   try {
     // Get the site URL from environment variables
@@ -21,6 +31,7 @@ export async function POST(request: NextRequest) {
 
     // --- Get analysisResultId from request body ---
     const { analysisResultId }: { analysisResultId?: string } = await request.json();
+    console.log('Backend: Parsed analysisResultId from body:', analysisResultId); // Log parsed ID
 
     if (!analysisResultId) {
       return NextResponse.json({ error: 'Analysis Result ID is required.' }, { status: 400 });
