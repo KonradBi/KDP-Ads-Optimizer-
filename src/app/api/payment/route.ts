@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
 
     // Construct success and cancel URLs
     // Redirect to the specific analysis page upon success
-    const successUrl = `${siteUrl}/analysis/${analysisResultId}?session_id={CHECKOUT_SESSION_ID}`;
+    const successUrl = `${siteUrl}/results?analysis_id=${analysisResultId}&session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl = `${siteUrl}/upload`; // Back to upload page on cancel
 
     // Create a checkout session
