@@ -167,10 +167,13 @@ export default function UploadPage() {
     }
 
     if (session) {
+      console.log('handleUnlockClick: Session DETECTED, calling handleUnlock.'); // Diagnostic log
       handleUnlock();
     } else {
+      console.log('handleUnlockClick: Session NOT detected, attempting to open modal.'); // Diagnostic log
+      // Construct the redirect URL including the action and analysisResultId
       const redirectUrl = `${window.location.origin}/upload?action=complete_unlock&analysisResultId=${analysisResultId}`;
-      setLoginRedirectUrl(redirectUrl); 
+      setLoginRedirectUrl(redirectUrl); // Set state which is passed to LoginModal
       setIsLoginModalOpen(true);
     }
   };
