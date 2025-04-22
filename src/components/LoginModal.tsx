@@ -103,11 +103,7 @@ export default function LoginModal({ isOpen, onClose, redirectTo }: LoginModalPr
     }
     setLoading(true);
     try {
-      // Add redirectTo pointing to the new password update page
-      const resetUrl = `${window.location.origin}/update-password`;
-      const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-        redirectTo: resetUrl,
-      });
+      const { error } = await supabaseClient.auth.resetPasswordForEmail(email);
       if (error) setError(error.message);
       else {
         setMessage('Passwort-Reset-E-Mail wurde gesendet!');

@@ -413,12 +413,15 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
         {/* Display Full Results */} 
         {!isLoading && !error && isPaid && analysisResultWithProfitBids && (
-          <div className="w-full">
-            <FullResults 
-              analysisResult={analysisResultWithProfitBids} 
-              isProfitOptimized={royaltyPerSale !== null}
-            />
-          </div>
+          <>
+            {console.log('Rendering FullResults with:', analysisResultWithProfitBids)}
+            <div className="w-full">
+              <FullResults 
+                analysisResult={analysisResultWithProfitBids} 
+                isProfitOptimized={royaltyPerSale !== null}
+              />
+            </div>
+          </>
         )}
         
         {/* Payment Required / Error Section */}

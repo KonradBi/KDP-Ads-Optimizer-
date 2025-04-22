@@ -60,7 +60,6 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     return () => {
        if (portalRootRef.current && portalRootRef.current.parentElement === document.body && portalRootRef.current.childElementCount === 0) {
           // Only remove if it was created by this instance and is empty
-          // This simple check might not be sufficient in complex scenarios
           // document.body.removeChild(portalRootRef.current); \n          // ^-- Commenting out removal for now to avoid race conditions if multiple tooltips unmount
        }
     };
@@ -129,6 +128,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
 // --- END REVAMPED TOOLTIP --- 
 
 export default function FullResults({ analysisResult, isProfitOptimized }: FullResultsProps) {
+  console.log('FullResults component rendered with props:', { analysisResult, isProfitOptimized }); // <-- Add log here
   const { fullAnalysis, painPoints } = analysisResult;
   const netOpt: number = (fullAnalysis as any).netOptimizationPotential || 0;
   const totalRevenue = fullAnalysis.totalSales + (fullAnalysis.data.reduce((sum, kw) => sum + (kw.estimatedKenpRoyalties || 0), 0)); // Recalculate totalRevenue if not directly available
