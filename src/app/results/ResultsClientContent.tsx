@@ -239,7 +239,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
     verifyAndFetch();
 
-  }, [searchParams, session, isLoading]); // <-- Added session and isLoading as dependencies
+  }, [searchParams, session]); // <-- REMOVED isLoading from dependencies
 
   const handleRoyaltySave = useCallback(() => {
     const newRoyalty = parseFloat(royaltyInput);
