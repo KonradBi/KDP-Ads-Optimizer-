@@ -123,3 +123,62 @@ export async function POST(request: NextRequest) {
   // Return a 200 response to acknowledge receipt of the event
   return NextResponse.json({ received: true });
 }
+
+// ─────────────────────────────────────────────────────────────
+// GET /api/payment/verify?session_id=cs_123
+// Simple endpoint queried by the client to confirm that a Stripe
+// checkout session has been paid. We first look up the purchase
+// record in Supabase (created when the checkout session was created).
+// If it is already marked as completed we can return immediately.
+// Otherwise we fall back to retrieving the session from Stripe.
+// ─────────────────────────────────────────────────────────────
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const sessionId = searchParams.get('session_id');
+
+    if (!sessionId) {
+      return NextResponse.json({ error: 'session_id query param is required' }, { status: 400 });
+    }
+
+    // 1️⃣  Check purchases table first (faster, avoids Stripe call)
+    const { data: purchase, error: purchaseError } = await supabaseAdmin
+      .from('purchases')
+      .select('status')
+      .eq('stripe_session_id', sessionId)
+      .single();
+
+    if (purchaseError && purchaseError.code !== 'PGRST116') {
+      // Unexpected DB error
+      console.error('Error querying purchases for verification:', purchaseError);
+    }
+
+    if (purchase?.status === 'completed') {
+      return NextResponse.json({ paid: true });
+    }
+
+    // 2️⃣  Fallback: Fetch the session directly from Stripe
+    try {
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      const paid = session.payment_status === 'paid';
+
+      // Opportunistically update DB if now paid
+      if (paid && purchase?.status !== 'completed') {
+        await supabaseAdmin
+          .from('purchases')
+          .update({ status: 'completed', updated_at: new Date().toISOString() })
+          .eq('stripe_session_id', sessionId)
+          .eq('status', 'pending');
+      }
+
+      return NextResponse.json({ paid });
+    } catch (stripeErr: any) {
+      console.error('Stripe session retrieval failed:', stripeErr);
+      return NextResponse.json({ error: 'Unable to verify payment status.' }, { status: 500 });
+    }
+  } catch (err: any) {
+    console.error('Unexpected error in GET /api/payment/verify:', err);
+    return NextResponse.json({ error: 'Unexpected server error' }, { status: 500 });
+  }
+}
