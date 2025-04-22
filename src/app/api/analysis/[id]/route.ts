@@ -73,7 +73,7 @@ export async function GET(
     }
 
     // Verify ownership - safeguard, RLS on select should already handle this for non-admin queries
-    if (analysis.user_id !== userId) {
+    if (analysis.user_id && analysis.user_id !== userId) {
       console.warn(`User ${userId} attempted to access analysis ${id} owned by ${analysis.user_id}`);
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
