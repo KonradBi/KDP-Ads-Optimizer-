@@ -134,58 +134,58 @@ const PainPointsPreviewMockup = () => {
 
 const OverallDashboardMockup = () => {
   return (
-    <div className="max-w-lg mx-auto p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm border border-slate-700/50 space-y-3">
+    <div className="max-w-lg mx-auto p-4 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg shadow-indigo-500/10 space-y-3">
       <div className="grid grid-cols-2 gap-3">
         {/* Current ACOS */}
-        <div className="bg-slate-700/50 p-3 rounded-md flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-600/50 flex items-center justify-center mr-2 text-blue-300">
+            <div className="w-9 h-9 rounded-full bg-slate-700/80 flex items-center justify-center mr-2 text-blue-300">
               <TrendingDown className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-300">Current ACOS</span>
+            <span className="text-xs font-medium text-slate-300">Current ACOS</span>
           </div>
-          <span className="text-sm font-semibold text-white">42.3%</span>
+          <span className="text-base font-bold text-white">42.3%</span>
         </div>
         {/* Estimated ACOS */}
-        <div className="bg-slate-700/50 p-3 rounded-md flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-green-800/30 flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-600/50 flex items-center justify-center mr-2 text-green-400">
+            <div className="w-9 h-9 rounded-full bg-green-900/30 flex items-center justify-center mr-2 text-green-400">
               <TrendingUp className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-300">Estimated ACOS</span>
+            <span className="text-xs font-medium text-slate-300">Estimated ACOS</span>
           </div>
-          <span className="text-sm font-semibold text-green-400">32.5%</span>
+          <span className="text-base font-bold text-green-400">32.5%</span>
         </div>
         {/* Wasted Spend */}
-        <div className="bg-slate-700/50 p-3 rounded-md flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-red-800/30 flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-600/50 flex items-center justify-center mr-2 text-red-400">
+            <div className="w-9 h-9 rounded-full bg-red-900/30 flex items-center justify-center mr-2 text-red-400">
               <CircleDollarSign className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-300">Wasted Spend</span>
+            <span className="text-xs font-medium text-slate-300">Wasted Spend</span>
           </div>
-          <span className="text-sm font-semibold text-red-400">$237</span>
+          <span className="text-base font-bold text-red-400">$237</span>
         </div>
         {/* Conversion Rate */}
-        <div className="bg-slate-700/50 p-3 rounded-md flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-purple-800/30 flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-600/50 flex items-center justify-center mr-2 text-purple-400">
+            <div className="w-9 h-9 rounded-full bg-purple-900/30 flex items-center justify-center mr-2 text-purple-400">
               <ShoppingCart className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-300">Conversion Rate</span>
+            <span className="text-xs font-medium text-slate-300">Conversion Rate</span>
           </div>
-          <span className="text-sm font-semibold text-purple-400">4.2%</span>
+          <span className="text-base font-bold text-purple-400">4.2%</span>
         </div>
       </div>
       {/* Total Optimization Value */}
-      <div className="bg-gradient-to-r from-slate-700/70 to-slate-800/70 p-3 rounded-md flex items-center justify-between">
+      <div className="bg-gradient-to-r from-amber-950/30 to-amber-900/20 p-4 rounded-lg border border-amber-800/30 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-slate-600/50 flex items-center justify-center mr-2 text-amber-400">
-            <Lightbulb className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-full bg-amber-900/30 flex items-center justify-center mr-3 text-amber-400">
+            <Lightbulb className="w-6 h-6" />
           </div>
-          <span className="text-sm font-medium text-white">Total Optimization Value</span>
+          <span className="text-sm font-semibold text-white">Total Optimization Value</span>
         </div>
-        <span className="text-lg font-bold text-white">$389</span>
+        <span className="text-xl font-bold text-amber-300">$389</span>
       </div>
     </div>
   );
