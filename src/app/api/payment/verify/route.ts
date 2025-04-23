@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
             // Link analysis to paying user so they can access later without re-payment
             try {
               const { error: analysisUpdateError } = await supabaseAdmin
-                .from('analyses')
+                .from('analysis_results')
                 .update({ user_id: userId })
                 .eq('id', analysisResultId)
                 .is('user_id', null); // Only set if not already claimed
@@ -162,16 +162,26 @@ export async function GET(request: NextRequest) {
     // 1️⃣  Check purchases table first (faster, avoids Stripe call)
     const { data: purchase, error: purchaseError } = await supabaseAdmin
       .from('purchases')
-      .select('status')
+      .select('status, analysis_result_id, user_id')
       .eq('stripe_session_id', sessionId)
       .single();
+    const purchaseRecord = purchase;
 
     if (purchaseError && purchaseError.code !== 'PGRST116') {
       // Unexpected DB error
       console.error('Error querying purchases for verification:', purchaseError);
     }
 
-    if (purchase?.status === 'completed') {
+    if (purchaseRecord && purchaseRecord.status === 'completed') {
+      // Link analysis to user if not already linked
+      const { analysis_result_id, user_id } = purchaseRecord;
+      if (analysis_result_id && user_id) {
+        await supabaseAdmin
+          .from('analysis_results')
+          .update({ user_id })
+          .eq('id', analysis_result_id)
+          .is('user_id', null);
+      }
       return NextResponse.json({ paid: true });
     }
 
@@ -180,13 +190,23 @@ export async function GET(request: NextRequest) {
       const session = await stripe.checkout.sessions.retrieve(sessionId);
       const paid = session.payment_status === 'paid';
 
-      // Opportunistically update DB if now paid
-      if (paid && purchase?.status !== 'completed') {
-        await supabaseAdmin
-          .from('purchases')
-          .update({ status: 'completed', updated_at: new Date().toISOString() })
-          .eq('stripe_session_id', sessionId)
-          .eq('status', 'pending');
+      // Opportunistically update purchase and link analysis if now paid
+      if (paid && purchaseRecord) {
+        if (purchaseRecord.status !== 'completed') {
+          const { analysis_result_id, user_id } = purchaseRecord;
+          await supabaseAdmin
+            .from('purchases')
+            .update({ status: 'completed', updated_at: new Date().toISOString() })
+            .eq('stripe_session_id', sessionId)
+            .eq('status', 'pending');
+          if (analysis_result_id && user_id) {
+            await supabaseAdmin
+              .from('analysis_results')
+              .update({ user_id })
+              .eq('id', analysis_result_id)
+              .is('user_id', null);
+          }
+        }
       }
 
       return NextResponse.json({ paid });

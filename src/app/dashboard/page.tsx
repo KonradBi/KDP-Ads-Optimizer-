@@ -17,28 +17,41 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!session) {
-      setLoading(false);
-      return;
-    }
-
-    supabaseClient
-      .from('analysis_results')
-      .select(`id, created_at, net_optimization_potential:full_analysis->>'netOptimizationPotential'`)
-      .eq('user_id', session.user.id)
-      .order('created_at', { ascending: false })
-      .then(({ data, error }) => {
-        if (error) {
-          setError(error.message);
-        } else {
-          setItems((data as any) || []);
-        }
+    const fetchData = async () => {
+      if (!session) {
         setLoading(false);
-      });
+        return;
+      }
+      try {
+        // Fetch purchased analyses with nested analysis_results
+        const { data: purchases, error: purchError } = await supabaseClient
+          .from('purchases')
+          .select(`analysis_results ( id, created_at, net_optimization_potential:full_analysis->>'netOptimizationPotential' )`)
+          .eq('user_id', session.user.id)
+          .eq('status', 'completed');
+        if (purchError) throw purchError;
+        const itemsFlat = (purchases || [])
+          .map((p: any) => p.analysis_results)
+          .filter((r: any) => r)
+          .map((r: any) => ({
+            id: r.id,
+            created_at: r.created_at,
+            net_optimization_potential: parseFloat(r.net_optimization_potential),
+          }));
+        // Sort by creation date descending
+        itemsFlat.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        setItems(itemsFlat);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [session, supabaseClient]);
 
   if (!session) {
-    return <p className="p-6 text-center">Bitte einloggen, um deine Analysen zu sehen.</p>;
+    return <p className="p-6 text-center">Please log in to view your analyses.</p>;
   }
 
   if (loading) {
@@ -51,11 +64,11 @@ export default function DashboardPage() {
   }
 
   if (error) {
-    return <p className="p-6 text-red-400">Fehler: {error}</p>;
+    return <p className="p-6 text-red-400">Error: {error}</p>;
   }
 
   if (items.length === 0) {
-    return <p className="p-6">Du hast noch keine bezahlten Analysen.</p>;
+    return <p className="p-6">You have no purchased analyses yet.</p>;
   }
 
   return (
