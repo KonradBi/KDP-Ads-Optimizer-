@@ -20,6 +20,33 @@ export default function MoneyFlowSection() {
 
   const coins = Array.from({ length: 10 });
   // for demo: even indices accepted, odd rejected
+
+  // Define animation variants outside the map for clarity
+  const acceptedAnimation = {
+    x: ["-50%", "180%"], // Move across
+    y: -10,
+    opacity: [0, 1, 1, 0], // Fade in, stay visible, fade out at end
+    backgroundColor: ["#f87171", "#facc15", "#4ade80"], // Red -> Yellow -> Green
+    scale: [1, 1, 1, 0.5] // Optional: shrink slightly on fade out
+  };
+
+  const rejectedAnimation = {
+    // Keyframes for bounce effect
+    x: ["-50%", "50%", "48%", "50%"], // Move to filter -> Bounce back X -> Settle X for fall
+    y: [-10,    -10,  -15,    60],    // Move to filter -> Bounce up Y -> Fall down
+    opacity: [0, 1, 1, 1, 0.5],    // Fade in -> Hit -> Bounce -> Falling -> Fade out near bottom
+    backgroundColor: ["#f87171", "#dc2626"], // Red -> Darker Red
+    rotate: [0, 0, -10, 5],           // Optional: add slight rotation during bounce/fall
+    scale: [1, 1, 1.1, 1]           // Optional: slightly bigger on bounce
+  };
+
+  const baseTransition = {
+    duration: 4, // Slightly increased duration for more detail
+    ease: "easeInOut",
+    repeat: Infinity, 
+    repeatType: "loop",
+  };
+
   return (
     <section className="w-full py-24 relative overflow-hidden px-4 bg-gradient-to-b from-slate-900/70 to-slate-900">
       <div className="absolute inset-0 bg-[url('/bg-grid.svg')] opacity-5" />
@@ -43,21 +70,23 @@ export default function MoneyFlowSection() {
           {coins.map((_, i) => {
             const accepted = i % 2 === 0;
             const delay = i * 0.3;
+            // Define specific transition per coin
+            const transitionConfig = {
+              ...baseTransition,
+              repeatType: baseTransition.repeatType as "loop" | "reverse" | "mirror" | undefined, // Fix TS error
+              delay,
+              // Times needs to match the longest keyframe array (opacity for rejected has 5 values)
+              times: accepted ? [0, 0.1, 0.9, 1] : [0, 0.4, 0.5, 0.8, 1],
+              // Scale repeat delay based on new duration and number of coins
+              repeatDelay: coins.length * 0.3 * (baseTransition.duration / 3.5)
+            };
+
             return (
               <motion.div
                 key={i}
                 initial={{ x: -50, y: -10, opacity: 0 }}
-                animate={accepted ? {
-                  x: "180%", // move across rail
-                  opacity: [0,1,1],
-                  backgroundColor: ["#f87171", "#facc15", "#4ade80"],
-                } : {
-                  x: "50%",
-                  y: 60,
-                  backgroundColor: ["#f87171", "#dc2626"],
-                  opacity: [0,1,0.6]
-                }}
-                transition={{ duration: 3.5, delay, ease: "easeInOut" }}
+                animate={accepted ? acceptedAnimation : rejectedAnimation} // Use defined variants
+                transition={transitionConfig} // Use coin-specific transition
                 className="absolute w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-800 shadow-md"
                 style={{ top: "40%" }}
               >
