@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 interface AnalysisRow {
   id: string;
+  stripeSessionId: string;
   created_at: string;
   net_optimization_potential?: number | null; // show quick value
 }
@@ -56,6 +57,7 @@ export default function DashboardPage() {
           }
           itemsFlat.push({
             id: ar.id,
+            stripeSessionId: p.stripe_session_id,
             created_at: ar.created_at,
             net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
           });
@@ -84,6 +86,7 @@ export default function DashboardPage() {
             if (ar) {
               itemsFlat.push({
                 id: ar.id,
+                stripeSessionId: p.stripe_session_id,
                 created_at: ar.created_at,
                 net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
               });
@@ -149,7 +152,7 @@ export default function DashboardPage() {
                 </span>
               )}
               <Link
-                href={`/results?analysis_id=${a.id}`}
+                href={`/results?analysis_id=${a.id}&session_id=${a.stripeSessionId}`}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-500 transition"
               >
                 View
