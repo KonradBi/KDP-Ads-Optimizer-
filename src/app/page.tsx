@@ -4,7 +4,7 @@
  * Landing page for KDP Ads Optimizer
  */
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { 
   ArrowUpRight, 
   ArrowDown, 
@@ -132,12 +132,112 @@ const PainPointsPreviewMockup = () => {
   );
 };
 
+// Animated ACOS Comparison Component
+const AnimatedAcosComparison = () => {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const compareRef = useRef<HTMLDivElement>(null);
+  
+  // Start animation when component becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setIsVisible(true);
+      }
+    }, { threshold: 0.3 });
+    
+    if (compareRef.current) {
+      observer.observe(compareRef.current);
+    }
+    
+    return () => {
+      if (compareRef.current) {
+        observer.unobserve(compareRef.current);
+      }
+    };
+  }, []);
+  
+  // Trigger animation when visible
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setIsAnimating(true);
+      }, 500); // Short delay before animation starts
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+  
+  return (
+    <div ref={compareRef} className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg overflow-hidden">
+      <div className="px-5 py-4 border-b border-slate-700/80">
+        <h3 className="text-xl font-bold text-white">ACOS Improvement</h3>
+        <p className="text-sm text-slate-400">See the difference optimization makes</p>
+      </div>
+      
+      <div className="p-5 space-y-5">
+        {/* Before */}
+        <div className="relative overflow-hidden rounded-lg border border-slate-700/70">
+          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/90 z-10">
+            <div className="w-8 h-8 rounded-full bg-red-900/40 flex items-center justify-center mr-2 text-red-400">
+              <AlertCircle className="w-5 h-5" />
+            </div>
+            <span className="font-medium text-slate-300">Before Optimization</span>
+          </div>
+          <div className="h-8 bg-gradient-to-r from-red-900/30 to-red-700/30 relative">
+            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1000 ease-out"
+              style={{
+                width: isAnimating ? '42.3%' : '0%',
+                opacity: isAnimating ? 1 : 0
+              }}>
+              42.3%
+            </div>
+          </div>
+        </div>
+        
+        {/* After */}
+        <div className="relative overflow-hidden rounded-lg border border-slate-700/70">
+          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/90 z-10">
+            <div className="w-8 h-8 rounded-full bg-green-900/40 flex items-center justify-center mr-2 text-green-400">
+              <Check className="w-5 h-5" />
+            </div>
+            <span className="font-medium text-slate-300">After Optimization</span>
+          </div>
+          <div className="h-8 bg-gradient-to-r from-green-900/30 to-green-700/30 relative">
+            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-out"
+              style={{
+                width: isAnimating ? '32.5%' : '0%',
+                opacity: isAnimating ? 1 : 0
+              }}>
+              32.5%
+            </div>
+          </div>
+        </div>
+        
+        {/* Improvement */}
+        <div className="flex justify-between items-center py-2 px-4 bg-indigo-900/30 rounded-lg border border-indigo-700/30 mt-3">
+          <span className="text-white font-medium">ACOS Reduction:</span>
+          <span 
+            className="text-lg font-bold text-indigo-300 transition-all duration-700"
+            style={{ 
+              opacity: isAnimating ? 1 : 0,
+              transform: isAnimating ? 'translateY(0)' : 'translateY(10px)'
+            }}
+          >
+            -23.2%
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const OverallDashboardMockup = () => {
   return (
     <div className="max-w-lg mx-auto p-4 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg shadow-indigo-500/10 space-y-3">
       <div className="grid grid-cols-2 gap-3">
         {/* Current ACOS */}
-        <div className="bg-slate-800/90 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between hover:border-slate-600/70 transition-colors duration-300">
           <div className="flex items-center">
             <div className="w-9 h-9 rounded-full bg-slate-700/80 flex items-center justify-center mr-2 text-blue-300">
               <TrendingDown className="w-5 h-5" />
@@ -147,7 +247,7 @@ const OverallDashboardMockup = () => {
           <span className="text-base font-bold text-white">42.3%</span>
         </div>
         {/* Estimated ACOS */}
-        <div className="bg-slate-800/90 p-3 rounded-lg border border-green-800/30 flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-green-800/30 flex items-center justify-between hover:border-green-600/40 transition-colors duration-300">
           <div className="flex items-center">
             <div className="w-9 h-9 rounded-full bg-green-900/30 flex items-center justify-center mr-2 text-green-400">
               <TrendingUp className="w-5 h-5" />
@@ -157,7 +257,7 @@ const OverallDashboardMockup = () => {
           <span className="text-base font-bold text-green-400">32.5%</span>
         </div>
         {/* Wasted Spend */}
-        <div className="bg-slate-800/90 p-3 rounded-lg border border-red-800/30 flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-red-800/30 flex items-center justify-between hover:border-red-600/40 transition-colors duration-300">
           <div className="flex items-center">
             <div className="w-9 h-9 rounded-full bg-red-900/30 flex items-center justify-center mr-2 text-red-400">
               <CircleDollarSign className="w-5 h-5" />
@@ -167,7 +267,7 @@ const OverallDashboardMockup = () => {
           <span className="text-base font-bold text-red-400">$237</span>
         </div>
         {/* Conversion Rate */}
-        <div className="bg-slate-800/90 p-3 rounded-lg border border-purple-800/30 flex items-center justify-between">
+        <div className="bg-slate-800/90 p-3 rounded-lg border border-purple-800/30 flex items-center justify-between hover:border-purple-600/40 transition-colors duration-300">
           <div className="flex items-center">
             <div className="w-9 h-9 rounded-full bg-purple-900/30 flex items-center justify-center mr-2 text-purple-400">
               <ShoppingCart className="w-5 h-5" />
@@ -481,6 +581,7 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
                   <PainPointsPreviewMockup />
+                  <AnimatedAcosComparison />
                 </div>
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
