@@ -95,7 +95,7 @@ const PainPointsPreviewMockup = () => {
   return (
     <div className="max-w-lg mx-auto grid grid-cols-2 gap-4 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm border border-slate-700/50">
       {/* Wasted Spend Card */}
-      <div className="bg-red-700/80 p-4 rounded-lg border border-red-500/50 shadow-lg text-white">
+      <div className="bg-red-700/80 p-4 rounded-lg border border-red-500/50 shadow-lg text-[#232F3E]">
         <p className="text-sm font-bold mb-1">Negative Keywords</p>
         <p className="text-xl font-bold mb-1">18</p>
         <p className="text-xs text-red-100">wasteful keywords found</p>
@@ -103,7 +103,7 @@ const PainPointsPreviewMockup = () => {
         <p className="text-xs font-medium bg-red-900/60 p-1 rounded border border-red-400/30">✓ Action: Add as negative keywords</p>
       </div>
       {/* Inefficient Keywords Card */}
-      <div className="bg-orange-600/80 p-4 rounded-lg border border-orange-500/50 shadow-lg text-white">
+      <div className="bg-orange-600/80 p-4 rounded-lg border border-orange-500/50 shadow-lg text-[#232F3E]">
         <p className="text-sm font-bold mb-1">Bid Optimization</p>
         <p className="text-xl font-bold mb-1">26</p>
         <p className="text-xs text-orange-100">bid adjustments recommended</p>
@@ -111,7 +111,7 @@ const PainPointsPreviewMockup = () => {
         <p className="text-xs font-medium bg-orange-800/60 p-1 rounded border border-orange-400/30">✓ Action: Adjust bids manually in KDP</p>
       </div>
       {/* Match Type Card */}
-      <div className="bg-amber-600/80 p-4 rounded-lg border border-amber-500/50 shadow-lg text-white">
+      <div className="bg-amber-600/80 p-4 rounded-lg border border-amber-500/50 shadow-lg text-[#232F3E]">
         <p className="text-sm font-bold mb-1">Match Types</p>
         <p className="text-xl font-bold mb-1">8</p>
         <p className="text-xs text-amber-100">match type improvements</p>
@@ -119,7 +119,7 @@ const PainPointsPreviewMockup = () => {
         <p className="text-xs font-medium bg-amber-800/60 p-1 rounded border border-amber-400/30">✓ Action: Update match types in KDP</p>
       </div>
       {/* Revenue Boost Potential Card */}
-      <div className="bg-green-600/80 p-4 rounded-lg border border-green-500/50 shadow-lg text-white">
+      <div className="bg-green-600/80 p-4 rounded-lg border border-green-500/50 shadow-lg text-[#232F3E]">
         <p className="text-sm font-bold mb-1">ACOS Improvement</p>
         <p className="text-xl font-bold mb-1">-9.8%</p>
         <p className="text-xs text-green-100">potential ACOS reduction</p>
@@ -165,9 +165,9 @@ const AnimatedAcosComparison = () => {
   return (
     <div ref={compareRef} className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/90 rounded-xl backdrop-blur-md border border-slate-700/80 shadow-xl shadow-indigo-900/20 overflow-hidden transform transition-all duration-500 hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-indigo-700/20">
       <div className="px-5 py-4 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 to-slate-900/80">
-        <h3 className="text-xl font-bold text-white flex items-center">
-          <span className="bg-indigo-600/20 p-1.5 rounded-lg mr-2">
-            <BarChart3 className="w-5 h-5 text-indigo-400" />
+        <h3 className="text-xl font-bold text-[#232F3E] flex items-center">
+          <span className="bg-[#FF9900]/20 p-1.5 rounded-lg mr-2">
+            <BarChart3 className="w-5 h-5 text-[#FF9900]" />
           </span>
           ACOS Improvement
         </h3>
@@ -185,7 +185,7 @@ const AnimatedAcosComparison = () => {
           </div>
           <div className="h-10 bg-gradient-to-r from-red-900/30 to-red-700/30 relative">
             <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-in-out"
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-[#232F3E] font-bold text-sm transition-all duration-1500 ease-in-out"
               style={{
                 width: animationStep >= 1 ? '42.3%' : '0%',
                 opacity: animationStep >= 1 ? 1 : 0,
@@ -206,7 +206,7 @@ const AnimatedAcosComparison = () => {
           </div>
           <div className="h-10 bg-gradient-to-r from-green-900/30 to-green-700/30 relative">
             <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-in-out"
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-[#232F3E] font-bold text-sm transition-all duration-1500 ease-in-out"
               style={{
                 width: animationStep >= 2 ? '32.5%' : '0%',
                 opacity: animationStep >= 2 ? 1 : 0,
@@ -219,8 +219,8 @@ const AnimatedAcosComparison = () => {
         
         {/* Improvement */}
         <div className="flex justify-between items-center py-3 px-5 bg-gradient-to-r from-indigo-900/40 to-indigo-800/20 rounded-lg border border-indigo-700/40 mt-3 shadow-md shadow-indigo-900/10">
-          <span className="text-white font-medium flex items-center">
-            <TrendingDown className="w-4 h-4 mr-1.5 text-indigo-400" />
+          <span className="text-[#232F3E] font-medium flex items-center">
+            <TrendingDown className="w-4 h-4 mr-1.5 text-[#FF9900]" />
             ACOS Reduction:
           </span>
           <span 
@@ -241,7 +241,7 @@ const AnimatedAcosComparison = () => {
 
 const OverallDashboardMockup = () => {
   return (
-    <div className="max-w-lg mx-auto p-4 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg shadow-indigo-500/10 space-y-3">
+    <div className="max-w-lg mx-auto p-4 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg shadow-amber-500/10 space-y-3">
       <div className="grid grid-cols-2 gap-3">
         {/* Current ACOS */}
         <div className="bg-slate-800/90 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between hover:border-slate-600/70 transition-colors duration-300">
@@ -251,7 +251,7 @@ const OverallDashboardMockup = () => {
             </div>
             <span className="text-xs font-medium text-slate-300">Current ACOS</span>
           </div>
-          <span className="text-base font-bold text-white">42.3%</span>
+          <span className="text-base font-bold text-[#232F3E]">42.3%</span>
         </div>
         {/* Estimated ACOS */}
         <div className="bg-slate-800/90 p-3 rounded-lg border border-green-800/30 flex items-center justify-between hover:border-green-600/40 transition-colors duration-300">
@@ -285,17 +285,17 @@ const OverallDashboardMockup = () => {
         </div>
       </div>
       {/* Profit Boost */}
-      <div className="bg-gradient-to-r from-indigo-600/40 to-purple-600/40 p-4 rounded-lg border border-indigo-400/50 flex items-center justify-between shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
+      <div className="bg-gradient-to-r from-indigo-600/40 to-purple-600/40 p-4 rounded-lg border border-indigo-400/50 flex items-center justify-between shadow-lg hover:shadow-amber-500/30 transition-all duration-300">
         <div className="flex items-center">
           <div className="w-12 h-12 rounded-full bg-indigo-500/30 flex items-center justify-center mr-3 text-indigo-200 shadow-inner shadow-indigo-700/50">
             <TrendingUp className="w-7 h-7" />
           </div>
           <div>
-            <span className="text-base font-bold text-white">Profit Boost</span>
+            <span className="text-base font-bold text-[#232F3E]">Profit Boost</span>
             <p className="text-xs text-indigo-200">Potential improvement</p>
           </div>
         </div>
-        <span className="text-2xl font-extrabold text-white drop-shadow-md">+28.7%</span>
+        <span className="text-2xl font-extrabold text-[#232F3E] drop-shadow-md">+28.7%</span>
       </div>
     </div>
   );
@@ -305,7 +305,7 @@ const UploadInterfaceMockup = () => {
   return (
     <div className="max-w-lg mx-auto p-6 bg-slate-800/60 rounded-xl backdrop-blur-sm border border-slate-700/50">
       <div className="flex items-center mb-4">
-        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-500/20 mr-3">
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF9900]/20 mr-3">
           <ArrowDownToLine className="w-6 h-6 text-indigo-300" />
         </div>
         <div>
@@ -320,7 +320,7 @@ const UploadInterfaceMockup = () => {
         </div>
         <p className="text-slate-300 mb-2">Drag and drop your advertising report</p>
         <p className="text-slate-400 text-sm mb-4">or click to browse your files</p>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md font-medium transition-all shadow-lg">
+        <button className="bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] px-4 py-2 rounded-md font-medium transition-all shadow-lg">
           Select File
         </button>
       </div>
@@ -375,12 +375,12 @@ const TestimonialSection = () => {
   return (
     <div className="py-12 bg-gradient-to-b from-slate-800/80 to-slate-900/90">
       <div className="container mx-auto max-w-6xl px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-3">What Authors Are Saying</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#232F3E] mb-3">What Authors Are Saying</h2>
         <p className="text-lg text-center text-slate-400 mb-12">Real results from writers just like you</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((item, index) => (
-            <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/60 shadow-lg hover:shadow-indigo-500/20 hover:border-indigo-600/40 transition-all duration-300">
+            <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/60 shadow-lg hover:shadow-amber-500/20 hover:border-amber-600/40 transition-all duration-300">
               <div className="flex items-center gap-1 mb-3 text-amber-400">
                 <Star className="w-4 h-4 fill-current" />
                 <Star className="w-4 h-4 fill-current" />
@@ -390,11 +390,11 @@ const TestimonialSection = () => {
               </div>
               <p className="text-slate-200 mb-6 italic">"{item.quote}"</p>
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-indigo-600/30 flex items-center justify-center mr-3">
+                <div className="w-10 h-10 rounded-full bg-[#FF9900]/30 flex items-center justify-center mr-3">
                   <span className="text-indigo-300 font-bold">{item.author[0]}</span>
                 </div>
                 <div>
-                  <p className="font-medium text-white">{item.author}</p>
+                  <p className="font-medium text-[#232F3E]">{item.author}</p>
                   <p className="text-sm text-slate-400">{item.genre}</p>
                 </div>
               </div>
@@ -403,7 +403,7 @@ const TestimonialSection = () => {
         </div>
         
         <div className="mt-10 text-center">
-          <Link href="/upload" className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-all shadow-lg">
+          <Link href="/upload" className="inline-flex items-center px-6 py-3 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
             Try It For Free
             <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
@@ -421,12 +421,12 @@ const PerformanceBoosterPreview = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="bg-white/10 rounded-full p-2 mr-3 shadow-lg shadow-indigo-900/30">
-              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <svg className="w-5 h-5 text-[#232F3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Boost Profit by +27.8%</h3>
+              <h3 className="text-lg font-bold text-[#232F3E]">Boost Profit by +27.8%</h3>
               <p className="text-indigo-200 text-xs">Your personalized action plan</p>
             </div>
           </div>
@@ -440,17 +440,17 @@ const PerformanceBoosterPreview = () => {
             <Check className="w-4 h-4" />
           </div>
           <div>
-            <p className="text-white font-medium">Stop Money Drains</p>
+            <p className="text-[#232F3E] font-medium">Stop Money Drains</p>
             <p className="text-xs text-slate-400">18 wasteful keywords identified</p>
           </div>
         </div>
         
         <div className="flex items-center mb-4">
-          <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3 text-indigo-400 ring-2 ring-indigo-500/30">
+          <div className="w-8 h-8 rounded-full bg-[#FF9900]/20 flex items-center justify-center mr-3 text-[#FF9900] ring-2 ring-indigo-500/30">
             <Check className="w-4 h-4" />
           </div>
           <div>
-            <p className="text-white font-medium">Fine-tune Your Bids</p>
+            <p className="text-[#232F3E] font-medium">Fine-tune Your Bids</p>
             <p className="text-xs text-slate-400">26 bid adjustments recommended</p>
           </div>
         </div>
@@ -460,7 +460,7 @@ const PerformanceBoosterPreview = () => {
             <span className="text-xs font-bold">3</span>
           </div>
           <div>
-            <p className="text-white font-medium">Increase Keyword Precision</p>
+            <p className="text-[#232F3E] font-medium">Increase Keyword Precision</p>
             <p className="text-xs text-slate-400">8 match type improvements</p>
           </div>
         </div>
@@ -470,7 +470,7 @@ const PerformanceBoosterPreview = () => {
             <span className="text-xs font-bold">4</span>
           </div>
           <div>
-            <p className="text-white font-medium">Optimize Ad Group Structure</p>
+            <p className="text-[#232F3E] font-medium">Optimize Ad Group Structure</p>
             <p className="text-xs text-slate-400">Advanced targeting recommendations</p>
           </div>
         </div>
@@ -523,17 +523,17 @@ export default function Home() {
   return (
     <>
       <main className="flex min-h-screen flex-col items-center overflow-x-hidden bg-[#232F3E]">
-        {/* Hero Section - Added pt-20 */}
-        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24">
-          <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-5"></div>
+        {/* Hero Section */}
+        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24 bg-gradient-to-b from-slate-900 via-amber-950/80 to-slate-900 overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-10"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="parallax-fg">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-white">
-                  Stop Wasting <span className="text-[#FF9900] drop-shadow-sm">KDP Ad Spend.</span> Start Profiting.
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#232F3E] drop-shadow-lg">
+                  Stop Wasting <span className="text-[#FF9900]">KDP Ad Spend.</span> Start Profiting.
                 </h1>
                 
-                <p className="text-xl md:text-2xl text-white font-medium mb-4">
+                <p className="text-xl md:text-2xl text-[#232F3E] font-medium mb-4 leading-relaxed">
                   Transform your KDP ads from money-drains to profit-machines with data-driven insights.
                 </p>
                 
@@ -563,11 +563,11 @@ export default function Home() {
                 </ul>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/upload" className="inline-flex items-center justify-center bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] px-6 py-3 rounded-lg font-bold text-lg transition shadow-lg hover:scale-105 transform">
+                  <Link href="/upload" className="inline-flex items-center justify-center bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] px-6 py-3 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1 duration-300">
                     Optimize Your Ads Now
                     <Zap className="ml-2 h-5 w-5" />
                   </Link>
-                  <a href="#how-it-works" className="inline-flex items-center justify-center bg-transparent border border-slate-600 text-slate-300 px-6 py-3 rounded-lg font-medium text-lg hover:bg-slate-800/30 hover:text-white transition">
+                  <a href="#how-it-works" className="inline-flex items-center justify-center bg-slate-800/80 border border-slate-700/50 text-slate-300 px-6 py-3 rounded-lg font-medium text-lg hover:bg-slate-700 hover:text-[#232F3E] transition-all hover:border-slate-600/70 transform hover:-translate-y-1 duration-300">
                     See How It Works
                   </a>
                 </div>
@@ -580,21 +580,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Feature Section 1 - UPDATED HEADING */}
-        <section id="features" className="w-full py-20 px-4 relative">
-          <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/10 via-transparent to-transparent"></div>
+        {/* Feature Section 1 */}
+        <section id="features" className="w-full py-20 px-4 relative bg-gradient-to-b from-slate-900 via-amber-950/80 to-slate-900 overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/20 via-transparent to-transparent"></div>
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/40 to-transparent"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
-            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
+            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-xl border border-slate-700/80 hover:shadow-amber-500/10 transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
                   <PainPointsPreviewMockup />
                   <AnimatedAcosComparison />
                 </div>
                 <div className="order-1 lg:order-2">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
-                  <p className="text-lg text-slate-300 mb-8">
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-[#232F3E] mb-6 drop-shadow-lg">Your Ad Budget Guardian 💰</h2>
+                  <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                     Spot budget-draining keywords instantly. Get fixes that work.
                   </p>
                   <ul className="space-y-4">
@@ -619,7 +619,7 @@ export default function Home() {
                   </ul>
                   {/* NEW CTA */}
                   <div className="mt-8">
-                    <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
+                    <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1 duration-300">
                       Find Your Wasteful Keywords
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
@@ -636,7 +636,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Bid Whisperer 🧠</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-6">The Bid Whisperer 🧠</h2>
                   <p className="text-lg text-slate-300 mb-8">
                     Perfect bids, every time. More sales, less waste.
                   </p>
@@ -685,7 +685,7 @@ export default function Home() {
                   <UploadInterfaceMockup />
                 </div>
                 <div className="order-1 lg:order-2">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">One Upload, Total Clarity 🔍</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-6">One Upload, Total Clarity 🔍</h2>
                   <p className="text-lg text-slate-300 mb-8">
                     One click, instant results. No tech skills needed.
                   </p>
@@ -726,7 +726,7 @@ export default function Home() {
         <section className="w-full py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-800">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Your Personal Profit Acceleration Plan</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-4">Your Personal Profit Acceleration Plan</h2>
               <p className="text-lg text-slate-300 max-w-3xl mx-auto">
                 Every analysis includes a step-by-step action plan to maximize your ROI
               </p>
@@ -736,35 +736,35 @@ export default function Home() {
               <div>
                 <ul className="space-y-6">
                   <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
+                    <div className="flex-shrink-0 p-2 bg-[#FF9900]/20 rounded-full mr-4 mt-1">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
                     </div>
                     <div>
-                      <p className="text-white font-medium text-lg mb-1">Guided Optimization Steps</p>
+                      <p className="text-[#232F3E] font-medium text-lg mb-1">Guided Optimization Steps</p>
                       <p className="text-slate-400">Follow our clear, prioritized recommendations to improve campaign performance step by step</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
+                    <div className="flex-shrink-0 p-2 bg-[#FF9900]/20 rounded-full mr-4 mt-1">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
                     </div>
                     <div>
-                      <p className="text-white font-medium text-lg mb-1">Progress Tracking</p>
+                      <p className="text-[#232F3E] font-medium text-lg mb-1">Progress Tracking</p>
                       <p className="text-slate-400">Keep track of your optimization progress with visual indicators</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
+                    <div className="flex-shrink-0 p-2 bg-[#FF9900]/20 rounded-full mr-4 mt-1">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
                     </div>
                     <div>
-                      <p className="text-white font-medium text-lg mb-1">One-Click Copy Actions</p>
+                      <p className="text-[#232F3E] font-medium text-lg mb-1">One-Click Copy Actions</p>
                       <p className="text-slate-400">Easily copy negative keywords and access all recommended changes</p>
                     </div>
                   </li>
                 </ul>
                 <div className="mt-10 md:pl-10">
-                  <Link href="/upload" className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-all shadow-lg">
+                  <Link href="/upload" className="inline-flex items-center px-6 py-3 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
                     Get Your Custom Action Plan
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
@@ -784,23 +784,23 @@ export default function Home() {
         <TestimonialSection />
 
         {/* How It Works */}
-        <section id="how-it-works" className="py-16 lg:py-24 bg-gradient-to-b from-slate-900 to-[#232F3E]">
-          <div className="container mx-auto max-w-6xl px-4 md:px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">Transform Data Into Profit:</h2>
-            <p className="text-lg text-slate-300 text-center mb-12 max-w-3xl mx-auto">
+        <section id="how-it-works" className="py-16 lg:py-24 bg-gradient-to-b from-slate-900 via-amber-950/80 to-slate-900 overflow-hidden">
+          <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#232F3E] mb-4 drop-shadow-lg">Transform Data Into Profit:</h2>
+            <p className="text-lg text-slate-300 text-center mb-12 max-w-3xl mx-auto leading-relaxed">
               Our process is simple and designed to deliver actionable insights quickly.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Step 1 */}
-              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-indigo-500/20 hover:border-indigo-600/80 transform hover:-translate-y-1">
+              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-amber-500/20 hover:border-amber-600/80 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
-                  <span className="text-3xl font-bold text-indigo-400 mr-3">1</span>
-                  <div className="p-2 rounded-lg bg-indigo-500/20">
+                  <span className="text-3xl font-bold text-[#FF9900] mr-3">1</span>
+                  <div className="p-2 rounded-lg bg-[#FF9900]/20">
                     <ArrowDownToLine className="w-6 h-6 text-indigo-300" />
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Upload Report</h3>
+                <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Upload Report</h3>
                 <p className="text-sm text-slate-300">Securely upload your KDP Ads performance report (CSV).</p>
               </div>
               
@@ -812,7 +812,7 @@ export default function Home() {
                     <Cpu className="w-6 h-6 text-cyan-300" />
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Instant Analysis</h3>
+                <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Instant Analysis</h3>
                 <p className="text-sm text-slate-300">Our engine analyzes your data, identifying performance issues, money wasters (negative keywords), and optimization opportunities for bids and match types.</p>
               </div>
 
@@ -824,7 +824,7 @@ export default function Home() {
                     <ListChecks className="w-6 h-6 text-purple-300" />
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Clear Action Plan</h3>
+                <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Clear Action Plan</h3>
                 <p className="text-sm text-slate-300">Review your personalized action plan: a list of negative keywords to copy, bid recommendations for manual adjustments in KDP, and match type suggestions.</p>
               </div>
 
@@ -836,7 +836,7 @@ export default function Home() {
                     <Rocket className="w-6 h-6 text-emerald-300" />
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Implement & Profit</h3>
+                <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Implement & Profit</h3>
                 <p className="text-sm text-slate-300">Copy the negative keywords. Use the detailed analysis (also available as Excel export) as a guide for manually adjusting your bids in the KDP Ads Dashboard.</p>
               </div>
             </div>
@@ -844,9 +844,9 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="w-full py-20 px-4 bg-transparent">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
+        <section id="faq" className="w-full py-20 px-4 bg-gradient-to-b from-slate-900 via-amber-950/80 to-slate-900 overflow-hidden">
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#232F3E] mb-12 drop-shadow-lg">Frequently Asked Questions</h2>
             
             <div className="space-y-6">
               {/* FAQ Item 1 */}
@@ -855,7 +855,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(0)}
                 >
-                  <span className="text-xl font-semibold text-white">What mathematical models power your analysis?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">What mathematical models power your analysis?</span>
                   {openFAQ === 0 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -875,7 +875,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(1)}
                 >
-                  <span className="text-xl font-semibold text-white">How accurate are your recommendations?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">How accurate are your recommendations?</span>
                   {openFAQ === 1 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -895,7 +895,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(2)}
                 >
-                  <span className="text-xl font-semibold text-white">Do you offer a free preview?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">Do you offer a free preview?</span>
                   {openFAQ === 2 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -915,7 +915,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(3)}
                 >
-                  <span className="text-xl font-semibold text-white">What data do I need to provide?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">What data do I need to provide?</span>
                   {openFAQ === 3 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -935,7 +935,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(4)}
                 >
-                  <span className="text-xl font-semibold text-white">Is my data secure?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">Is my data secure?</span>
                   {openFAQ === 4 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -955,7 +955,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(5)}
                 >
-                  <span className="text-xl font-semibold text-white">How does your AI detect unprofitable keywords?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">How does your AI detect unprofitable keywords?</span>
                   {openFAQ === 5 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -975,7 +975,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between p-6 text-left"
                   onClick={() => toggleFAQ(6)}
                 >
-                  <span className="text-xl font-semibold text-white">Why is this better than Amazon's Dynamic Campaigns?</span>
+                  <span className="text-xl font-semibold text-[#232F3E]">Why is this better than Amazon's Dynamic Campaigns?</span>
                   {openFAQ === 6 ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
                   ) : (
@@ -995,7 +995,7 @@ export default function Home() {
       </main>
 
       {/* Footer - Moved outside main */}
-      <footer className="bg-gray-900 text-white py-8 mt-16 w-full px-4 sm:px-6 lg:px-8">
+      <footer className="bg-gray-900 text-[#232F3E] py-8 mt-16 w-full px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <Image 
@@ -1011,7 +1011,7 @@ export default function Home() {
             <p className="text-sm text-gray-400">2025 KDP AdNinja. All rights reserved.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-[#232F3E] mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><a href="#features" className="text-gray-400 hover:text-[#FF9900] transition">Features</a></li>
               <li><a href="#how-it-works" className="text-gray-400 hover:text-[#FF9900] transition">How It Works</a></li>
@@ -1019,7 +1019,7 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-white mb-4">Support</h4>
+            <h4 className="font-semibold text-[#232F3E] mb-4">Support</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-400 hover:text-[#FF9900] transition">Help Center</a></li>
               <li><a href="/privacy" className="text-gray-400 hover:text-[#FF9900] transition">Privacy Policy</a></li>
