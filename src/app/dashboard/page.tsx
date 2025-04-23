@@ -17,37 +17,33 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!session) {
-        setLoading(false);
-        return;
-      }
-      try {
-        // Fetch purchased analyses with nested analysis_results
-        const { data: purchases, error: purchError } = await supabaseClient
-          .from('purchases')
-          .select(`analysis_results ( id, created_at, net_optimization_potential:full_analysis->>'netOptimizationPotential' )`)
-          .eq('user_id', session.user.id)
-          .eq('status', 'completed');
-        if (purchError) throw purchError;
-        const itemsFlat = (purchases || [])
-          .map((p: any) => p.analysis_results)
-          .filter((r: any) => r)
-          .map((r: any) => ({
-            id: r.id,
-            created_at: r.created_at,
-            net_optimization_potential: parseFloat(r.net_optimization_potential),
-          }));
-        // Sort by creation date descending
+    if (!session) {
+      setLoading(false);
+      return;
+    }
+    supabaseClient
+      .from('purchases')
+      .select('analysis_results (id, created_at, full_analysis)')
+      .eq('user_id', session.user.id)
+      .in('status', ['pending', 'completed'])
+      .then(({ data, error }) => {
+        if (error) {
+          setError(error.message);
+          setLoading(false);
+          return;
+        }
+        const itemsFlat = (data || []).map((p: any) => {
+          const ar = p.analysis_results;
+          return {
+            id: ar.id,
+            created_at: ar.created_at,
+            net_optimization_potential: ar.full_analysis.netOptimizationPotential,
+          };
+        });
         itemsFlat.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         setItems(itemsFlat);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
         setLoading(false);
-      }
-    };
-    fetchData();
+      });
   }, [session, supabaseClient]);
 
   if (!session) {

@@ -134,6 +134,11 @@ export async function POST(request: NextRequest) {
         );
       }
       console.log('Initial purchase record created for session:', session.id);
+      // Link analysis result to user immediately on purchase
+      await supabaseAdmin
+        .from('analysis_results')
+        .update({ user_id: userId })
+        .eq('id', analysisResultId);
     }
 
     // Return the session ID and URL
