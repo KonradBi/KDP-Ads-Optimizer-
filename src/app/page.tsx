@@ -188,7 +188,7 @@ const OverallDashboardMockup = () => {
             <p className="text-xs text-indigo-300/80">Potential improvement</p>
           </div>
         </div>
-        <span className="text-xl font-bold text-indigo-300">$389</span>
+        <span className="text-xl font-bold text-indigo-300">+28.7%</span>
       </div>
     </div>
   );
