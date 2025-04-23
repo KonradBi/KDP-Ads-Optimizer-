@@ -7,7 +7,6 @@ import Link from 'next/link';
 interface AnalysisRow {
   id: string;
   created_at: string;
-  file_name?: string | null; // optional future field
   net_optimization_potential?: number | null; // show quick value
 }
 
@@ -24,8 +23,8 @@ export default function DashboardPage() {
     }
 
     supabaseClient
-      .from('analyses')
-      .select('id, created_at, net_optimization_potential:full_analysis->>netOptimizationPotential, file_name')
+      .from('analysis_results')
+      .select(`id, created_at, net_optimization_potential:full_analysis->>'netOptimizationPotential'`)
       .eq('user_id', session.user.id)
       .order('created_at', { ascending: false })
       .then(({ data, error }) => {
@@ -72,7 +71,7 @@ export default function DashboardPage() {
               <p className="font-medium text-slate-100">
                 {new Date(a.created_at).toLocaleString()}
               </p>
-              {a.file_name && <p className="text-slate-400 text-sm">{a.file_name}</p>}
+              {/* file_name not stored currently */}
             </div>
             <div className="flex items-center gap-4">
               {a.net_optimization_potential && (
