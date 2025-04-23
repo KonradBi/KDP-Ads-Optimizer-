@@ -129,63 +129,66 @@ const PainPointsPreviewMockup = () => {
   );
 };
 
-// Animated ACOS Comparison Component
+// Animated ACOS Comparison Component with improved animations
 const AnimatedAcosComparison = () => {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  // Force animation to be always shown for demo purposes
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [animationStep, setAnimationStep] = useState(0);
   const compareRef = useRef<HTMLDivElement>(null);
   
-  // Start animation when component becomes visible
+  // Animation sequence
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setIsVisible(true);
-      }
-    }, { threshold: 0.3 });
+    // Start with before bar
+    const step1 = setTimeout(() => setAnimationStep(1), 800);
+    // Then show after bar
+    const step2 = setTimeout(() => setAnimationStep(2), 2000);
+    // Finally show improvement
+    const step3 = setTimeout(() => setAnimationStep(3), 2800);
     
-    if (compareRef.current) {
-      observer.observe(compareRef.current);
-    }
+    // Restart animation every 8 seconds
+    const resetAnimation = setTimeout(() => {
+      setAnimationStep(0);
+      setTimeout(() => setAnimationStep(1), 400);
+      setTimeout(() => setAnimationStep(2), 1600);
+      setTimeout(() => setAnimationStep(3), 2400);
+    }, 8000);
     
     return () => {
-      if (compareRef.current) {
-        observer.unobserve(compareRef.current);
-      }
+      clearTimeout(step1);
+      clearTimeout(step2);
+      clearTimeout(step3);
+      clearTimeout(resetAnimation);
     };
   }, []);
   
-  // Trigger animation when visible
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setIsAnimating(true);
-      }, 500); // Short delay before animation starts
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible]);
-  
   return (
-    <div ref={compareRef} className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/80 rounded-xl backdrop-blur-sm border border-slate-700/80 shadow-lg overflow-hidden">
-      <div className="px-5 py-4 border-b border-slate-700/80">
-        <h3 className="text-xl font-bold text-white">ACOS Improvement</h3>
-        <p className="text-sm text-slate-400">See the difference optimization makes</p>
+    <div ref={compareRef} className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/90 rounded-xl backdrop-blur-md border border-slate-700/80 shadow-xl shadow-indigo-900/20 overflow-hidden transform transition-all duration-500 hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-indigo-700/20">
+      <div className="px-5 py-4 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 to-slate-900/80">
+        <h3 className="text-xl font-bold text-white flex items-center">
+          <span className="bg-indigo-600/20 p-1.5 rounded-lg mr-2">
+            <BarChart3 className="w-5 h-5 text-indigo-400" />
+          </span>
+          ACOS Improvement
+        </h3>
+        <p className="text-sm text-slate-400 ml-9">See the difference optimization makes</p>
       </div>
       
-      <div className="p-5 space-y-5">
+      <div className="p-5 space-y-5 bg-gradient-to-b from-slate-900/60 to-slate-900/90">
         {/* Before */}
-        <div className="relative overflow-hidden rounded-lg border border-slate-700/70">
-          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/90 z-10">
-            <div className="w-8 h-8 rounded-full bg-red-900/40 flex items-center justify-center mr-2 text-red-400">
+        <div className="relative overflow-hidden rounded-lg border border-slate-700/70 shadow-inner shadow-red-900/10">
+          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/95 z-10">
+            <div className="w-8 h-8 rounded-full bg-red-900/40 flex items-center justify-center mr-2 text-red-400 shadow-lg shadow-red-900/20">
               <AlertCircle className="w-5 h-5" />
             </div>
             <span className="font-medium text-slate-300">Before Optimization</span>
           </div>
-          <div className="h-8 bg-gradient-to-r from-red-900/30 to-red-700/30 relative">
-            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1000 ease-out"
+          <div className="h-10 bg-gradient-to-r from-red-900/30 to-red-700/30 relative">
+            <div 
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-in-out"
               style={{
-                width: isAnimating ? '42.3%' : '0%',
-                opacity: isAnimating ? 1 : 0
+                width: animationStep >= 1 ? '42.3%' : '0%',
+                opacity: animationStep >= 1 ? 1 : 0,
+                boxShadow: '0 0 15px rgba(220, 38, 38, 0.3)'
               }}>
               42.3%
             </div>
@@ -193,18 +196,20 @@ const AnimatedAcosComparison = () => {
         </div>
         
         {/* After */}
-        <div className="relative overflow-hidden rounded-lg border border-slate-700/70">
-          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/90 z-10">
-            <div className="w-8 h-8 rounded-full bg-green-900/40 flex items-center justify-center mr-2 text-green-400">
+        <div className="relative overflow-hidden rounded-lg border border-slate-700/70 shadow-inner shadow-green-900/10">
+          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/95 z-10">
+            <div className="w-8 h-8 rounded-full bg-green-900/40 flex items-center justify-center mr-2 text-green-400 shadow-lg shadow-green-900/20">
               <Check className="w-5 h-5" />
             </div>
             <span className="font-medium text-slate-300">After Optimization</span>
           </div>
-          <div className="h-8 bg-gradient-to-r from-green-900/30 to-green-700/30 relative">
-            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-out"
+          <div className="h-10 bg-gradient-to-r from-green-900/30 to-green-700/30 relative">
+            <div 
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-white font-bold text-sm transition-all duration-1500 ease-in-out"
               style={{
-                width: isAnimating ? '32.5%' : '0%',
-                opacity: isAnimating ? 1 : 0
+                width: animationStep >= 2 ? '32.5%' : '0%',
+                opacity: animationStep >= 2 ? 1 : 0,
+                boxShadow: '0 0 15px rgba(34, 197, 94, 0.3)'
               }}>
               32.5%
             </div>
@@ -212,13 +217,17 @@ const AnimatedAcosComparison = () => {
         </div>
         
         {/* Improvement */}
-        <div className="flex justify-between items-center py-2 px-4 bg-indigo-900/30 rounded-lg border border-indigo-700/30 mt-3">
-          <span className="text-white font-medium">ACOS Reduction:</span>
+        <div className="flex justify-between items-center py-3 px-5 bg-gradient-to-r from-indigo-900/40 to-indigo-800/20 rounded-lg border border-indigo-700/40 mt-3 shadow-md shadow-indigo-900/10">
+          <span className="text-white font-medium flex items-center">
+            <TrendingDown className="w-4 h-4 mr-1.5 text-indigo-400" />
+            ACOS Reduction:
+          </span>
           <span 
-            className="text-lg font-bold text-indigo-300 transition-all duration-700"
+            className="text-lg font-bold text-indigo-300 transition-all duration-1000 bg-indigo-900/30 px-3 py-1 rounded-full"
             style={{ 
-              opacity: isAnimating ? 1 : 0,
-              transform: isAnimating ? 'translateY(0)' : 'translateY(10px)'
+              opacity: animationStep >= 3 ? 1 : 0,
+              transform: animationStep >= 3 ? 'translateY(0)' : 'translateY(10px)',
+              boxShadow: animationStep >= 3 ? '0 0 15px rgba(99, 102, 241, 0.3)' : 'none'
             }}
           >
             -23.2%
@@ -573,8 +582,10 @@ export default function Home() {
         {/* Feature Section 1 - UPDATED HEADING */}
         <section id="features" className="w-full py-20 px-4 relative">
           <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/10 via-transparent to-transparent"></div>
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/40 to-transparent"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
-            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
+            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
                   <PainPointsPreviewMockup />
