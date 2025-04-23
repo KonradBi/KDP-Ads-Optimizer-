@@ -32,7 +32,7 @@ import {
   ListChecks
 } from 'lucide-react';
 import Image from "next/image";
-import FormulaTransformSection from "../components/FormulaTransformSection";
+import KeywordSpectrumSection from "../components/KeywordSpectrumSection";
 
 const BidAdjustmentMockup = () => {
   const bidAdjustments = [
@@ -777,8 +777,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Math Formula Transformation Animation */}
-        <FormulaTransformSection />
+        {/* Keyword Optimisation Spectrum Animation */}
+        <KeywordSpectrumSection />
 
         {/* NEW TESTIMONIAL SECTION */}
         <TestimonialSection />
