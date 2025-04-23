@@ -32,7 +32,7 @@ import {
   ListChecks
 } from 'lucide-react';
 import Image from "next/image";
-import MoneyFlowSection from "../components/MoneyFlowSection";
+import FormulaTransformSection from "../components/FormulaTransformSection";
 
 const BidAdjustmentMockup = () => {
   const bidAdjustments = [
@@ -777,8 +777,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Algorithmic Money Flow Simulation */}
-        <MoneyFlowSection />
+        {/* Math Formula Transformation Animation */}
+        <FormulaTransformSection />
 
         {/* NEW TESTIMONIAL SECTION */}
         <TestimonialSection />
