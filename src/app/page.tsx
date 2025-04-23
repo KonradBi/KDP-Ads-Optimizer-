@@ -1,8 +1,5 @@
 "use client"
 
-/**
- * Landing page for KDP Ads Optimizer
- */
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { 
@@ -335,7 +332,7 @@ const UploadInterfaceMockup = () => {
           <div className="flex-shrink-0 mt-1">
             <svg className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
           </div>
-          <p className="text-sm text-slate-300">Free analysis with no limits or registration required</p>
+          <p className="text-sm text-slate-300">Free preview with no limits or registration required</p>
         </div>
       </div>
     </div>
@@ -564,7 +561,7 @@ export default function Home() {
                     See How It Works
                   </a>
                 </div>
-                <p className="text-sm text-slate-400 mt-4">Free analysis – zero cost, no credit card required</p>
+                <p className="text-sm text-slate-400 mt-4">Free preview – zero cost, no credit card required</p>
               </div>
               <div className="relative transform hover:scale-105 transition-transform duration-500 parallax-image">
                 <OverallDashboardMockup />
@@ -703,7 +700,7 @@ export default function Home() {
                   {/* NEW CTA */}
                   <div className="mt-8">
                     <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
-                      Start Your Free Analysis
+                      Start Your Free Preview
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </div>
@@ -996,7 +993,7 @@ export default function Home() {
             <p className="text-gray-400 text-sm">
               Optimize your Amazon KDP Ads effortlessly.
             </p>
-            <p className="text-sm text-gray-400">© 2025 KDP AdNinja. All rights reserved.</p>
+            <p className="text-sm text-gray-400">2025 KDP AdNinja. All rights reserved.</p>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
