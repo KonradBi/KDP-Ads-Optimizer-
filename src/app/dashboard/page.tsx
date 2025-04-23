@@ -18,31 +18,47 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const fetchItems = async () => {
+      console.log('Dashboard: fetchItems started.');
       setLoading(true);
       setError(null);
       try {
         if (!session) {
+          console.log('Dashboard: No session found, returning.');
           return;
         }
+        console.log('Dashboard: Session found, fetching purchases for user:', session.user.id);
         const { data: purchases, error: purchError } = await supabaseClient
           .from('purchases')
           .select('analysis_results(id,created_at,full_analysis)')
           .eq('user_id', session.user.id)
           .in('status', ['pending', 'completed']);
+        console.log('Dashboard: Supabase query completed.');
         if (purchError) throw purchError;
+        console.log('Dashboard: Raw purchases data received:', purchases);
         const itemsFlat: AnalysisRow[] = (purchases || []).map((p: any) => {
           const ar = p.analysis_results;
+          if (!ar) {
+            console.warn('Dashboard: Purchase found with missing analysis_results:', p);
+            return null; // Skip this item
+          }
+          if (!ar.full_analysis) {
+            console.warn('Dashboard: Analysis result found with missing full_analysis:', ar);
+            return null; // Skip this item
+          }
           return {
             id: ar.id,
             created_at: ar.created_at,
             net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
           };
-        });
+        }).filter(item => item !== null) as AnalysisRow[]; // Filter out nulls
+        console.log('Dashboard: Processed itemsFlat:', itemsFlat);
         itemsFlat.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         setItems(itemsFlat);
       } catch (err: any) {
+        console.error('Dashboard: Error fetching or processing analyses:', err);
         setError(err.message || 'Error fetching analyses');
       } finally {
+        console.log('Dashboard: fetchItems finished.');
         setLoading(false);
       }
     };
