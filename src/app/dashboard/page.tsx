@@ -29,7 +29,7 @@ export default function DashboardPage() {
         console.log('Dashboard: Session found, fetching purchases for user:', session.user.id);
         const { data: purchases, error: purchError } = await supabaseClient
           .from('purchases')
-          .select('analysis_results(id,created_at,full_analysis)')
+          .select('stripe_session_id, analysis_results(id,created_at,full_analysis)')
           .eq('user_id', session.user.id)
           .in('status', ['pending', 'completed']);
         console.log('Dashboard: Supabase query completed.');
@@ -43,8 +43,12 @@ export default function DashboardPage() {
         (purchases || []).forEach((p: any) => {
           const ar = p.analysis_results;
           if (!ar) {
-            console.warn('Dashboard: Purchase missing analysis_results, will verify:', p.stripe_session_id);
-            missing.push(p.stripe_session_id);
+            if (p.stripe_session_id) {
+              console.warn('Dashboard: Purchase missing analysis_results, will verify:', p.stripe_session_id);
+              missing.push(p.stripe_session_id);
+            } else {
+              console.warn('Dashboard: Purchase missing analysis_results and has no stripe_session_id:', p);
+            }
             return;
           }
           if (!ar.full_analysis) {
@@ -61,7 +65,12 @@ export default function DashboardPage() {
         if (missing.length > 0) {
           console.log('Dashboard: Triggering verify for sessions:', missing);
           await Promise.all(
-            missing.map((sid) => fetch(`/api/payment/verify?session_id=${sid}`).catch(() => null))
+            missing.map((sid) =>
+              fetch(`/api/payment/verify?session_id=${sid}`).catch((err) => {
+                console.error('Verify call failed for', sid, err);
+                return null;
+              })
+            )
           );
           console.log('Dashboard: Verify calls done, refetching once.');
           // Recursive one-time refetch
