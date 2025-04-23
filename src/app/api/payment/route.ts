@@ -112,22 +112,24 @@ export async function POST(request: NextRequest) {
 
     // --- Store the initial purchase record in Supabase --- 
     if (session.id && session.amount_total != null) {
-      const { error: insertError } = await supabaseAdmin.from('purchases').insert({
-        user_id: userId,
-        stripe_session_id: session.id,
-        price_id: priceId,
-        status: 'pending', // Initial status
-        amount: session.amount_total, // Amount in cents
-        currency: session.currency || 'usd', // Get currency from session
-        analysis_result_id: analysisResultId, // Store the analysis ID immediately
-      });
+      const { data: purchaseData, error: insertError } = await supabaseAdmin
+        .from('purchases')
+        .insert([
+          {
+            user_id: userId,
+            stripe_session_id: session.id,
+            price_id: priceId,
+            status: 'pending',
+            amount: session.amount_total,
+            currency: session.currency || 'usd',
+            analysis_result_id: analysisResultId,
+          },
+        ])
+        .select();
       if (insertError) {
         console.error('Error inserting purchase record:', insertError);
-        // Optionally: try to cancel the Stripe session? Difficult.
-        // For now, just log and potentially alert.
-        // Return an error to the client
         return NextResponse.json(
-          { error: 'Failed to store purchase details. Please try again.' },
+          { error: 'Failed to store purchase details.', supabaseError: insertError.message },
           { status: 500 }
         );
       }
