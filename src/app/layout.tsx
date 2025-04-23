@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { SupabaseProvider } from '@/components/SupabaseProvider';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <SupabaseProvider>
           <Header />
           <main>{children}</main>
-          <Footer />
+          
           <div id="tooltip-portal-root"></div>
         </SupabaseProvider>
       </body>
