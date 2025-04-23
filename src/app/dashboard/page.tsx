@@ -17,33 +17,36 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!session) {
-      setLoading(false);
-      return;
-    }
-    supabaseClient
-      .from('purchases')
-      .select('analysis_results (id, created_at, full_analysis)')
-      .eq('user_id', session.user.id)
-      .in('status', ['pending', 'completed'])
-      .then(({ data, error }) => {
-        if (error) {
-          setError(error.message);
-          setLoading(false);
+    const fetchItems = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        if (!session) {
           return;
         }
-        const itemsFlat = (data || []).map((p: any) => {
+        const { data: purchases, error: purchError } = await supabaseClient
+          .from('purchases')
+          .select('analysis_results(id,created_at,full_analysis)')
+          .eq('user_id', session.user.id)
+          .in('status', ['pending', 'completed']);
+        if (purchError) throw purchError;
+        const itemsFlat: AnalysisRow[] = (purchases || []).map((p: any) => {
           const ar = p.analysis_results;
           return {
             id: ar.id,
             created_at: ar.created_at,
-            net_optimization_potential: ar.full_analysis.netOptimizationPotential,
+            net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
           };
         });
         itemsFlat.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         setItems(itemsFlat);
+      } catch (err: any) {
+        setError(err.message || 'Error fetching analyses');
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchItems();
   }, [session, supabaseClient]);
 
   if (!session) {
