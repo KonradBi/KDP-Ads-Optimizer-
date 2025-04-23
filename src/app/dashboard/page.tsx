@@ -35,23 +35,55 @@ export default function DashboardPage() {
         console.log('Dashboard: Supabase query completed.');
         if (purchError) throw purchError;
         console.log('Dashboard: Raw purchases data received:', purchases);
-        const itemsFlat: AnalysisRow[] = (purchases || []).map((p: any) => {
+
+        // Separate purchases with and without embedded analysis_results
+        const missing: string[] = [];
+        const itemsFlat: AnalysisRow[] = [];
+
+        (purchases || []).forEach((p: any) => {
           const ar = p.analysis_results;
           if (!ar) {
-            console.warn('Dashboard: Purchase found with missing analysis_results:', p);
-            return null; // Skip this item
+            console.warn('Dashboard: Purchase missing analysis_results, will verify:', p.stripe_session_id);
+            missing.push(p.stripe_session_id);
+            return;
           }
           if (!ar.full_analysis) {
-            console.warn('Dashboard: Analysis result found with missing full_analysis:', ar);
-            return null; // Skip this item
+            console.warn('Dashboard: Analysis result missing full_analysis:', ar.id);
           }
-          return {
+          itemsFlat.push({
             id: ar.id,
             created_at: ar.created_at,
             net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
-          };
-        }).filter(item => item !== null) as AnalysisRow[]; // Filter out nulls
-        console.log('Dashboard: Processed itemsFlat:', itemsFlat);
+          });
+        });
+
+        // If some purchases missing linkage, call verify endpoint to fix and then refetch once.
+        if (missing.length > 0) {
+          console.log('Dashboard: Triggering verify for sessions:', missing);
+          await Promise.all(
+            missing.map((sid) => fetch(`/api/payment/verify?session_id=${sid}`).catch(() => null))
+          );
+          console.log('Dashboard: Verify calls done, refetching once.');
+          // Recursive one-time refetch
+          const { data: purchases2 } = await supabaseClient
+            .from('purchases')
+            .select('analysis_results(id,created_at,full_analysis)')
+            .eq('user_id', session.user.id)
+            .eq('status', 'completed');
+          (purchases2 || []).forEach((p: any) => {
+            const ar = p.analysis_results;
+            if (ar) {
+              itemsFlat.push({
+                id: ar.id,
+                created_at: ar.created_at,
+                net_optimization_potential: ar.full_analysis?.netOptimizationPotential ?? null,
+              });
+            }
+          });
+        }
+
+        console.log('Dashboard: Processed itemsFlat after verify:', itemsFlat);
+
         itemsFlat.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         setItems(itemsFlat);
       } catch (err: any) {
