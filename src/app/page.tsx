@@ -424,11 +424,11 @@ export default function Home() {
                 </h1>
                 
                 <p className="text-xl md:text-2xl text-white font-medium mb-4">
-                  Stop guessing with KDP Ads reports. Get clear analyses and actionable recommendations to eliminate wasted budget and maximize your book sales.
+                  Transform your KDP ads from money-drains to profit-machines with data-driven insights.
                 </p>
                 
                 <p className="text-slate-300 mb-8 max-w-lg">
-                  Upload your KDP advertising report and get a personalized action plan in seconds. Identify money-draining keywords, receive precise bid recommendations, and export enhanced data to streamline your optimization.
+                  Upload your KDP report, get instant insights. Cut waste, boost sales, dominate rankings.
                 </p>
                 
                 <ul className="mb-8 space-y-3">
@@ -436,19 +436,19 @@ export default function Home() {
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Identify wasteful keywords draining your budget</span>
+                    <span>Stop wasting money on dead keywords</span>
                   </li>
                   <li className="flex items-start text-slate-300">
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Discover high-ROI campaigns ready for scaling</span>
+                    <span>Scale winning campaigns instantly</span>
                   </li>
                   <li className="flex items-start text-slate-300">
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Get data-driven bid recommendations that maximize returns</span>
+                    <span>Get optimal bids that maximize ROI</span>
                   </li>
                 </ul>
                 
@@ -482,7 +482,7 @@ export default function Home() {
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
                   <p className="text-lg text-slate-300 mb-8">
-                    Instantly detect keywords silently draining your budget with no returns and get actionable fixes to reclaim your ad spend.
+                    Spot budget-draining keywords instantly. Get fixes that work.
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-start">
@@ -525,7 +525,7 @@ export default function Home() {
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Bid Whisperer 🧠</h2>
                   <p className="text-lg text-slate-300 mb-8">
-                    Precision bid recommendations built on thousands of data points to maximize sales and eliminate wasteful spending.
+                    Perfect bids, every time. More sales, less waste.
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-start">
@@ -574,7 +574,7 @@ export default function Home() {
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">One Upload, Total Clarity 🔍</h2>
                   <p className="text-lg text-slate-300 mb-8">
-                    One-click upload, instant analysis, clear action plan - transform your ad performance in seconds without technical headaches.
+                    One click, instant results. No tech skills needed.
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-start">
