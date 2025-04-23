@@ -88,6 +88,23 @@ export async function POST(request: NextRequest) {
               return NextResponse.json({ error: 'Failed to update purchase status.' }, { status: 500 });
             }
             console.log(`Successfully updated purchase record for session ${session.id} to completed.`);
+
+            // Link analysis to paying user so they can access later without re-payment
+            try {
+              const { error: analysisUpdateError } = await supabaseAdmin
+                .from('analyses')
+                .update({ user_id: userId })
+                .eq('id', analysisResultId)
+                .is('user_id', null); // Only set if not already claimed
+
+              if (analysisUpdateError) {
+                console.error(`Failed to update analysis ${analysisResultId} with user_id ${userId}:`, analysisUpdateError);
+              } else {
+                console.log(`Analysis ${analysisResultId} linked to user ${userId}.`);
+              }
+            } catch (e) {
+              console.error('Unexpected error linking analysis to user:', e);
+            }
           }
 
           // Optional: Trigger post-purchase actions here (e.g., grant access, send email)
