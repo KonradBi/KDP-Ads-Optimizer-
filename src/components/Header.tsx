@@ -32,6 +32,12 @@ export default function Header() {
           <div className="flex items-center gap-4">
             {session ? (
               <>
+                <Link
+                  href="/dashboard"
+                  className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-full text-white bg-slate-700 hover:bg-slate-600 transition"
+                >
+                  My Analyses
+                </Link>
                 <span className="text-sm text-slate-300 hidden sm:inline">{session.user?.email}</span>
                 <button
                   onClick={handleLogout}
