@@ -537,7 +537,7 @@ export default function Home() {
                   Transform your KDP ads from money-drains to profit-machines with data-driven insights.
                 </p>
                 
-                <p className="text-slate-300 mb-8 max-w-lg">
+                <p className="text-lg text-slate-300 mb-8 max-w-lg">
                   Upload your KDP report, get instant insights. Cut waste, boost sales, dominate rankings.
                 </p>
                 
@@ -546,19 +546,19 @@ export default function Home() {
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Stop wasting money on dead keywords</span>
+                    <span className="text-slate-200">Stop wasting money on dead keywords</span>
                   </li>
                   <li className="flex items-start text-slate-300">
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Scale winning campaigns instantly</span>
+                    <span className="text-slate-200">Scale winning campaigns instantly</span>
                   </li>
                   <li className="flex items-start text-slate-300">
                     <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-[#FF9900]" />
                     </div>
-                    <span>Get optimal bids that maximize ROI</span>
+                    <span className="text-slate-200">Get optimal bids that maximize ROI</span>
                   </li>
                 </ul>
                 
@@ -594,7 +594,7 @@ export default function Home() {
                 </div>
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[#232F3E] mb-6 drop-shadow-lg">Your Ad Budget Guardian 💰</h2>
-                  <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                  <p className="text-lg text-slate-200 mb-8 leading-relaxed">
                     Spot budget-draining keywords instantly. Get fixes that work.
                   </p>
                   <ul className="space-y-4">
@@ -602,19 +602,19 @@ export default function Home() {
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Identify budget-draining keywords with precision</p>
+                      <p className="text-slate-200">Identify budget-draining keywords with precision</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Get clear, actionable optimization steps</p>
+                      <p className="text-slate-200">Get clear, actionable optimization steps</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Reduce ad spend by up to 25% immediately</p>
+                      <p className="text-slate-200">Reduce ad spend by up to 25% immediately</p>
                     </li>
                   </ul>
                   {/* NEW CTA */}
@@ -637,7 +637,7 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-6">The Bid Whisperer 🧠</h2>
-                  <p className="text-lg text-slate-300 mb-8">
+                  <p className="text-lg text-slate-200 mb-8">
                     Perfect bids, every time. More sales, less waste.
                   </p>
                   <ul className="space-y-4">
@@ -645,19 +645,19 @@ export default function Home() {
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Custom bid recommendations for every keyword</p>
+                      <p className="text-slate-200">Custom bid recommendations for every keyword</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Redistribute budget to high-performing ad groups</p>
+                      <p className="text-slate-200">Redistribute budget to high-performing ad groups</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Reduce ACOS by up to 31% within 30 days</p>
+                      <p className="text-slate-200">Reduce ACOS by up to 31% within 30 days</p>
                     </li>
                   </ul>
                   {/* NEW CTA */}
@@ -686,7 +686,7 @@ export default function Home() {
                 </div>
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-6">One Upload, Total Clarity 🔍</h2>
-                  <p className="text-lg text-slate-300 mb-8">
+                  <p className="text-lg text-slate-200 mb-8">
                     One click, instant results. No tech skills needed.
                   </p>
                   <ul className="space-y-4">
@@ -694,19 +694,19 @@ export default function Home() {
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Simple drag-and-drop file upload</p>
+                      <p className="text-slate-200">Simple drag-and-drop file upload</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Automated analysis in seconds</p>
+                      <p className="text-slate-200">Automated analysis in seconds</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
                         <Check className="h-5 w-5 text-[#FF9900]" />
                       </div>
-                      <p className="text-slate-300">Clear, ready-to-implement action plan</p>
+                      <p className="text-slate-200">Clear, ready-to-implement action plan</p>
                     </li>
                   </ul>
                   {/* NEW CTA */}
@@ -727,7 +727,7 @@ export default function Home() {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#232F3E] mb-4">Your Personal Profit Acceleration Plan</h2>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              <p className="text-lg text-slate-200 max-w-3xl mx-auto">
                 Every analysis includes a step-by-step action plan to maximize your ROI
               </p>
             </div>
@@ -741,7 +741,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-[#232F3E] font-medium text-lg mb-1">Guided Optimization Steps</p>
-                      <p className="text-slate-400">Follow our clear, prioritized recommendations to improve campaign performance step by step</p>
+                      <p className="text-slate-200">Follow our clear, prioritized recommendations to improve campaign performance step by step</p>
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -750,7 +750,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-[#232F3E] font-medium text-lg mb-1">Progress Tracking</p>
-                      <p className="text-slate-400">Keep track of your optimization progress with visual indicators</p>
+                      <p className="text-slate-200">Keep track of your optimization progress with visual indicators</p>
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -759,7 +759,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-[#232F3E] font-medium text-lg mb-1">One-Click Copy Actions</p>
-                      <p className="text-slate-400">Easily copy negative keywords and access all recommended changes</p>
+                      <p className="text-slate-200">Easily copy negative keywords and access all recommended changes</p>
                     </div>
                   </li>
                 </ul>
@@ -787,7 +787,7 @@ export default function Home() {
         <section id="how-it-works" className="py-16 lg:py-24 bg-gradient-to-b from-slate-900 via-amber-950/80 to-slate-900 overflow-hidden">
           <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#232F3E] mb-4 drop-shadow-lg">Transform Data Into Profit:</h2>
-            <p className="text-lg text-slate-300 text-center mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-200 text-center mb-12 max-w-3xl mx-auto leading-relaxed">
               Our process is simple and designed to deliver actionable insights quickly.
             </p>
             
@@ -801,7 +801,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Upload Report</h3>
-                <p className="text-sm text-slate-300">Securely upload your KDP Ads performance report (CSV).</p>
+                <p className="text-sm text-slate-200">Securely upload your KDP Ads performance report (CSV).</p>
               </div>
               
               {/* Step 2 */}
@@ -813,7 +813,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Instant Analysis</h3>
-                <p className="text-sm text-slate-300">Our engine analyzes your data, identifying performance issues, money wasters (negative keywords), and optimization opportunities for bids and match types.</p>
+                <p className="text-sm text-slate-200">Our engine analyzes your data, identifying performance issues, money wasters (negative keywords), and optimization opportunities for bids and match types.</p>
               </div>
 
               {/* Step 3 */}
@@ -825,7 +825,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Clear Action Plan</h3>
-                <p className="text-sm text-slate-300">Review your personalized action plan: a list of negative keywords to copy, bid recommendations for manual adjustments in KDP, and match type suggestions.</p>
+                <p className="text-sm text-slate-200">Review your personalized action plan: a list of negative keywords to copy, bid recommendations for manual adjustments in KDP, and match type suggestions.</p>
               </div>
 
               {/* Step 4 */}
@@ -837,7 +837,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold text-[#232F3E] mb-2">Implement & Profit</h3>
-                <p className="text-sm text-slate-300">Copy the negative keywords. Use the detailed analysis (also available as Excel export) as a guide for manually adjusting your bids in the KDP Ads Dashboard.</p>
+                <p className="text-sm text-slate-200">Copy the negative keywords. Use the detailed analysis (also available as Excel export) as a guide for manually adjusting your bids in the KDP Ads Dashboard.</p>
               </div>
             </div>
           </div>
@@ -863,7 +863,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 0 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Our algorithm leverages advanced Bayesian probabilistic models to detect underperforming keywords with statistical confidence. We incorporate Jeffreys prior distributions (α=0.5, β=0.5) for handling sparse conversion data, z-score normalization for match type optimization, and dynamic bid elasticity modeling. Our confidence intervals are calibrated to minimize both Type I and Type II errors in keyword performance classification.
                   </p>
                 </div>
@@ -883,7 +883,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 1 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Our heuristic decision models are calibrated with ACoS/RoAS optimization parameters that have been empirically validated across thousands of KDP ad groups. While no analysis tool can predict future performance with 100% certainty, our recommendations consistently outperform manual optimization with a 94% confidence level. Our algorithm assigns data confidence ratings (Low/Medium/High) to every suggestion based on statistical significance thresholds.
                   </p>
                 </div>
@@ -903,7 +903,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 2 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Yes! You can access a free preview analysis with no credit card required. This includes one high-impact recommendation and key optimization metrics to demonstrate the value our tool can provide. For full access to advanced features including ad group optimization algorithms, match type recommendations, and unlimited analyses, check out our premium plans.
                   </p>
                 </div>
@@ -923,7 +923,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 3 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Simply export your KDP advertising report as a CSV file from your Amazon KDP dashboard. Our algorithm requires impression, click, conversion, and spend data at minimum. For enhanced accuracy, including KENP read data significantly improves our royalty estimations and effective ACoS calculations, especially for Kindle Unlimited titles.
                   </p>
                 </div>
@@ -943,7 +943,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 4 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Absolutely. We use enterprise-grade encryption and security protocols. Your data is processed client-side whenever possible, and we never store raw campaign data without explicit permission. Our analytics engine uses anonymized, aggregated patterns for continuous improvement, but your competitive campaign information remains completely private.
                   </p>
                 </div>
@@ -963,7 +963,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 5 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     Our system employs a multi-factor analysis model that goes beyond basic metrics. We calculate a Bayesian probability for each keyword's true conversion rate, using a confidence threshold of p&lt;0.05. This allows us to identify statistically significant underperformers with even limited data. Additionally, our proprietary "hopelessness score" factors in impression-to-click ratios, comparative performance within ad groups, and bid elasticity modeling.
                   </p>
                 </div>
@@ -983,7 +983,7 @@ export default function Home() {
                   )}
                 </button>
                 <div className={`px-6 pb-6 ${openFAQ === 6 ? "block" : "hidden"}`}>
-                  <p className="text-slate-300">
+                  <p className="text-slate-200">
                     While Amazon's Dynamic Campaigns provide automation, they lack the granular optimization our platform delivers. Our key advantages include: (1) Ad group-level analysis that identifies keyword-specific opportunities Amazon's broad approach misses; (2) Consideration of KENP reads and royalties in our ROI calculations, which Amazon ignores; (3) Transparent recommendations with clear statistical reasoning rather than black-box automation; and (4) Author-specific optimization that understands book market dynamics rather than applying general e-commerce algorithms. Our users typically see a 20-35% improvement in ACOS compared to Dynamic Campaigns.
                   </p>
                 </div>
