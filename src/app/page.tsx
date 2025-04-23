@@ -178,17 +178,17 @@ const OverallDashboardMockup = () => {
         </div>
       </div>
       {/* Profit Boost */}
-      <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/20 p-4 rounded-lg border border-indigo-700/30 flex items-center justify-between shadow-sm">
+      <div className="bg-gradient-to-r from-indigo-600/40 to-purple-600/40 p-4 rounded-lg border border-indigo-400/50 flex items-center justify-between shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
         <div className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-indigo-900/40 flex items-center justify-center mr-3 text-indigo-300">
-            <TrendingUp className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-full bg-indigo-500/30 flex items-center justify-center mr-3 text-indigo-200 shadow-inner shadow-indigo-700/50">
+            <TrendingUp className="w-7 h-7" />
           </div>
           <div>
-            <span className="text-sm font-semibold text-white">Profit Boost</span>
-            <p className="text-xs text-indigo-300/80">Potential improvement</p>
+            <span className="text-base font-bold text-white">Profit Boost</span>
+            <p className="text-xs text-indigo-200">Potential improvement</p>
           </div>
         </div>
-        <span className="text-xl font-bold text-indigo-300">+28.7%</span>
+        <span className="text-2xl font-extrabold text-white drop-shadow-md">+28.7%</span>
       </div>
     </div>
   );
