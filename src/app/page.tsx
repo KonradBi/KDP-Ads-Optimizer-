@@ -892,7 +892,7 @@ export default function Home() {
             <p className="text-gray-400 text-sm">
               Optimize your Amazon KDP Ads effortlessly.
             </p>
-            <p className="text-sm text-gray-400">© 2025 KDP Ads Optimizer. All rights reserved.</p>
+            <p className="text-sm text-gray-400">© 2025 KDP AdNinja. All rights reserved.</p>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
