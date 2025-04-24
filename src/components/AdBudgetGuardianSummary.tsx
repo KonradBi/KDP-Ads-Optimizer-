@@ -69,36 +69,10 @@ export default function AdBudgetGuardianSummary() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="relative space-y-12 rounded-3xl px-8 lg:px-14 py-14 lg:py-20 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
+      className="relative space-y-12 rounded-3xl px-4 lg:px-8 py-14 lg:py-20 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
     >
       {/* radial spotlight */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-[#1e3a8a]/20 blur-3xl" />
-
-      {/* Headline & Bullets */}
-      <div className="mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-2">Your Ad Budget Guardian <span className="text-2xl">💰</span></h2>
-        <p className="text-lg text-slate-300 mb-6">Spot budget-draining keywords instantly. Get fixes that work.</p>
-        <ul className="space-y-3 mb-8">
-          <li className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
-              <Check className="w-4 h-4" />
-            </span>
-            <span className="text-slate-200 text-base">Identify budget-draining keywords with precision</span>
-          </li>
-          <li className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
-              <Check className="w-4 h-4" />
-            </span>
-            <span className="text-slate-200 text-base">Get clear, actionable optimization steps</span>
-          </li>
-          <li className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
-              <Check className="w-4 h-4" />
-            </span>
-            <span className="text-slate-200 text-base">Reduce ad spend by up to 25% immediately</span>
-          </li>
-        </ul>
-      </div>
 
       {/* KPI GRID */}
       <motion.div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
