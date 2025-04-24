@@ -32,63 +32,11 @@ import {
   ListChecks
 } from 'lucide-react';
 import Image from "next/image";
+import KeywordSpectrumSection from "../components/KeywordSpectrumSection";
+import BidWhispererSection from "../components/BidWhispererSection";
+import AdBudgetGuardianSummary from "../components/AdBudgetGuardianSummary";
 
-const BidAdjustmentMockup = () => {
-  const bidAdjustments = [
-    { keyword: "ai for beginners", matchType: "BROAD", current: "$0.67", recommended: "$0.80", action: "increase", impact: "Raise to $0.80 for more volume." },
-    { keyword: "artificial intelligence", matchType: "BROAD", current: "$0.65", recommended: "$0.78", action: "increase", impact: "Raise to $0.78 for more volume." },
-    { keyword: "the teacher", matchType: "BROAD", current: "$0.65", recommended: "$0.52", action: "decrease", impact: "Lower bid to $0.52 while optimising ad copy. (Est. save: $1.61)" },
-    { keyword: "the emotional lives of teenagers", matchType: "BROAD", current: "$0.65", recommended: "$0.52", action: "decrease", impact: "Lower bid to $0.52 while optimising ad copy. (Est. save: $0.16)" },
-    { keyword: "atlas of ai", matchType: "BROAD", current: "$0.65", recommended: "$0.78", action: "increase", impact: "Raise to $0.78 for more volume." }
-  ];
 
-  return (
-    <div className="max-w-lg mx-auto rounded-xl overflow-hidden shadow-lg bg-slate-800/60 border border-slate-700/50 backdrop-blur-sm">
-      <div className="px-6 py-4 border-b border-blue-500/30 bg-gradient-to-r from-blue-900/40 to-blue-800/30">
-        <h3 className="text-lg font-semibold text-blue-200">Top Bid Adjustments</h3>
-        <p className="mt-1 text-sm text-blue-300/80">
-          Focus on these bid changes for potential ACOS improvements
-        </p>
-      </div>
-      <div className="p-4">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-700">
-            <thead className="bg-slate-700/50">
-              <tr>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">Keyword</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">Match</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase tracking-wider">Current</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase tracking-wider">Recommended</th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase tracking-wider">Action</th>
-              </tr>
-            </thead>
-            <tbody className="bg-slate-800 divide-y divide-slate-700">
-              {bidAdjustments.map((item, i) => (
-                <tr key={i} className="hover:bg-slate-700/40 transition-colors">
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-300 truncate max-w-xs">{item.keyword}</td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-400">{item.matchType}</td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-400 text-right">{item.current}</td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-right">
-                    <span className={`${item.action === 'increase' ? 'text-green-400' : 'text-red-400'}`}>
-                      {item.recommended}
-                    </span>
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-center text-sm">
-                    <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold
-                      ${item.action === 'increase' ? 'bg-green-500/20 text-green-300 ring-1 ring-inset ring-green-500/30' : 
-                        'bg-red-500/20 text-red-300 ring-1 ring-inset ring-red-500/30'}`}>
-                      {item.action === 'increase' ? 'Increase' : 'Decrease'}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const PainPointsPreviewMockup = () => {
   return (
@@ -412,7 +360,7 @@ const TestimonialSection = () => {
   );
 };
 
-/* NEW Performance Booster Preview */
+/* NEW Performance Booster Preview - This component and its section will be replaced */
 const PerformanceBoosterPreview = () => {
   return (
     <div className="max-w-lg mx-auto bg-slate-800/60 border border-indigo-600/30 rounded-xl shadow-lg overflow-hidden">
@@ -588,9 +536,8 @@ export default function Home() {
             <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
-                  <PainPointsPreviewMockup />
-                  <AnimatedAcosComparison />
-                </div>
+  <AdBudgetGuardianSummary />
+</div>
                 <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
                   <p className="text-lg text-slate-300 mb-8">
@@ -630,50 +577,7 @@ export default function Home() {
         </section>
 
         {/* Feature Section 2 - UPDATED HEADING */}
-        <section className="w-full py-20 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Bid Whisperer 🧠</h2>
-                  <p className="text-lg text-slate-300 mb-8">
-                    Perfect bids, every time. More sales, less waste.
-                  </p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Custom bid recommendations for every keyword</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Redistribute budget to high-performing ad groups</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Reduce ACOS by up to 31% within 30 days</p>
-                    </li>
-                  </ul>
-                  {/* NEW CTA */}
-                  <div className="mt-8">
-                    <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
-                      Optimize Your Bids
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-                <div className="transform hover:scale-105 transition-transform duration-500">
-                  <BidAdjustmentMockup />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BidWhispererSection />
 
         {/* Feature Section 3 - UPDATED HEADING */}
         <section className="w-full py-20 px-4">
@@ -721,129 +625,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* NEW PERFORMANCE BOOSTER PREVIEW SECTION */}
-        <section className="w-full py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-800">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Your Personal Profit Acceleration Plan</h2>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-                Every analysis includes a step-by-step action plan to maximize your ROI
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <ul className="space-y-6">
-                  <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium text-lg mb-1">Guided Optimization Steps</p>
-                      <p className="text-slate-400">Follow our clear, prioritized recommendations to improve campaign performance step by step</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium text-lg mb-1">Progress Tracking</p>
-                      <p className="text-slate-400">Keep track of your optimization progress with visual indicators</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="flex-shrink-0 p-2 bg-indigo-500/20 rounded-full mr-4 mt-1">
-                      <Check className="h-5 w-5 text-indigo-400" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium text-lg mb-1">One-Click Copy Actions</p>
-                      <p className="text-slate-400">Easily copy negative keywords and access all recommended changes</p>
-                    </div>
-                  </li>
-                </ul>
-                <div className="mt-10 md:pl-10">
-                  <Link href="/upload" className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-all shadow-lg">
-                    Get Your Custom Action Plan
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
-              <div className="transform hover:scale-105 transition-transform duration-500">
-                <PerformanceBoosterPreview />
-              </div>
-            </div>
-          </div>
+        {/* Corrected: Replaced the entire 'Profit Acceleration' section with KeywordSpectrumSection */}
+        <section className="w-full py-20 px-4">
+          <KeywordSpectrumSection />
         </section>
 
         {/* NEW TESTIMONIAL SECTION */}
         <TestimonialSection />
 
-        {/* How It Works */}
-        <section id="how-it-works" className="py-16 lg:py-24 bg-gradient-to-b from-slate-900 to-[#232F3E]">
-          <div className="container mx-auto max-w-6xl px-4 md:px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">Transform Data Into Profit:</h2>
-            <p className="text-lg text-slate-300 text-center mb-12 max-w-3xl mx-auto">
-              Our process is simple and designed to deliver actionable insights quickly.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Step 1 */}
-              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-indigo-500/20 hover:border-indigo-600/80 transform hover:-translate-y-1">
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl font-bold text-indigo-400 mr-3">1</span>
-                  <div className="p-2 rounded-lg bg-indigo-500/20">
-                    <ArrowDownToLine className="w-6 h-6 text-indigo-300" />
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Upload Report</h3>
-                <p className="text-sm text-slate-300">Securely upload your KDP Ads performance report (CSV).</p>
-              </div>
-              
-              {/* Step 2 */}
-              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-600/80 transform hover:-translate-y-1">
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl font-bold text-cyan-400 mr-3">2</span>
-                  <div className="p-2 rounded-lg bg-cyan-500/20">
-                    <Cpu className="w-6 h-6 text-cyan-300" />
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Instant Analysis</h3>
-                <p className="text-sm text-slate-300">Our engine analyzes your data, identifying performance issues, money wasters (negative keywords), and optimization opportunities for bids and match types.</p>
-              </div>
 
-              {/* Step 3 */}
-              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-purple-500/20 hover:border-purple-600/80 transform hover:-translate-y-1">
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl font-bold text-purple-400 mr-3">3</span>
-                  <div className="p-2 rounded-lg bg-purple-500/20">
-                    <ListChecks className="w-6 h-6 text-purple-300" />
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Clear Action Plan</h3>
-                <p className="text-sm text-slate-300">Review your personalized action plan: a list of negative keywords to copy, bid recommendations for manual adjustments in KDP, and match type suggestions.</p>
-              </div>
-
-              {/* Step 4 */}
-              <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-600/80 transform hover:-translate-y-1">
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl font-bold text-emerald-400 mr-3">4</span>
-                  <div className="p-2 rounded-lg bg-emerald-500/20">
-                    <Rocket className="w-6 h-6 text-emerald-300" />
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Implement & Profit</h3>
-                <p className="text-sm text-slate-300">Copy the negative keywords. Use the detailed analysis (also available as Excel export) as a guide for manually adjusting your bids in the KDP Ads Dashboard.</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section id="faq" className="w-full py-20 px-4 bg-transparent">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
-            
+{{ ... }}
             <div className="space-y-6">
               {/* FAQ Item 1 */}
               <div className="bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700/50 overflow-hidden">
