@@ -69,7 +69,7 @@ export default function AdBudgetGuardianSummary() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="relative space-y-12 rounded-3xl px-4 lg:px-8 py-14 lg:py-20 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
+      className="relative rounded-3xl px-4 lg:px-8 py-10 lg:py-16 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
     >
       {/* radial spotlight */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-[#1e3a8a]/20 blur-3xl" />
