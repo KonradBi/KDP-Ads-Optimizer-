@@ -373,7 +373,7 @@ const TestimonialSection = () => {
   ];
   
   return (
-    <div className="py-12 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900">
+    <div className="py-12 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900">
       <div className="container mx-auto max-w-6xl px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-3">What Authors Are Saying</h2>
         <p className="text-lg text-center text-slate-400 mb-12">Real results from writers just like you</p>
@@ -524,7 +524,7 @@ export default function Home() {
     <>
       <main className="flex min-h-screen flex-col items-center overflow-x-hidden bg-[#232F3E]">
         {/* Hero Section */}
-        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900 overflow-hidden">
+        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-10"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -581,7 +581,7 @@ export default function Home() {
         </section>
 
         {/* Feature Section 1 */}
-        <section id="features" className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900 overflow-hidden">
+        <section id="features" className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900 overflow-hidden">
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-xl border border-slate-700/80 hover:shadow-amber-500/10 transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -628,7 +628,7 @@ export default function Home() {
         </section>
 
         {/* Feature Section 2 - UPDATED HEADING */}
-        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900">
+        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900">
           <div className="container mx-auto max-w-6xl">
             <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -674,7 +674,7 @@ export default function Home() {
         </section>
 
         {/* Feature Section 3 - UPDATED HEADING */}
-        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900">
+        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900">
           <div className="container mx-auto max-w-6xl">
             <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -720,7 +720,7 @@ export default function Home() {
         </section>
 
         {/* NEW PERFORMANCE BOOSTER PREVIEW SECTION */}
-        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900">
+        <section className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Your Personal Profit Acceleration Plan</h2>
@@ -781,7 +781,7 @@ export default function Home() {
         <TestimonialSection />
 
         {/* How It Works */}
-        <section id="how-it-works" className="py-16 lg:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900 overflow-hidden">
+        <section id="how-it-works" className="py-16 lg:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900 overflow-hidden">
           <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-slate-100 mb-4 drop-shadow-lg">Transform Data Into Profit:</h2>
             <p className="text-lg text-slate-200 text-center mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -841,7 +841,7 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-amber-950/80 to-slate-900 overflow-hidden">
+        <section id="faq" className="w-full py-20 px-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900 overflow-hidden">
           <div className="container mx-auto max-w-4xl relative z-10">
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-slate-100 mb-12 drop-shadow-lg">Frequently Asked Questions</h2>
             
