@@ -534,9 +534,7 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/40 to-transparent"></div>
           
           {/* Restoring container and grid structure */}
-          <div className="container mx-auto max-w-6xl relative z-10">
-            <div className="max-w-5xl bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto max-w-6xl relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto p-0">
                 <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
                   <AdBudgetGuardianSummary />
                 </div>
