@@ -471,7 +471,7 @@ export default function Home() {
     <>
       <main className="flex min-h-screen flex-col items-center overflow-x-hidden bg-[#232F3E]">
         {/* Hero Section - Added pt-20 */}
-        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24">
+        <section className="relative w-full pt-20 pb-16 px-4 md:px-6 lg:pt-32 lg:pb-24 overflow-hidden">
           <div className="absolute inset-0 z-0 bg-[url('/bg-grid.svg')] bg-center opacity-5"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -533,16 +533,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/10 via-transparent to-transparent"></div>
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/40 to-transparent"></div>
           
-          {/* AdBudgetGuardianSummary moved out for full width */}
-          <div className="mb-12"> {/* Add some margin below the full-width component */}
-            <AdBudgetGuardianSummary />
-          </div>
-
-          {/* Remaining content stays within the container */}
+          {/* Restoring container and grid structure */}
           <div className="container mx-auto max-w-6xl relative z-10">
-            <div className="max-w-3xl mx-auto text-center lg:text-left lg:mx-0 lg:max-w-none bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
-              {/* Removed the grid layout, placing text content directly */}
-                <div> {/* Removed order classes */} 
+            <div className="max-w-7xl mx-auto bg-slate-800/60 backdrop-blur-md rounded-xl p-8 shadow-2xl border border-slate-700/80 shadow-indigo-900/10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
+                  <AdBudgetGuardianSummary />
+                </div>
+                <div className="order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
                   <p className="text-lg text-slate-300 mb-8">
                     Spot budget-draining keywords instantly. Get fixes that work.
@@ -575,7 +573,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              {/* Removed the div that previously held AdBudgetGuardianSummary */} 
+              </div>
             </div>
           </div>
         </section>
