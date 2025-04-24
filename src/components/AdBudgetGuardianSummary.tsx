@@ -57,6 +57,7 @@ function Bar({ label, value, color, delay }: { label: string; value: number; col
   );
 }
 
+// ---------------- Component ----------------
 export default function AdBudgetGuardianSummary() {
   useEffect(() => {
     document.documentElement.style.setProperty("--tw-ring-offset-shadow", "0 0 #0000");
@@ -68,26 +69,52 @@ export default function AdBudgetGuardianSummary() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="relative space-y-20 rounded-3xl px-4 py-10 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
+      className="relative space-y-12 rounded-3xl px-8 lg:px-14 py-14 lg:py-20 overflow-hidden ring-1 ring-white/5 shadow-2xl shadow-black/50 bg-gradient-to-br from-[#0a0f1a] via-[#0b1321] to-[#05070c]"
     >
       {/* radial spotlight */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-[#1e3a8a]/20 blur-3xl" />
 
+      {/* Headline & Bullets */}
+      <div className="mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-2">Your Ad Budget Guardian <span className="text-2xl">💰</span></h2>
+        <p className="text-lg text-slate-300 mb-6">Spot budget-draining keywords instantly. Get fixes that work.</p>
+        <ul className="space-y-3 mb-8">
+          <li className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
+              <Check className="w-4 h-4" />
+            </span>
+            <span className="text-slate-200 text-base">Identify budget-draining keywords with precision</span>
+          </li>
+          <li className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
+              <Check className="w-4 h-4" />
+            </span>
+            <span className="text-slate-200 text-base">Get clear, actionable optimization steps</span>
+          </li>
+          <li className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#FF9900]/15 text-[#FF9900]">
+              <Check className="w-4 h-4" />
+            </span>
+            <span className="text-slate-200 text-base">Reduce ad spend by up to 25% immediately</span>
+          </li>
+        </ul>
+      </div>
+
       {/* KPI GRID */}
-      <motion.div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+      <motion.div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
         {CARDS.map(({ color, ...c }) => (
           <motion.div
             key={c.title}
             variants={cardV}
             whileHover={{ y: -5, scale: 1.04 }}
-            className={`relative overflow-hidden rounded-2xl p-6 ring-1 backdrop-blur-2xl ${ring(color as ColorKey)}`}
+            className={`relative overflow-hidden rounded-2xl p-8 ring-1 backdrop-blur-2xl ${ring(color as ColorKey)}`}
           >
             <div className={`absolute inset-0 bg-gradient-to-br ${gradient(color as ColorKey)}`} />
             <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]" style={{ maskImage: "linear-gradient(to bottom, rgba(255,255,255,0.8), transparent)" }} />
 
             <div className="relative z-10 text-white space-y-1">
               <p className="text-[13px] font-semibold uppercase tracking-wide opacity-90">{c.title}</p>
-              <p className="text-4xl font-extrabold drop-shadow-lg">{c.value}</p>
+              <p className="text-5xl font-extrabold drop-shadow-lg">{c.value}</p>
               <p className="text-xs opacity-90 leading-snug">{c.subtitle}</p>
               <p className="text-[11px] italic opacity-70 leading-snug">{c.detail}</p>
               <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase mt-3 px-2 py-0.5 rounded bg-black/30 backdrop-blur ring-1 ring-white/10">
@@ -129,67 +156,5 @@ export default function AdBudgetGuardianSummary() {
         </div>
       </motion.div>
     </motion.section>
-  );
-}
-          <p className="text-xs text-red-100/80 italic mb-2">$237.50 spent with no conversions</p>
-          <p className="text-xs font-medium bg-red-900/60 p-1 rounded border border-red-400/30">✓ Action: Add as negative keywords</p>
-        </div>
-        {/* Bid Optimization */}
-        <div className="bg-orange-600/80 p-6 rounded-xl border border-orange-500/50 shadow-lg text-white">
-          <p className="text-sm font-bold mb-1">Bid Optimization</p>
-          <p className="text-2xl font-bold mb-1">26</p>
-          <p className="text-xs text-orange-100">bid adjustments recommended</p>
-          <p className="text-xs text-orange-100/80 italic mb-2">14 decreases & 12 increases</p>
-          <p className="text-xs font-medium bg-orange-800/60 p-1 rounded border border-orange-400/30">✓ Action: Adjust bids manually in KDP</p>
-        </div>
-        {/* Match Types */}
-        <div className="bg-yellow-600/70 p-6 rounded-xl border border-yellow-500/50 shadow-lg text-white">
-          <p className="text-sm font-bold mb-1">Match Types</p>
-          <p className="text-2xl font-bold mb-1">8</p>
-          <p className="text-xs text-yellow-100">match type improvements</p>
-          <p className="text-xs text-yellow-100/80 italic mb-2">Mostly broad to phrase/exact changes</p>
-          <p className="text-xs font-medium bg-yellow-800/60 p-1 rounded border border-yellow-400/30">✓ Action: Update match types in KDP</p>
-        </div>
-        {/* ACOS Improvement */}
-        <div className="bg-green-600/80 p-6 rounded-xl border border-green-500/50 shadow-lg text-white">
-          <p className="text-sm font-bold mb-1">ACOS Improvement</p>
-          <p className="text-2xl font-bold mb-1">-9.8%</p>
-          <p className="text-xs text-green-100">potential ACOS reduction</p>
-          <p className="text-xs text-green-100/80 italic mb-2">From 42.3% down to 32.5%</p>
-          <p className="text-xs font-medium bg-green-800/60 p-1 rounded border border-green-400/30">✓ Action: Follow optimization plan</p>
-        </div>
-      </div>
-      {/* ACOS Improvement Panel */}
-      <div className="bg-slate-900/90 rounded-xl border border-slate-700/80 shadow-xl shadow-indigo-900/20 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 to-slate-900/80">
-          <h3 className="text-lg font-bold text-white flex items-center">
-            <span className="bg-indigo-600/20 p-1.5 rounded-lg mr-2">
-              {/* Icon could go here */}
-              <span className="text-indigo-400">LL</span>
-            </span>
-            ACOS Improvement
-          </h3>
-          <p className="mt-1 text-sm text-slate-300/80">See the difference optimization makes</p>
-        </div>
-        <div className="p-6">
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3">
-              <span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-2"></span>
-              <span className="text-slate-300 text-sm">Before Optimization</span>
-              <span className="ml-auto font-semibold text-white">42.3%</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="inline-block w-3 h-3 rounded-full bg-green-500 mr-2"></span>
-              <span className="text-slate-300 text-sm">After Optimization</span>
-              <span className="ml-auto font-semibold text-white">32.5%</span>
-            </div>
-            <div className="flex items-center gap-3 mt-2">
-              <span className="text-indigo-300 font-bold">↳ ACOS Reduction:</span>
-              <span className="ml-auto text-indigo-100 font-bold text-lg">-23.2%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
