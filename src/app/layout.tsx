@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0a0a23] text-slate-200`}>
+      <body className={`${inter.className} h-full bg-gradient-to-br from-[#0f172a] via-slate-900 to-black text-slate-200`}>
         <SupabaseProvider>
           <Header />
           <main>{children}</main>
