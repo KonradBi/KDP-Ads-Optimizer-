@@ -639,7 +639,7 @@ export default function Home() {
         <section id="faq" className="w-full py-20 px-4 bg-transparent">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
-{{ ... }}
+
             <div className="space-y-6">
               {/* FAQ Item 1 */}
               <div className="bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700/50 overflow-hidden">
