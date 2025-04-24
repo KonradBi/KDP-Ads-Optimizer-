@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import Image from "next/image";
 import KeywordSpectrumSection from "../components/KeywordSpectrumSection";
+import { motion, useInView, AnimatePresence, Variants } from 'framer-motion'; // Added useInView
 
 const BidAdjustmentMockup = () => {
   const bidAdjustments = [
@@ -132,110 +133,147 @@ const PainPointsPreviewMockup = () => {
 
 // Animated ACOS Comparison Component with improved animations
 const AnimatedAcosComparison = () => {
-  // Force animation to be always shown for demo purposes
-  const [isAnimating, setIsAnimating] = useState(true);
   const [animationStep, setAnimationStep] = useState(0);
-  const compareRef = useRef<HTMLDivElement>(null);
-  
-  // Animation sequence
+  const ref = useRef(null); // Ref for viewport detection
+  const isInView = useInView(ref, { once: true, amount: 0.3 }); // Trigger when 30% visible
+
   useEffect(() => {
-    // Start with before bar
-    const step1 = setTimeout(() => setAnimationStep(1), 800);
-    // Then show after bar
-    const step2 = setTimeout(() => setAnimationStep(2), 2000);
-    // Finally show improvement
-    const step3 = setTimeout(() => setAnimationStep(3), 2800);
-    
-    // Restart animation every 8 seconds
-    const resetAnimation = setTimeout(() => {
-      setAnimationStep(0);
-      setTimeout(() => setAnimationStep(1), 400);
-      setTimeout(() => setAnimationStep(2), 1600);
-      setTimeout(() => setAnimationStep(3), 2400);
-    }, 8000);
-    
-    return () => {
-      clearTimeout(step1);
-      clearTimeout(step2);
-      clearTimeout(step3);
-      clearTimeout(resetAnimation);
-    };
-  }, []);
-  
+    if (isInView) {
+      const timers = [
+        setTimeout(() => setAnimationStep(1), 300), // Start step 1 after 300ms
+        setTimeout(() => setAnimationStep(2), 1300), // Start step 2 after 1300ms (1000ms after step 1)
+        setTimeout(() => setAnimationStep(3), 2300), // Start step 3 after 2300ms (1000ms after step 2)
+      ];
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [isInView]);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const barVariants: Variants = {
+    initial: { width: '0%' },
+    animate: (width: string) => ({
+      width: width,
+      transition: { duration: 1.5, ease: [0.25, 1, 0.5, 1] } // Smoother easing
+    })
+  };
+
+  const badgeVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 0.5, type: 'spring', stiffness: 100 }
+    }
+  };
+
   return (
-    <div ref={compareRef} className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/90 rounded-xl backdrop-blur-md border border-slate-700/80 shadow-xl shadow-indigo-900/20 overflow-hidden transform transition-all duration-500 hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-indigo-700/20">
-      <div className="px-5 py-4 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 to-slate-900/80">
+    <motion.div
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="max-w-lg mx-auto mt-8 mb-10 bg-slate-900/90 rounded-xl backdrop-blur-md border border-slate-700/80 shadow-xl shadow-indigo-900/20 overflow-hidden transform transition-all duration-500 hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-indigo-700/20"
+    >
+      <motion.div variants={itemVariants} className="px-5 py-4 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 to-slate-900/80">
         <h3 className="text-xl font-bold text-slate-100 flex items-center">
           <span className="bg-[#FF9900]/20 p-1.5 rounded-lg mr-2">
             <BarChart3 className="w-5 h-5 text-[#FF9900]" />
           </span>
-          ACOS Improvement
+          ACOS Comparison
         </h3>
         <p className="text-sm text-slate-400 ml-9">See the difference optimization makes</p>
-      </div>
+      </motion.div>
       
-      <div className="p-5 space-y-5 bg-gradient-to-b from-slate-900/60 to-slate-900/90">
-        {/* Before */}
-        <div className="relative overflow-hidden rounded-lg border border-slate-700/70 shadow-inner shadow-red-900/10">
-          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/95 z-10">
-            <div className="w-8 h-8 rounded-full bg-red-900/40 flex items-center justify-center mr-2 text-red-400 shadow-lg shadow-red-900/20">
-              <AlertCircle className="w-5 h-5" />
-            </div>
-            <span className="font-medium text-slate-300">Before Optimization</span>
-          </div>
-          <div className="h-10 bg-gradient-to-r from-red-900/30 to-red-700/30 relative">
-            <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-slate-100 font-bold text-sm transition-all duration-1500 ease-in-out"
-              style={{
-                width: animationStep >= 1 ? '42.3%' : '0%',
-                opacity: animationStep >= 1 ? 1 : 0,
-                boxShadow: '0 0 15px rgba(220, 38, 38, 0.3)'
-              }}>
+      <div className="p-5 space-y-4">
+        {/* Current ACOS Bar */}
+        <motion.div variants={itemVariants}>
+          <div className="flex justify-between items-center mb-1.5">
+            <span className="text-sm font-medium text-slate-300">Current ACOS</span>
+            <motion.span 
+              key={`current-${animationStep}`} // Re-trigger on step change if needed, might not be necessary
+              initial={{ opacity: 0 }}
+              animate={{ opacity: animationStep >= 1 ? 1 : 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-sm font-semibold text-red-400"
+            >
               42.3%
-            </div>
+            </motion.span>
           </div>
-        </div>
-        
-        {/* After */}
-        <div className="relative overflow-hidden rounded-lg border border-slate-700/70 shadow-inner shadow-green-900/10">
-          <div className="absolute inset-0 flex items-center justify-start px-4 bg-slate-800/95 z-10">
-            <div className="w-8 h-8 rounded-full bg-green-900/40 flex items-center justify-center mr-2 text-green-400 shadow-lg shadow-green-900/20">
-              <Check className="w-5 h-5" />
-            </div>
-            <span className="font-medium text-slate-300">After Optimization</span>
+          <div className="h-10 bg-gradient-to-r from-red-900/30 to-red-700/30 relative rounded overflow-hidden">
+            <motion.div
+              variants={barVariants}
+              initial="initial"
+              animate={animationStep >= 1 ? "animate" : "initial"}
+              custom="42.3%" // Pass target width
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-500/40 to-red-600/60 flex items-center justify-end pr-3 text-slate-100 font-bold text-sm"
+            >
+              {/* Text inside bar can be added if needed */}
+            </motion.div>
           </div>
-          <div className="h-10 bg-gradient-to-r from-green-900/30 to-green-700/30 relative">
-            <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-slate-100 font-bold text-sm transition-all duration-1500 ease-in-out"
-              style={{
-                width: animationStep >= 2 ? '32.5%' : '0%',
-                opacity: animationStep >= 2 ? 1 : 0,
-                boxShadow: '0 0 15px rgba(34, 197, 94, 0.3)'
-              }}>
+        </motion.div>
+
+        {/* Estimated ACOS Bar */}
+        <motion.div variants={itemVariants}>
+          <div className="flex justify-between items-center mb-1.5">
+            <span className="text-sm font-medium text-slate-300">Estimated ACOS (Optimized)</span>
+            <motion.span 
+              key={`estimated-${animationStep}`} // Re-trigger if needed
+              initial={{ opacity: 0 }}
+              animate={{ opacity: animationStep >= 2 ? 1 : 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-sm font-semibold text-green-400"
+            >
               32.5%
-            </div>
+            </motion.span>
           </div>
-        </div>
+          <div className="h-10 bg-gradient-to-r from-green-900/30 to-green-700/30 relative rounded overflow-hidden">
+            <motion.div
+              variants={barVariants}
+              initial="initial"
+              animate={animationStep >= 2 ? "animate" : "initial"}
+              custom="32.5%" // Pass target width
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500/40 to-green-600/60 flex items-center justify-end pr-3 text-slate-100 font-bold text-sm"
+            >
+              {/* Text inside bar */}
+            </motion.div>
+          </div>
+        </motion.div>
         
-        {/* Improvement */}
-        <div className="flex justify-between items-center py-3 px-5 bg-gradient-to-r from-indigo-900/40 to-indigo-800/20 rounded-lg border border-indigo-700/40 mt-3 shadow-md shadow-indigo-900/10">
+        {/* Improvement Badge */}
+        <motion.div 
+          variants={itemVariants} 
+          className="flex justify-between items-center py-3 px-5 bg-gradient-to-r from-indigo-900/40 to-indigo-800/20 rounded-lg border border-indigo-700/40 mt-3 shadow-md shadow-indigo-900/10"
+        >
           <span className="text-slate-100 font-medium flex items-center">
             <TrendingDown className="w-4 h-4 mr-1.5 text-[#FF9900]" />
             ACOS Reduction:
           </span>
-          <span 
-            className="text-lg font-bold text-indigo-300 transition-all duration-1000 bg-indigo-900/30 px-3 py-1 rounded-full"
-            style={{ 
-              opacity: animationStep >= 3 ? 1 : 0,
-              transform: animationStep >= 3 ? 'translateY(0)' : 'translateY(10px)',
-              boxShadow: animationStep >= 3 ? '0 0 15px rgba(99, 102, 241, 0.3)' : 'none'
-            }}
+          <motion.span
+            key={`badge-${animationStep}`} // Re-trigger animation
+            variants={badgeVariants}
+            initial="hidden"
+            animate={animationStep >= 3 ? "visible" : "hidden"}
+            className="text-lg font-bold text-indigo-300 bg-indigo-900/50 px-3 py-1 rounded-full shadow-md shadow-indigo-900/30"
           >
-            -23.2%
-          </span>
-        </div>
+            -23.2% 
+          </motion.span>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
