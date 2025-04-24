@@ -533,43 +533,42 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/10 via-transparent to-transparent"></div>
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/40 to-transparent"></div>
           
-          {/* Restoring container and grid structure */}
-          <div className="container mx-auto max-w-6xl relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto p-0">
-                <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
-                  <AdBudgetGuardianSummary />
-                </div>
-                <div className="order-1 lg:order-2">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
-                  <p className="text-lg text-slate-300 mb-8">
-                    Spot budget-draining keywords instantly. Get fixes that work.
-                  </p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Identify budget-draining keywords with precision</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Get clear, actionable optimization steps</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
-                        <Check className="h-5 w-5 text-[#FF9900]" />
-                      </div>
-                      <p className="text-slate-300">Reduce ad spend by up to 25% immediately</p>
-                    </li>
-                  </ul>
-                  {/* NEW CTA */}
-                  <div className="mt-8">
-                    <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
-                      Find Your Wasteful Keywords
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </div>
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto p-0">
+              <div className="order-2 lg:order-1 transform hover:scale-105 transition-transform duration-500">
+                <AdBudgetGuardianSummary />
+              </div>
+              <div className="order-1 lg:order-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Your Ad Budget Guardian 💰</h2>
+                <p className="text-lg text-slate-300 mb-8">
+                  Spot budget-draining keywords instantly. Get fixes that work.
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
+                    </div>
+                    <p className="text-slate-300">Identify budget-draining keywords with precision</p>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
+                    </div>
+                    <p className="text-slate-300">Get clear, actionable optimization steps</p>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 p-1 bg-[#FF9900]/20 rounded-full mr-3">
+                      <Check className="h-5 w-5 text-[#FF9900]" />
+                    </div>
+                    <p className="text-slate-300">Reduce ad spend by up to 25% immediately</p>
+                  </li>
+                </ul>
+                {/* NEW CTA */}
+                <div className="mt-8">
+                  <Link href="/upload" className="inline-flex items-center px-5 py-2.5 bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] font-medium rounded-lg transition-all shadow-lg">
+                    Find Your Wasteful Keywords
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>
