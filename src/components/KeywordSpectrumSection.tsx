@@ -110,8 +110,10 @@ export default function KeywordActionPlanSection() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-900 via-indigo-900 to-black px-4">
-      <div className="relative z-10 container mx-auto max-w-6xl text-center">
+    // Apply standard section styling: full width, radial gradient background, padding
+    <section className="w-full py-16 lg:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/60 via-slate-900 to-slate-900 overflow-hidden">
+      {/* Container for content alignment and max-width */}
+      <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Keyword Action Plan</h2>
         <p className="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Click a step to preview the optimisation phase.</p>
 
