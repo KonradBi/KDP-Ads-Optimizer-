@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useSupabase } from './SupabaseProvider';
+import { useRouter } from 'next/navigation';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface LoginModalProps {
 
 export default function LoginModal({ isOpen, onClose, redirectTo }: LoginModalProps) {
   const { supabaseClient } = useSupabase();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -57,11 +59,21 @@ export default function LoginModal({ isOpen, onClose, redirectTo }: LoginModalPr
           }
         } else {
           setMessage('Login erfolgreich!');
-          setDisableFields(true);
-          setTimeout(() => {
-            setDisableFields(false);
-            onClose();
-          }, 1000);
+          setDisableFields(true); // Keep fields disabled while navigating
+
+          if (redirectTo) {
+            // Redirect if a specific URL was provided
+            console.log('Login successful, redirecting to:', redirectTo); // Add log
+            router.push(redirectTo);
+            // No need to call onClose if we are redirecting
+          } else {
+            // Default behavior: close the modal
+            console.log('Login successful, closing modal (no redirect specified).'); // Add log
+            setTimeout(() => { // Keep timeout for visual feedback before close
+              setDisableFields(false);
+              onClose();
+            }, 1000);
+          }
         }
       } else {
         // Registrierung
