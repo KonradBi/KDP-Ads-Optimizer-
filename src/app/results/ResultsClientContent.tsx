@@ -128,7 +128,7 @@ const recalculateNetOptimizationPotential = (
 // --- MAIN CLIENT COMPONENT ---
 export default function ResultsClientContent() { // Renamed from ResultsPage
   const searchParams = useSearchParams(); // Moved useSearchParams here
-  const { session } = useSupabase();
+  const { session, supabaseClient } = useSupabase();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -155,37 +155,52 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
     const sessionId = searchParams.get('session_id');
     const analysisId = searchParams.get('analysis_id'); // <-- Get analysis_id
 
-    // Wait until session is loaded and has an access token, AND we have the required IDs
-    if (!sessionId || !analysisId || !session) {
-      // If session is explicitly null (loading done, but no session), or IDs missing
-      if ((session === null && !isLoading) || !sessionId || !analysisId) {
-           setError('Missing required information or session. Please ensure you are logged in and followed the payment link correctly, or try uploading again.');
-           setIsLoading(false);
+    // --- Helper: Fetch Analysis Data Directly by ID ---
+    const fetchAnalysisDirectly = async (id: string) => {
+      console.log('Fetching analysis directly for ID:', id);
+      setIsLoading(true);
+      setError(null);
+      try {
+        if (!session?.user?.id) {
+          throw new Error('User not authenticated.');
+        }
+        
+        // Fetch from analysis_results, ensuring user ownership via purchases table
+        const { data: analysisData, error: analysisError } = await supabaseClient
+          .from('analysis_results')
+          .select('*, purchases!inner(user_id)') // Use inner join to ensure ownership
+          .eq('id', id)
+          .eq('purchases.user_id', session.user.id)
+          .maybeSingle(); // Use maybeSingle as ID is unique
+
+        if (analysisError) throw analysisError;
+
+        if (!analysisData) {
+          throw new Error('Analysis not found or you do not have permission to view it.');
+        }
+
+        console.log('Direct fetch analysis result:', analysisData);
+        setAnalysisResult(analysisData as AnalysisResult);
+        setIsPaid(true); // Assume paid if analysis exists and is owned
+
+      } catch (err: any) {
+        console.error('Error fetching analysis directly:', err);
+        setError(err.message || 'Failed to load analysis data.');
+      } finally {
+        setIsLoading(false);
       }
-      // Still loading session or missing IDs, wait
-      return;
-    }
+    };
 
-    // Check specifically for the access token now that session is guaranteed to be an object
-    if (!session.access_token) {
-        console.warn('Session exists, but access token is missing. Waiting...');
-        // Optionally set loading or error state here if needed
-        // setError('Authentication token not yet available. Please wait or refresh.');
-        // setIsLoading(false);
-        return; // Wait for the token
-    }
-
-    // --- If session ID, analysis ID, and token are present, verify and fetch ---
-    const verifyAndFetch = async () => {
+    // --- Helper: Verify Payment via Stripe Session ID and Fetch Analysis ---
+    const verifyAndFetchViaSession = async (sid: string) => {
       setIsLoading(true);
       setError(null);
       try {
         // 1. Verify Payment
-        console.log('Verifying payment for session:', sessionId);
-        const verifyResponse = await fetch(`/api/payment/verify?session_id=${sessionId}`);
+        console.log('Verifying payment for session:', sid);
+        const verifyResponse = await fetch(`/api/payment/verify?session_id=${sid}`);
         if (!verifyResponse.ok) {
             const verifyError = await verifyResponse.json().catch(() => ({error: 'Payment verification failed'}));
-            // Differentiate 401/403 errors if the verify endpoint uses them
             if (verifyResponse.status === 401 || verifyResponse.status === 403) {
                  throw new Error('Unauthorized to verify payment. Please ensure you are logged in.');
             } else {
@@ -195,51 +210,61 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
         const verifyResult = await verifyResponse.json();
         console.log('Payment verification result:', verifyResult);
 
-        if (verifyResult.paid) {
+        if (verifyResult.paid && verifyResult.analysisId) {
           setIsPaid(true);
-          console.log('Payment verified. Fetching analysis for ID:', analysisId, 'with token:', session.access_token ? 'present' : 'MISSING'); // Log token presence
-
-          // 2. Fetch Analysis Result using analysisId
-          const analysisResponse = await fetch(`/api/analysis/${analysisId}`, {
-            headers: {
-              Authorization: `Bearer ${session.access_token}`, // Token is guaranteed here
-            },
-            // Removed credentials: 'include' - Supabase handles auth via header
-          });
-
-          if (!analysisResponse.ok) {
-              const analysisError = await analysisResponse.json().catch(() => ({error: 'Failed to load analysis results'}));
-              // Be more specific about auth errors
-              if (analysisResponse.status === 401) {
-                  throw new Error('Unauthorized: Invalid or expired token. Please log in again.');
-              } else if (analysisResponse.status === 403) {
-                  throw new Error('Forbidden: You do not have permission to access this analysis.');
-              }
-              throw new Error(analysisError.error || 'Failed to load analysis results');
-          }
-          const analysisData = await analysisResponse.json();
-          console.log('Analysis data fetched successfully:', analysisData);
-          setAnalysisResult(analysisData); // <-- Set state with fetched data
-
+          console.log('Payment verified. Fetching analysis for ID:', verifyResult.analysisId);
+          // Fetch analysis using the ID returned by verification
+          await fetchAnalysisDirectly(verifyResult.analysisId);
         } else {
-          // Payment not completed or verification issue
-           console.warn('Payment not verified as paid.');
-           setError('Payment has not been completed or could not be verified.');
-           setIsPaid(false); // Ensure isPaid is false
+          throw new Error('Payment not completed or analysis link failed.');
         }
-
-      } catch (err: any) {
-        console.error('Error verifying payment or fetching analysis:', err);
-        setError(err.message || 'An unexpected error occurred.');
-        setIsPaid(false); // Ensure isPaid is false on error
-      } finally {
+      } catch (err: any) { 
+        console.error('Error in verify/fetch via session:', err);
+        setError(err.message || 'An error occurred during payment verification or data loading.');
         setIsLoading(false);
       }
+      // setLoading(false) is handled within fetchAnalysisDirectly on success/error
     };
 
-    verifyAndFetch();
+    // --- Decision Logic ---
+    // Wait for session
+    if (session === undefined) {
+      console.log('Session is undefined, waiting...');
+      setIsLoading(true); // Explicitly set loading while waiting for session
+      return;
+    }
+    // If session is null (loading done, no user)
+    if (session === null) {
+      setError('Please log in to view analysis results.');
+      setIsLoading(false);
+      return;
+    }
+    // If session exists but no access token (should be rare with SupabaseProvider)
+    if (!session.access_token) {
+      console.warn('Session exists, but access token is missing. Waiting...');
+      // Keep loading or set specific error
+      // setError('Authentication token not yet available. Please wait or refresh.');
+      setIsLoading(true); 
+      return; 
+    }
 
-  }, [searchParams, session]); // <-- REMOVED isLoading from dependencies
+    // Now session is confirmed and has a token
+    if (analysisId && !sessionId) {
+      // Case 1: Navigated from Dashboard (only analysis_id)
+      console.log('Mode: Dashboard Navigation (analysis_id only)');
+      fetchAnalysisDirectly(analysisId);
+    } else if (sessionId) {
+      // Case 2: Redirect from Stripe (session_id is present)
+      console.log('Mode: Stripe Redirect (session_id present)');
+      verifyAndFetchViaSession(sessionId);
+    } else {
+      // Case 3: Missing necessary IDs
+      console.error('Missing analysis_id or session_id in URL');
+      setError('Missing required information in URL.');
+      setIsLoading(false);
+    }
+
+  }, [searchParams, session, supabaseClient]); // Add supabaseClient dependency
 
   const handleRoyaltySave = useCallback(() => {
     const newRoyalty = parseFloat(royaltyInput);
@@ -351,7 +376,7 @@ export default function ResultsClientContent() { // Renamed from ResultsPage
 
             <h3 className="text-2xl font-bold text-white mb-3 flex items-center">
               <svg className="w-6 h-6 mr-2 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               Maximize Your Profit
             </h3>

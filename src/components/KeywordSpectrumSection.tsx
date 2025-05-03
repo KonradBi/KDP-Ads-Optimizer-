@@ -36,13 +36,23 @@ const STEPS = [
   { title: "Optimise Ad Group Structure", description: "Sort by bid category" },
 ];
 
-const TOTAL_PROFIT = 120;
-const PROFIT_PER_STEP = Math.floor(TOTAL_PROFIT / STEPS.length);
+// Profit Boost als Prozentsatz
+const STEP_PROFITS_PERCENT = [18, 26, 35, 35];
 
 export default function KeywordActionPlanSection() {
   const controls = useAnimation();
   const [activeStep, setActiveStep] = useState(0);
-  const [profit, setProfit] = useState(PROFIT_PER_STEP);
+  const [profitPercent, setProfitPercent] = useState(STEP_PROFITS_PERCENT[0]);
+  
+  // Auto-Animation durch die Schritte
+  useEffect(() => {
+    // Starte mit Step 1, gehe durch zu Step 4 in 5s Intervallen
+    const autoInterval = setInterval(() => {
+      setActiveStep(prev => (prev < STEPS.length - 1 ? prev + 1 : 0));
+    }, 5000);
+    
+    return () => clearInterval(autoInterval);
+  }, []);
 
   // CATEGORY INDICES -------------------------------------
   const wasteful = useMemo(() => new Set(KEYWORDS.filter((_, i) => i % 3 === 0)), []);
@@ -59,7 +69,7 @@ export default function KeywordActionPlanSection() {
   // handle step change
   useEffect(() => {
     controls.start(stepKey(activeStep));
-    setProfit(PROFIT_PER_STEP * (activeStep + 1));
+    setProfitPercent(STEP_PROFITS_PERCENT[activeStep]);
   }, [activeStep, controls]);
 
   // helper
@@ -78,46 +88,111 @@ export default function KeywordActionPlanSection() {
   const cardVariants: Variants = {
     initial: { opacity: 1, rotateY: 0, scale: 1 },
 
-    eliminate: (i: number) => ({
-      opacity: wasteful.has(KEYWORDS[i]) ? 0 : 1,
-      scale: wasteful.has(KEYWORDS[i]) ? 0 : 1,
-      transition: { duration: 2.5, ease: "easeInOut" },
-    }),
-
-    bids: (i: number) => {
-      const kw = KEYWORDS[i];
-      if (wasteful.has(kw)) return { opacity: 0, scale: 0 };
-      const lower = lowBidSet.has(kw);
+    eliminate: (i: number) => {
+      const isWasteful = wasteful.has(KEYWORDS[i]);
       return {
-        y: lower ? [0, 6, 0] : [0, -6, 0],
-        scale: lower ? [1, 0.9, 1] : [1, 1.25, 1],
-        backgroundColor: lower
-          ? ["#38bdf8", "#0ea5e9", "#38bdf8"] // cyan shades for lower bids
-          : ["#4ade80", "#22c55e", "#4ade80"], // green shades for higher bids
-        boxShadow: lower
-          ? ["0 0 0px transparent", "0 0 6px rgba(14,165,233,0.6)", "0 0 0px transparent"]
-          : ["0 0 0px transparent", "0 0 10px rgba(34,197,94,0.7)", "0 0 0px transparent"],
-        transition: { duration: 1 },
+        backgroundColor: isWasteful ? ["#64748b", "#b91c1c", "#b91c1c"] : "#64748b", 
+        opacity: isWasteful ? [1, 1, 0] : 1, 
+        scale: isWasteful ? [1, 1, 0] : 1, 
+        transition: {
+          duration: 2.0, 
+          times: [0, 0.3, 1], 
+          ease: "easeInOut",
+        },
       };
     },
 
-    flip: (i: number) => ({
-      rotateY: phraseSet.has(KEYWORDS[i]) ? [0, 180, 0] : 0,
-      transition: { duration: phraseSet.has(KEYWORDS[i]) ? 1.2 : 0 },
-    }),
+    bids: (i: number) => {
+      const kw = KEYWORDS[i];
+      const isLowBid = lowBidSet.has(kw);
+      const isHighBid = highBidSet.has(kw);
 
-    reorder: { opacity: 1 },
+      // Determine target colors based on bid direction
+      const startBg = "#64748b"; // Base slate color
+      let peakBg: string;
+      let endBg: string;
+      let targetScale: number;
+      let targetShadow: string;
+
+      if (isLowBid) {
+        peakBg = "#dc2626"; // Peak red-orange
+        endBg = startBg; // Return to slate
+        targetScale = 0.9;
+        targetShadow = "rgba(220,38,38,0.6)";
+      } else if (isHighBid) {
+        peakBg = "#16a34a"; // Peak green
+        endBg = "#22c55e"; // Stay green
+        targetScale = 1.25;
+        targetShadow = "rgba(22,163,74,0.7)"; // Green shadow
+      } else {
+        // Neutral keywords don't change color in this step
+        peakBg = startBg;
+        endBg = startBg;
+        targetScale = 1;
+        targetShadow = "transparent";
+      }
+
+      return {
+        // Animate background color: Start -> Peak -> End
+        backgroundColor: [startBg, peakBg, endBg],
+        // Animate scale
+        scale: [1, targetScale, 1],
+        // Animate shadow for emphasis
+        boxShadow: [
+            "0 0 0px transparent",
+            `0 0 10px ${targetShadow}`,
+            "0 0 0px transparent"
+        ],
+        transition: { duration: 1.2, ease: "easeInOut", times: [0, 0.5, 1] },
+      };
+    },
+
+    flip: (i: number) => {
+      const kw = KEYWORDS[i];
+      const isWastefulKeyword = wasteful.has(kw);
+      const shouldFlip = !isWastefulKeyword && phraseSet.has(kw);
+      // Determine persistent color from step 2
+      const persistentColor = highBidSet.has(kw) ? "#22c55e" : "#64748b"; // Green if high bid, else slate
+
+      return {
+        rotateY: shouldFlip ? [0, 180, 0] : 0,
+        transition: { duration: shouldFlip ? 1.2 : 0 },
+        // Maintain color from previous step
+        backgroundColor: persistentColor,
+        scale: 1, // Ensure scale is reset
+        boxShadow: "0 0 0px transparent" // Ensure shadow is reset
+      };
+    },
+
+    reorder: (i: number) => {
+      const kw = KEYWORDS[i];
+      // Determine final group color for step 4
+      let finalColor = "#64748b"; // Default to slate (neutral)
+      if (highBidSet.has(kw)) {
+        finalColor = "#22c55e"; // Green for increased bids
+      } else if (lowBidSet.has(kw)) {
+        finalColor = "#3b82f6"; // Blue for decreased bids
+      }
+      // Wasteful keywords should stay hidden
+      const isWastefulKeyword = wasteful.has(kw);
+
+      return {
+        opacity: isWastefulKeyword ? 0 : 1,
+        scale: isWastefulKeyword ? 0 : 1, // Keep wasteful hidden
+        backgroundColor: finalColor,
+        rotateY: 0,
+        boxShadow: "0 0 0px transparent"
+      };
+    },
   };
 
   return (
-    // Apply standard section styling: full width, radial gradient background, padding
-    <section className="w-full py-16 lg:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/30 via-amber-950/40 via-slate-900/80 to-slate-900 overflow-hidden">
-      {/* Container for content alignment and max-width */}
+    // Reverted: Removed negative margins - full width handled by parent
+    <section className="w-full py-16 lg:py-24 overflow-hidden">
       <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Keyword Action Plan</h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Guided Action Plan</h2>
         <p className="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Click a step to preview the optimisation phase.</p>
 
-        {/* Keyword Grid */}
         <motion.div layout className="flex flex-wrap justify-center gap-3 mb-12">
           {ordered.map((kw) => {
             const i = KEYWORDS.indexOf(kw);
@@ -130,12 +205,11 @@ export default function KeywordActionPlanSection() {
                 animate={controls}
                 layout
                 style={{ transformStyle: "preserve-3d" }}
-                className="relative px-4 py-2 rounded-lg text-sm font-medium shadow-md bg-indigo-600 text-white select-none"
+                className="relative px-4 py-2 rounded-lg text-sm font-medium shadow-xl bg-slate-600 text-white select-none"
               >
-                {/* spacer */}
                 <span className="invisible">{kw}</span>
                 <div style={{ backfaceVisibility: "hidden" }} className="absolute inset-0 flex items-center justify-center">{kw}</div>
-                <div style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }} className="absolute inset-0 flex items-center justify-center bg-blue-800 rounded-lg">
+                <div style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }} className="absolute inset-0 flex items-center justify-center bg-blue-500 rounded-lg">
                   Phrase Match
                 </div>
               </motion.div>
@@ -143,7 +217,6 @@ export default function KeywordActionPlanSection() {
           })}
         </motion.div>
 
-        {/* Steps */}
         <ul className="space-y-4 mb-12 max-w-md mx-auto text-left">
           {STEPS.map(({ title, description }, idx) => (
             <motion.li
@@ -165,11 +238,10 @@ export default function KeywordActionPlanSection() {
           ))}
         </ul>
 
-        {/* Profit */}
         <div className="flex items-center justify-center space-x-2">
-          <span className="text-2xl text-slate-300">Total Profit:</span>
-          <motion.span key={profit} className="text-5xl font-black text-green-400 drop-shadow-2xl" initial={{ scale: 1 }} animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 0.6 }}>
-            ${profit}
+          <span className="text-2xl text-slate-300">Profit Boost:</span>
+          <motion.span key={profitPercent} className="text-5xl font-black text-green-400 drop-shadow-2xl" initial={{ scale: 1 }} animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 0.6 }}>
+            +{profitPercent}%
           </motion.span>
         </div>
       </div>

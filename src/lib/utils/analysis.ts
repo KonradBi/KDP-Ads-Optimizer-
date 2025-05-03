@@ -71,8 +71,8 @@ const calculateGroupAverages = (groupData: AmazonAdData[]): GroupAverages => {
   const totalOrders = groupData.reduce((sum, i) => sum + (i.orders || 0), 0);
   const totalSpend = groupData.reduce((sum, i) => sum + (i.spend || 0), 0);
   const totalSales = groupData.reduce((sum, i) => sum + (i.sales || 0), 0);
-  const totalKenpRead = groupData.reduce(
-    (sum, i) => sum + (i.kenpRead || 0),
+  const totalKenp = groupData.reduce(
+    (sum, i) => sum + (i.estimatedKenpRoyalties || 0),
     0
   );
 
@@ -80,7 +80,7 @@ const calculateGroupAverages = (groupData: AmazonAdData[]): GroupAverages => {
     avgCtr: totalImpressions ? totalClicks / totalImpressions : 0,
     avgCvr: totalClicks ? totalOrders / totalClicks : 0,
     avgAcos: totalSales ? totalSpend / totalSales : 0,
-    avgKenpRate: totalClicks ? totalKenpRead / totalClicks : 0
+    avgKenpRate: totalClicks ? totalKenp / totalClicks : 0
   };
 };
 
@@ -137,7 +137,8 @@ export const analyzeAdsData = (data: AmazonAdData[]): AnalysisResult => {
     0
   );
   const totalRevenue = totalSales + totalKenp;
-
+  let totalImpressions = keywordData.reduce((t, i) => t + (i.impressions || 0), 0);
+  let totalClicks = keywordData.reduce((t, i) => t + (i.clicks || 0), 0);
   const overallEffectiveAcos = totalRevenue ? totalSpend / totalRevenue : 0;
   const effectiveRoas = totalSpend ? totalRevenue / totalSpend : 0;
 
@@ -471,6 +472,8 @@ export const analyzeAdsData = (data: AmazonAdData[]): AnalysisResult => {
       campaignStructure: campaignStructureRecommendations,
       totalSpend,
       totalSales,
+      totalImpressions,
+      totalClicks,
       averageAcos: overallEffectiveAcos,
       effectiveRoas,
       potentialSavings,

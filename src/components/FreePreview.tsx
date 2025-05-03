@@ -25,9 +25,23 @@ export default function FreePreview({ analysisResult, onUnlock }: FreePreviewPro
   // Get Potential Savings from analysis (used for the card and the unlock text)
   const potentialSavings = analysisResult.fullAnalysis.potentialSavings || 0; 
   
+  // Calculate total revenue to check for zero sales scenario
+  const totalRevenue = fullAnalysis.totalSales + (fullAnalysis.data.reduce((sum, kw) => sum + (kw.estimatedKenpRoyalties || 0), 0));
+  const noSalesDetected = totalRevenue === 0;
+
   return (
     // Use a single dark container for the entire component
     <div className="bg-slate-900 shadow-lg rounded-lg overflow-hidden w-full mx-auto">
+      {/* Banner for scenarios where the data contains zero sales */}
+      {noSalesDetected && (
+        <div className="m-6 p-4 rounded-lg border border-yellow-500/40 bg-yellow-600/20 text-yellow-200 shadow-lg">
+          <h4 className="text-lg font-semibold mb-1">No Sales Detected</h4>
+          <p className="text-sm leading-relaxed">
+            We could not find any sales in the uploaded date range. This may mean your ads have not converted yet or the period is too short. Consider widening the
+            timeframe or reviewing your campaigns. The analysis below focuses on cost savings.
+          </p>
+        </div>
+      )}
       {/* Top Section (Header + Pain Points) */}
       <div> 
         {/* Dark Header */}
@@ -106,7 +120,7 @@ export default function FreePreview({ analysisResult, onUnlock }: FreePreviewPro
                 
                 <div className="mt-4 pt-3 border-t border-orange-400/30 flex items-center">
                     <svg className="w-5 h-5 text-orange-200 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM9 9h6v6H9V9z" />
                     </svg>
                     <p className="text-sm text-orange-100">Unlock for calculated bid recommendations and profit optimization</p>
                 </div>
@@ -187,8 +201,8 @@ export default function FreePreview({ analysisResult, onUnlock }: FreePreviewPro
             {/* Visual direction hint to unlock */}
             <div className="hidden md:flex items-center text-indigo-400 text-sm font-medium animate-pulse">
               <p>Unlock full analysis</p>
-              <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
@@ -422,7 +436,7 @@ export default function FreePreview({ analysisResult, onUnlock }: FreePreviewPro
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full max-w-md px-4">
             <div className="bg-slate-800/90 backdrop-blur p-6 rounded-2xl shadow-xl border border-slate-700 text-center">
               <svg className="mx-auto h-10 w-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM9 9h6v6H9V9z" />
               </svg>
               <h3 className="mt-3 text-lg font-bold text-slate-100">Unlock Your Full Profit Potential!</h3> 
               <ul className="mt-4 space-y-2 text-sm text-slate-300 text-left px-4">

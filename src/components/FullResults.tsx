@@ -133,6 +133,9 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
   const netOpt: number = (fullAnalysis as any).netOptimizationPotential || 0;
   const totalRevenue = fullAnalysis.totalSales + (fullAnalysis.data.reduce((sum, kw) => sum + (kw.estimatedKenpRoyalties || 0), 0)); // Recalculate totalRevenue if not directly available
 
+  // Detect if there are absolutely no sales (including KENP royalties)
+  const noSalesDetected = totalRevenue === 0;
+
   // Calculate current profit from ads and percentage improvement
   const currentProfitFromAds = totalRevenue - fullAnalysis.totalSpend;
   let percentageImprovementText = "";
@@ -409,6 +412,16 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
   
   return (
     <>
+      {/* Banner for scenarios where the data contains zero sales */}
+      {noSalesDetected && (
+        <div className="mb-6 p-4 rounded-lg border border-yellow-500/40 bg-yellow-600/20 text-yellow-200 shadow-lg">
+          <h4 className="text-lg font-semibold mb-1">No Sales Detected</h4>
+          <p className="text-sm leading-relaxed">
+            We could not find any sales in the uploaded date range. This may mean your ads have not converted yet or the period is too short. Consider widening the
+            timeframe or reviewing your campaigns for conversion opportunities.
+          </p>
+        </div>
+      )}
       <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-slate-200 shadow-xl rounded-xl overflow-hidden border border-slate-700/50 p-1"> 
         {/* Slightly inner container for padding */}
         <div className="bg-slate-800/50 rounded-lg p-6">
@@ -560,7 +573,7 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
              </div>
            </div>
 
-          {/* --- End NEW Top Stats Layout --- */}
+          {/* --- NEW Top Stats Layout --- */}
           
           {/* Pain Points Summary - ENHANCED DESIGN */}
           <div className="bg-slate-800/60 rounded-xl shadow-lg p-6 border border-slate-700/40 mb-10">
@@ -606,14 +619,17 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
             </div>
           </div>
           
-          {/* --- NEW: Render Action Plan Stepper --- */} 
-          <ActionPlanStepper 
-            fullAnalysis={fullAnalysis}
-            painPoints={painPoints}
-            onCopyNegatives={handleCopyNegatives}
-            copiedNegatives={copiedNegatives}
-          />
-          {/* --- END: Render Action Plan Stepper --- */} 
+          {/* --- NEW: Wrapper for Action Plan Stepper to give it a full-width background --- */}
+          <div className="-mx-6 px-6 py-10 my-10 bg-gradient-to-b from-slate-900 to-slate-800/80 border-t border-b border-slate-700/60 shadow-inner">
+            {/* Original Action Plan Stepper rendering */}
+            <ActionPlanStepper 
+              fullAnalysis={fullAnalysis}
+              painPoints={painPoints}
+              onCopyNegatives={handleCopyNegatives}
+              copiedNegatives={copiedNegatives}
+            />
+          </div>
+          {/* --- END: Wrapper for Action Plan Stepper --- */}
           
           {/* --- NEW: Data Freshness Reminder --- */}
           <div className="mt-6 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-lg border border-indigo-500/30 p-5 shadow-lg">

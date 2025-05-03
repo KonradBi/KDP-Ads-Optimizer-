@@ -104,7 +104,7 @@ const ActionPlanStepper: React.FC<ActionPlanStepperProps> = ({
             {filteredNegKeywords.slice(0, 25).map((kw) => (
               <span
                 key={kw}
-                className="bg-red-800/50 text-red-200 text-xs px-2 py-0.5 rounded-full"
+                className="bg-amber-700/50 text-amber-200 text-xs px-2 py-0.5 rounded-full"
               >
                 {kw}
               </span>

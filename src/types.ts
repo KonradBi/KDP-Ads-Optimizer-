@@ -100,8 +100,10 @@ export interface FullAnalysis {
   averageAcos: number; // This now represents overallEffectiveAcos (ACoTR)
   effectiveRoas?: number; // ENSURING THIS IS ADDED
   potentialSavings: number;
-  estimatedGain: number; // NEW: Estimated potential gain from boosting profitable keywords
-  analyzedKeywordsCount: number; // NEW: Total count of keywords analyzed
+  estimatedGain: number; // Estimated potential gain from boosting profitable keywords
+  analyzedKeywordsCount: number; // Total count of keywords analyzed
+  totalImpressions: number;
+  totalClicks: number;
 }
 
 // Structure for the free preview recommendation

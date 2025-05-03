@@ -1,3 +1,4 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +16,6 @@
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,5 +25,8 @@ body {
 @layer components {
   .shadow-border {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] px-6 py-3 rounded-lg font-bold text-lg transition shadow-lg;
   }
 }
