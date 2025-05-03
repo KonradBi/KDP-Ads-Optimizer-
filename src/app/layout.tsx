@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'KDP Ads Optimizer A.I. — Free Amazon Ads CSV Analysis',
   description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS. No signup. No credit card.',
+  icons: {
+    icon: '/favicon.ico', // Link to the generated favicon
+  },
   keywords: [
     'KDP ads',
     'Amazon advertising',
