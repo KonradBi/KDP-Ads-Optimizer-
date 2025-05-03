@@ -182,7 +182,8 @@ export async function GET(request: NextRequest) {
           .eq('id', analysis_result_id)
           .is('user_id', null);
       }
-      return NextResponse.json({ paid: true });
+      // Return analysis ID along with paid status
+      return NextResponse.json({ paid: true, analysisId: analysis_result_id });
     }
 
     // 2️⃣  Fallback: Fetch the session directly from Stripe
@@ -207,11 +208,24 @@ export async function GET(request: NextRequest) {
               .is('user_id', null);
           }
         }
+        // Return analysis ID along with paid status
+        return NextResponse.json({ paid: true, analysisId: purchaseRecord.analysis_result_id });
+      } else if (paid && !purchaseRecord) {
+        // This case might occur if the webhook was delayed or failed, but payment succeeded.
+        // We don't have the purchaseRecord to get analysis_id/user_id easily here.
+        // The webhook (POST handler) is the primary mechanism for updates.
+        // For verification, just confirming payment might be sufficient, 
+        // but the frontend won't get the analysisId directly in this edge case.
+        // Consider logging this scenario.
+        console.warn(`Paid session ${sessionId} verified via Stripe, but no corresponding Supabase purchase record found.`);
+        return NextResponse.json({ paid: true, analysisId: null }); // Indicate paid but no ID found
       }
+      
+      // If not paid according to Stripe
+      return NextResponse.json({ paid: false });
 
-      return NextResponse.json({ paid });
-    } catch (stripeErr: any) {
-      console.error('Stripe session retrieval failed:', stripeErr);
+    } catch (stripeError: any) {
+      console.error('Stripe session retrieval failed:', stripeError);
       return NextResponse.json({ error: 'Unable to verify payment status.' }, { status: 500 });
     }
   } catch (err: any) {
