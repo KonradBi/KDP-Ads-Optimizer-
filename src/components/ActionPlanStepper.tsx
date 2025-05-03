@@ -421,12 +421,11 @@ const ActionPlanStepper: React.FC<ActionPlanStepperProps> = ({
             </div>
             <div>
               <h3 className="text-xl font-bold text-white">{profitBoostText}</h3>
-              <p className="text-indigo-200 text-sm">With just one file upload + a few clicks</p>
             </div>
           </div>
           <div className="hidden sm:block">
             <span className="bg-white/10 px-3 py-1.5 rounded-full text-indigo-100 text-sm font-medium shadow-inner shadow-indigo-900/30 border border-white/5">
-              Download, upload, profit!
+              Analyze, Optimize, Profit!
             </span>
           </div>
         </div>
