@@ -73,7 +73,15 @@ export default function BidWhispererSection() {
         <div className="max-w-7xl mx-auto bg-gradient-to-br from-slate-800/70 via-slate-900/80 to-amber-950/50 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-slate-700/80">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Bid Whisperer 🧠</h2>
+              <motion.h2 
+                className="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                The Bid Whisperer
+              </motion.h2>
               <p className="text-lg text-slate-300 mb-8">
                 Perfect bids, every time. More sales, less waste.
               </p>

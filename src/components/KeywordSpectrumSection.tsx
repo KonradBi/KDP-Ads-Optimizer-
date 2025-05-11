@@ -190,7 +190,13 @@ export default function KeywordActionPlanSection() {
     // Reverted: Removed negative margins - full width handled by parent
     <section className="w-full py-16 lg:py-24 overflow-hidden">
       <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Guided Action Plan</h2>
+        <motion.h2 
+          className="text-4xl md:text-5xl font-bold mb-4 text-center drop-shadow-lg bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          Guided Action Plan
+        </motion.h2>
         <p className="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Click a step to preview the optimisation phase.</p>
 
         <motion.div layout className="flex flex-wrap justify-center gap-3 mb-12">

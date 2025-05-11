@@ -172,7 +172,7 @@ const ActionPlanStepper: React.FC<ActionPlanStepperProps> = ({
         <>
           {/* NEW: Display Top 5 Bid Adjustments */} 
           {top5Bids.length > 0 && (
-             <div className="mt-4 mb-5 border border-slate-700/50 rounded-lg overflow-hidden bg-slate-800/30">
+             <div className="bg-slate-800/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700/50 shadow-lg">
               <h5 className="px-3 py-2 text-xs font-semibold text-slate-300 bg-slate-700/40">
                  Top 5 Recommendations:
                </h5>
