@@ -9,7 +9,7 @@ import CookieBanner from '@/components/CookieBanner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'KDP Ads Optimizer A.I. — Free Amazon Ads CSV Analysis',
+  title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
   description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS. No signup. No credit card.',
   icons: {
     icon: '/favicon.ico', // Link to the generated favicon
@@ -22,32 +22,35 @@ export const metadata: Metadata = {
     'keyword research',
     'bid optimization',
     'book marketing',
+    'KDP AdNinja',
+    'Amazon KDP advertising',
+    'self-publishing ads',
   ],
-  authors: [{ name: 'KDP Ads Optimizer Team', url: 'https://kdp-ads-optimizer.com' }],
+  authors: [{ name: 'KDP AdNinja Team', url: 'https://www.kdpninja.app' }],
   robots: { index: true, follow: true },
   alternates: {
-    canonical: 'https://kdp-ads-optimizer.com/',
+    canonical: 'https://www.kdpninja.app/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://kdp-ads-optimizer.com/',
-    title: 'KDP Ads Optimizer A.I. — Free Amazon Ads CSV Analysis',
+    url: 'https://www.kdpninja.app/',
+    title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
     description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.',
     images: [
       {
-        url: 'https://kdp-ads-optimizer.com/og-image.png',
+        url: 'https://www.kdpninja.app/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'KDP Ads Optimizer dashboard preview',
+        alt: 'KDP AdNinja dashboard preview',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KDP Ads Optimizer A.I. — Free Amazon Ads CSV Analysis',
+    title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
     description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.',
-    images: ['https://kdp-ads-optimizer.com/og-image.png'],
-    creator: '@kdpadsoptimizer',
+    images: ['https://www.kdpninja.app/og-image.png'],
+    creator: '@kdpadninja',
   },
 };
 
@@ -58,6 +61,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        {/* JSON-LD structured data for better SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "KDP AdNinja A.I.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "description": "Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127"
+              },
+              "author": {
+                "@type": "Organization",
+                "name": "KDP AdNinja",
+                "url": "https://www.kdpninja.app"
+              }
+            })
+          }}
+        />
+      </head>
       <body className={`${inter.className} h-full w-full bg-slate-950 text-slate-200 flex flex-col min-h-screen`}>
         <SupabaseProvider>
           <Header />

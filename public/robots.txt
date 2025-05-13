@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.kdpninja.app/sitemap.xml
+
+# Disallow admin areas
+Disallow: /api/
