@@ -190,7 +190,7 @@ export default function UploadPage() {
       <div className="w-full max-w-[95%] mx-auto">
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg mb-4">
-            Amazon KDP Optimizer <span className="text-3xl md:text-5xl">A.I.</span>
+            KDP AdNinja <span className="text-3xl md:text-5xl">A.I.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300/80 max-w-2xl mx-auto">
             Upload your "Sponsored Products - Targeting" CSV export to get instant, actionable insights and recommendations.
