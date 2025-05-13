@@ -152,7 +152,7 @@ You agree not to use the Service:
         <section>
           <h2 className="text-xl font-semibold text-indigo-400 mb-2">15. Contact Information</h2>
           <p className="text-gray-300">
-            If you have any questions about these Terms, please contact us at: [Your Contact Email Address]
+            If you have any questions about these Terms, please contact us at: kdpninja@proton.me
           </p>
         </section>
       </div>
