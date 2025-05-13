@@ -29,4 +29,20 @@ body {
   .btn-primary {
     @apply inline-flex items-center justify-center bg-[#FF9900] hover:bg-[#E68A00] text-[#232F3E] px-6 py-3 rounded-lg font-bold text-lg transition shadow-lg;
   }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-bold text-lg transition shadow-lg;
+  }
+}
+
+/* Custom Dialog Styling for Browser Confirm Dialogs */
+/* Diese Styles verbessern das Aussehen der Standard-Browser-Dialoge */
+/* Hinweis: Einige dieser Styles werden nur in modernen Browsern unterstützt */
+:root {
+  --dialog-bg: rgba(15, 23, 42, 0.95);
+  --dialog-border: rgba(51, 65, 85, 0.5);
+  --dialog-text: #f8fafc;
+  --dialog-button-primary: #f59e0b;
+  --dialog-button-primary-hover: #d97706;
+  --dialog-button-secondary: #475569;
+  --dialog-button-secondary-hover: #334155;
 }

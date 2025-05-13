@@ -4,6 +4,7 @@ import { useSupabase } from '@/components/SupabaseProvider';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Trash2 } from 'lucide-react'; // Import Trash icon
+import { confirmDialog } from '@/components/ConfirmDialog';
 
 interface AnalysisRow {
   id: string;
@@ -113,7 +114,9 @@ export default function DashboardPage() {
 
   // Function to handle deletion
   const handleDeleteAnalysis = async (analysisId: string) => {
-    if (!window.confirm('Are you sure you want to delete this analysis? This action cannot be undone.')) {
+    // Verwende den benutzerdefinierten Dialog statt window.confirm
+    const confirmed = await confirmDialog('Are you sure you want to delete this analysis? This action cannot be undone.');
+    if (!confirmed) {
       return;
     }
 
@@ -205,9 +208,9 @@ export default function DashboardPage() {
         </div>
       ) : (
         <div className="grid gap-4 sm:gap-6">
-          {items.map((a) => (
+          {items.map((item) => (
             <div
-              key={a.id}
+              key={item.id}
               className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 rounded-xl overflow-hidden shadow-lg hover:shadow-amber-600/5 border border-slate-700/50 transition-all duration-300 hover:border-amber-600/30"
             >
               <div className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center">
@@ -217,7 +220,7 @@ export default function DashboardPage() {
                       <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                     </svg>
                     <p className="text-lg font-medium text-slate-100">
-                      {new Date(a.created_at).toLocaleString(undefined, {dateStyle: 'medium', timeStyle: 'short'})} 
+                      {new Date(item.created_at).toLocaleString(undefined, {dateStyle: 'medium', timeStyle: 'short'})} 
                     </p>
                   </div>
                   <p className="mt-1 ml-7 text-slate-400 text-sm">Amazon Ads Analysis</p>
@@ -226,7 +229,7 @@ export default function DashboardPage() {
                 {/* Action Buttons Wrapper */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto ml-0 sm:ml-4">
                   <Link
-                    href={`/results?analysis_id=${a.id}`}
+                    href={`/results?analysis_id=${item.id}`}
                     className="flex-grow sm:flex-grow-0 flex items-center justify-center bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-indigo-500/20 whitespace-nowrap"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -237,19 +240,17 @@ export default function DashboardPage() {
                   </Link>
                   {/* Delete Button */}
                   <button
-                    onClick={() => handleDeleteAnalysis(a.id)}
-                    disabled={deletingId === a.id} // Disable button while deleting this specific item
-                    className={`flex-grow sm:flex-grow-0 flex items-center justify-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm border ${deletingId === a.id
-                      ? 'bg-slate-600 text-slate-400 cursor-not-allowed border-slate-500'
-                      : 'bg-red-900/30 hover:bg-red-800/50 text-red-300 hover:text-red-100 border-red-700/50 hover:border-red-600'}`}
-                    aria-label="Delete Analysis"
+                    onClick={() => handleDeleteAnalysis(item.id)}
+                    disabled={deletingId === item.id}
+                    className="text-red-400 hover:text-red-300 transition-colors p-2 rounded-full hover:bg-slate-700/50"
+                    aria-label="Delete analysis"
                   >
-                    {deletingId === a.id ? (
-                       <span className="animate-spin rounded-full h-4 w-4 border-2 border-slate-400 border-t-transparent inline-block"></span>
+                    {deletingId === item.id ? (
+                      <span className="animate-spin rounded-full h-4 w-4 border-2 border-slate-400 border-t-transparent inline-block"></span>
                     ) : (
                       <Trash2 className="h-4 w-4" />
                     )}
-                    <span className="ml-2 sm:hidden">Delete</span> { /* Show text on small screens */}
+                    <span className="ml-2 sm:hidden">Delete</span>
                   </button>
                 </div>
 
