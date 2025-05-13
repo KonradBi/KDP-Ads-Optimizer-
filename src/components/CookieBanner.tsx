@@ -122,10 +122,10 @@ const CookieBanner = () => {
             <div className="flex flex-col space-y-4">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-2">Cookie-Einstellungen</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Cookie Settings</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                    Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern und den Website-Verkehr zu analysieren. 
-                    Bitte wählen Sie aus, welche Arten von Cookies Sie akzeptieren möchten.
+                    This website uses cookies to improve your experience and analyze website traffic.
+                    Please select which types of cookies you wish to accept.
                   </p>
                 </div>
                 <div className="flex space-x-3 mt-4 md:mt-0">
@@ -133,13 +133,13 @@ const CookieBanner = () => {
                     onClick={handleAcceptAll}
                     className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded text-sm font-medium"
                   >
-                    Alle akzeptieren
+                    Accept All
                   </button>
                   <button 
                     onClick={handleRejectAll}
                     className="px-4 py-2 bg-red-800 hover:bg-red-700 text-white rounded text-sm font-medium"
                   >
-                    Alle ablehnen
+                    Reject All
                   </button>
                 </div>
               </div>
@@ -147,8 +147,8 @@ const CookieBanner = () => {
               <div className="border-t border-gray-700 pt-4">
                 <div className="flex items-center justify-between py-2">
                   <div>
-                    <p className="text-sm font-medium text-white">Notwendige Cookies</p>
-                    <p className="text-xs text-gray-400">Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.</p>
+                    <p className="text-sm font-medium text-white">Essential Cookies</p>
+                    <p className="text-xs text-gray-400">These cookies are required for the basic functions of the website and cannot be disabled.</p>
                   </div>
                   <div className="bg-gray-700 rounded-full w-12 h-6 flex items-center px-1">
                     <div className="bg-green-500 w-4 h-4 rounded-full ml-auto"></div>
@@ -157,8 +157,8 @@ const CookieBanner = () => {
                 
                 <div className="flex items-center justify-between py-2">
                   <div>
-                    <p className="text-sm font-medium text-white">Analyse-Cookies</p>
-                    <p className="text-xs text-gray-400">Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.</p>
+                    <p className="text-sm font-medium text-white">Analytics Cookies</p>
+                    <p className="text-xs text-gray-400">These cookies help us understand how visitors interact with our website.</p>
                   </div>
                   <div 
                     className={`w-12 h-6 flex items-center px-1 rounded-full cursor-pointer ${analyticsConsent ? 'bg-green-700' : 'bg-gray-700'}`}
@@ -170,8 +170,8 @@ const CookieBanner = () => {
                 
                 <div className="flex items-center justify-between py-2">
                   <div>
-                    <p className="text-sm font-medium text-white">Werbe-Cookies</p>
-                    <p className="text-xs text-gray-400">Diese Cookies werden verwendet, um Ihnen relevantere Anzeigen zu zeigen und die Effektivität von Werbekampagnen zu messen.</p>
+                    <p className="text-sm font-medium text-white">Advertising Cookies</p>
+                    <p className="text-xs text-gray-400">These cookies are used to show you more relevant ads and measure the effectiveness of advertising campaigns.</p>
                   </div>
                   <div 
                     className={`w-12 h-6 flex items-center px-1 rounded-full cursor-pointer ${advertisingConsent ? 'bg-green-700' : 'bg-gray-700'}`}
@@ -184,16 +184,16 @@ const CookieBanner = () => {
               
               <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
                 <p className="text-xs text-gray-400">
-                  Weitere Informationen finden Sie in unserer{' '}
+                  For more information, please see our{' '}
                   <Link href="/privacy" className="text-indigo-400 hover:text-indigo-300 underline">
-                    Datenschutzerklärung
+                    Privacy Policy
                   </Link>.
                 </p>
                 <button 
                   onClick={handleCustomConsent}
                   className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-sm font-medium"
                 >
-                  Einstellungen speichern
+                  Save Settings
                 </button>
               </div>
             </div>
