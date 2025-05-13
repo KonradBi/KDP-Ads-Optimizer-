@@ -84,7 +84,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="text-xl font-semibold text-indigo-400 mb-2">10. Contact Us</h2>
           <p className="text-gray-300">
-            If you have any questions about this Privacy Policy, please contact us at: [Your Contact Email Address]
+            If you have any questions about this Privacy Policy, please contact us at: kdpninja@proton.me
           </p>
         </section>
       </div>
