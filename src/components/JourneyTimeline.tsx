@@ -19,6 +19,7 @@ const STEPS = [
     description: "Export your ads report from KDP dashboard",
     icon: Download,
     color: "amber",
+    gradient: "from-amber-500 to-amber-600"
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const STEPS = [
     description: "We'll analyze it securely in your browser",
     icon: Upload,
     color: "orange",
+    gradient: "from-orange-500 to-orange-600"
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ const STEPS = [
     description: "Get your personalized optimization steps",
     icon: BarChart4,
     color: "green",
+    gradient: "from-green-500 to-green-600"
   }
 ];
 
@@ -194,7 +197,7 @@ export default function JourneyTimeline() {
 
   return (
     <section className="w-full py-16 lg:py-20 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950">
-      <div className="container px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">
           Your 3-Step Journey to Optimization
         </h2>
@@ -202,53 +205,54 @@ export default function JourneyTimeline() {
         {/* Timeline Visualizer */}
         <div className="flex items-center justify-center mb-12 md:mb-16 relative">
           {/* Base Connection Line */}
-          <div className="absolute top-6 left-6 right-6 h-0.5 bg-slate-700"></div>
+          <div className="absolute top-6 left-0 right-0 h-1 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-full"></div>
           
           {/* Animated Progress Line */}
           <motion.div 
-            className="absolute top-6 left-6 h-0.5 bg-gradient-to-r from-amber-500 via-orange-500 to-green-500"
+            className="absolute top-6 left-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-green-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]"
             initial={{ width: 0 }}
             animate={{ width: `${((activeStep - 1) / (STEPS.length -1)) * 100}%` }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           />
 
           {/* Steps */}
-          <div className="relative flex justify-between">
+          <div className="relative flex justify-between w-full max-w-3xl mx-auto">
             {STEPS.map((step) => {
               const status = getStepStatus(step.id);
               const Icon = step.icon;
               const color = step.color;
-              let circleClasses = "w-12 h-12 rounded-full flex items-center justify-center relative border-2 transition-all duration-300 ";
-              let iconClasses = "w-5 h-5 transition-all duration-300 ";
-              let textClasses = "mt-3 text-center text-sm transition-opacity duration-300 ";
-              let descriptionClasses = "text-xs opacity-70 ";
+              let circleClasses = "w-14 h-14 rounded-full flex items-center justify-center relative border-2 transition-all duration-300 ";
+              let iconClasses = "w-6 h-6 transition-all duration-300 ";
+              let textClasses = "mt-4 text-center text-sm font-medium transition-opacity duration-300 ";
+              let descriptionClasses = "text-xs mt-1 opacity-80 ";
 
               if (status === 'completed') {
-                circleClasses += `bg-${color}-500/30 border-${color}-500 text-${color}-200 shadow-md shadow-${color}-500/20`;
-                iconClasses += `text-${color}-200`;
-                textClasses += `text-slate-300`;
+                circleClasses += `bg-gradient-to-br ${step.gradient} border-${color}-400 text-white shadow-lg shadow-${color}-500/30`;
+                iconClasses += `text-white`;
+                textClasses += `text-slate-200`;
                 descriptionClasses += `text-slate-400`;
               } else if (status === 'active') {
-                circleClasses += `bg-slate-700 border-${color}-400 text-${color}-300 scale-110 shadow-lg shadow-${color}-500/30 ring-2 ring-${color}-500/50 ring-offset-4 ring-offset-slate-900`;
-                iconClasses += `text-${color}-300`;
+                circleClasses += `bg-gradient-to-br ${step.gradient} border-${color}-400 text-white scale-110 shadow-xl shadow-${color}-500/40 ring-2 ring-${color}-400/70 ring-offset-4 ring-offset-slate-900`;
+                iconClasses += `text-white`;
                 textClasses += `text-white font-semibold`;
-                 descriptionClasses += `text-${color}-300/80`;
+                descriptionClasses += `text-${color}-300`;
               } else { // upcoming
-                circleClasses += `bg-slate-800 border-slate-700 text-slate-500`;
-                iconClasses += `text-slate-500`;
-                textClasses += `text-slate-500`;
-                descriptionClasses += `text-slate-600`;
+                circleClasses += `bg-slate-800/80 border-slate-600/50 text-slate-400 backdrop-blur-sm`;
+                iconClasses += `text-slate-400`;
+                textClasses += `text-slate-400`;
+                descriptionClasses += `text-slate-500`;
               }
               
               return (
-                <div key={step.id} className="flex flex-col items-center z-10">
+                <div key={step.id} className="flex flex-col items-center z-10 px-4">
                   <motion.div 
                     className={circleClasses}
                     whileHover={status !== 'active' ? { scale: 1.1 } : {}}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {status === 'completed' ? <Check className={iconClasses} /> : <Icon className={iconClasses} />}
                   </motion.div>
-                  <div className={textClasses} style={{ maxWidth: '120px' }}> {/* Limit width */} 
+                  <div className={textClasses} style={{ maxWidth: '140px' }}>
                      {step.title}
                      <p className={descriptionClasses}>{step.description}</p>
                   </div>
@@ -259,7 +263,7 @@ export default function JourneyTimeline() {
         </div>
 
         {/* Step Content Area */} 
-        <div className="relative min-h-[300px]"> {/* Ensure space for content */} 
+        <div className="relative min-h-[320px] flex justify-center"> {/* Ensure space for content */} 
            {renderStepContent()}
         </div>
 

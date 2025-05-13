@@ -9,22 +9,24 @@ import CookieBanner from '@/components/CookieBanner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
-  description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS. No signup. No credit card.',
+  title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
+  description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales. No signup required.',
   icons: {
     icon: '/favicon.ico', // Link to the generated favicon
   },
   keywords: [
-    'KDP ads',
-    'Amazon advertising',
-    'ACOS optimization',
-    'free CSV analysis',
-    'keyword research',
-    'bid optimization',
-    'book marketing',
+    'KDP ACOS optimization',
+    'Lower ACOS Amazon ads',
+    'KDP ads analysis tool',
+    'Amazon advertising optimization',
+    'KDP bid recommendations',
+    'Reduce wasted ad spend',
     'KDP AdNinja',
-    'Amazon KDP advertising',
-    'self-publishing ads',
+    'Amazon book advertising ROI',
+    'KDP sponsored ads analysis',
+    'Improve KDP ad performance',
+    'Amazon book marketing optimization',
+    'KDP advertising data analysis',
   ],
   authors: [{ name: 'KDP AdNinja Team', url: 'https://www.kdpninja.app' }],
   robots: { index: true, follow: true },
@@ -34,8 +36,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.kdpninja.app/',
-    title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
-    description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.',
+    title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
+    description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales.',
     images: [
       {
         url: 'https://www.kdpninja.app/og-image.png',
@@ -47,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KDP AdNinja A.I. — Free Amazon Ads CSV Analysis',
-    description: 'Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.',
+    title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
+    description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales.',
     images: ['https://www.kdpninja.app/og-image.png'],
     creator: '@kdpadninja',
   },
@@ -69,15 +71,17 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "KDP AdNinja A.I.",
+              "name": "KDP AdNinja - Amazon Book Advertising Tool",
               "applicationCategory": "BusinessApplication",
+              "applicationSubCategory": "AdvertisingAnalysisSoftware",
               "operatingSystem": "Web",
               "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
               },
-              "description": "Upload your Amazon KDP advertising CSV and get an instant, free analysis to cut wasted spend and lower ACOS.",
+              "description": "Stop wasting money on ineffective KDP ads. Our tool helps authors and publishers optimize their Amazon book advertising for better sales and lower costs.",
+              "keywords": "KDP ads, Amazon book advertising, lower ACOS, KDP bid recommendations, book marketing, self-publishing ads",
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",

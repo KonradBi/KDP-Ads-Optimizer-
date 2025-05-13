@@ -188,7 +188,7 @@ const TestimonialSection = () => {
       </div>
       
       {/* Content with z-index to appear above background */}
-      <div className="container px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <div className="text-center mb-16">
           <motion.h2 
             className="text-3xl md:text-4xl font-bold text-amber-500 mb-3"
@@ -506,19 +506,19 @@ export default function Home() {
                     <svg className="h-6 w-6 text-amber-500 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span><span className="text-amber-400 font-semibold">Stop Money Drains</span> - Eliminate wasteful keywords instantly</span>
+                    <span><span className="text-amber-400 font-semibold">Stop Money Drains</span> - Find and eliminate wasteful keywords that eat up your budget</span>
                   </div>
                   <div className="flex items-start">
                     <svg className="h-6 w-6 text-amber-500 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span><span className="text-amber-400 font-semibold">Fine-tune Your Bids</span> - Get dynamic bid adjustment recommendations</span>
+                    <span><span className="text-amber-400 font-semibold">Boost Your ROI</span> - Get smart bid recommendations that increase sales while lowering ACOS</span>
                   </div>
                   <div className="flex items-start">
                     <svg className="h-6 w-6 text-amber-500 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span><span className="text-amber-400 font-semibold">Increase Keyword Precision</span> - Transform broad matches into profit-driving phrases</span>
+                    <span><span className="text-amber-400 font-semibold">Unlock Hidden Gems</span> - Discover high-converting keywords your competitors are missing</span>
                   </div>
                 </div>
                 
