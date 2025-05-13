@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { SupabaseProvider } from '@/components/SupabaseProvider';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -61,6 +62,7 @@ export default function RootLayout({
         <SupabaseProvider>
           <Header />
           <main className="flex-grow bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-700/30 via-amber-800/25 via-slate-800/70 to-slate-900">{children}</main>
+          <Footer />
           <CookieBanner />
           <div id="tooltip-portal-root"></div>
         </SupabaseProvider>

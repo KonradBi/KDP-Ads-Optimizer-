@@ -733,39 +733,7 @@ export default function Home() {
 
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-16 w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <Image 
-              src="/screenshots/kdpadninja.png" 
-              alt="KDP Ads Ninja Logo"
-              width={266}
-              height={80}
-              className="h-20 w-auto mb-4"
-            />
-            <p className="text-gray-400 text-sm">
-              Optimize your Amazon KDP Ads effortlessly.
-            </p>
-            <p className="text-sm text-gray-400">2025 KDP AdNinja. All rights reserved.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-amber-500 mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#features" className="text-gray-400 hover:text-[#FF9900] transition">Features</a></li>
-              <li><a href="#faq" className="text-gray-400 hover:text-[#FF9900] transition">FAQ</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-amber-500 mb-4">Support</h4>
-            <ul className="space-y-2">
-              <li><a href="/privacy" className="text-gray-400 hover:text-[#FF9900] transition">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-gray-400 hover:text-[#FF9900] transition">Terms of Service</a></li>
-              <li><a href="mailto:kdpninja@proton.me" className="text-gray-400 hover:text-[#FF9900] transition">Contact Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      {/* Footer is now a global component in layout.tsx */}
     </>
   );
 }
