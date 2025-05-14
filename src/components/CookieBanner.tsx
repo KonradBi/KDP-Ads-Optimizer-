@@ -32,10 +32,18 @@ const CookieBanner = () => {
   
   // Function to update Google's consent mode
   const updateGoogleConsentMode = (analytics: boolean, advertising: boolean) => {
-    if (typeof window === 'undefined' || typeof window.gtag === 'undefined') return;
+    if (typeof window === 'undefined') return;
+    
+    // Make sure gtag is available
+    if (typeof window.gtag === 'undefined') {
+      console.error('Google Tag (gtag) not available when trying to update consent');
+      return;
+    }
     
     // Update consent for analytics - explicitly signal user consent
     console.log('Updating consent mode:', { analytics, advertising });
+    
+    // Use the correct consent update format
     window.gtag('consent', 'update', {
       'analytics_storage': analytics ? 'granted' : 'denied',
       'ad_storage': advertising ? 'granted' : 'denied',
@@ -52,7 +60,7 @@ const CookieBanner = () => {
           send_to: 'G-BDJ0SBH2Z3'
         });
         console.log('Page view sent after consent granted');
-      }, 100);
+      }, 300); // Increased timeout to ensure consent update is processed
     }
   };
 
