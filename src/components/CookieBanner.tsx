@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Script from 'next/script';
 
 const CookieBanner = () => {
   const [consentGiven, setConsentGiven] = useState<boolean | null>(null);
@@ -33,14 +32,7 @@ const CookieBanner = () => {
   
   // Function to update Google's consent mode
   const updateGoogleConsentMode = (analytics: boolean, advertising: boolean) => {
-    if (typeof window === 'undefined') return;
-    
-    // Make sure gtag is defined
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer.push(arguments);
-    }
-    window.gtag = window.gtag || gtag;
+    if (typeof window === 'undefined' || typeof window.gtag === 'undefined') return;
     
     // Update consent for analytics - explicitly signal user consent
     console.log('Updating consent mode:', { analytics, advertising });
@@ -103,42 +95,7 @@ const CookieBanner = () => {
 
   return (
     <>
-      {/* Google Tag Manager - Always load with default consent denied */}
-      <Script id="google-tag-manager-consent-mode" strategy="beforeInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          
-          // Default consent mode settings - all denied by default
-          gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'wait_for_update': 500
-          });
-          gtag('set', 'ads_data_redaction', true);
-        `}
-      </Script>
-      
-      {/* Google Tag Manager */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-BDJ0SBH2Z3"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'G-BDJ0SBH2Z3', {
-            'cookie_flags': 'secure;samesite=none',
-            'send_page_view': false  // We'll send page views after consent
-          });
-        `}
-      </Script>
+      {/* Google Tag Manager scripts moved to GoogleAnalytics.tsx */}
 
       {/* Custom Cookie Banner */}
       {showBanner && (
