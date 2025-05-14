@@ -33,15 +33,35 @@ const CookieBanner = () => {
   
   // Function to update Google's consent mode
   const updateGoogleConsentMode = (analytics: boolean, advertising: boolean) => {
-    if (typeof window === 'undefined' || !window.gtag) return;
+    if (typeof window === 'undefined') return;
     
-    // Update consent for analytics
+    // Make sure gtag is defined
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = window.gtag || gtag;
+    
+    // Update consent for analytics - explicitly signal user consent
+    console.log('Updating consent mode:', { analytics, advertising });
     window.gtag('consent', 'update', {
       'analytics_storage': analytics ? 'granted' : 'denied',
       'ad_storage': advertising ? 'granted' : 'denied',
       'ad_user_data': advertising ? 'granted' : 'denied',
       'ad_personalization': advertising ? 'granted' : 'denied'
     });
+    
+    // If analytics consent is granted, send a page view
+    if (analytics) {
+      setTimeout(() => {
+        window.gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+          send_to: 'G-BDJ0SBH2Z3'
+        });
+        console.log('Page view sent after consent granted');
+      }, 100);
+    }
   };
 
   const handleAcceptAll = () => {
@@ -88,6 +108,7 @@ const CookieBanner = () => {
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
           
           // Default consent mode settings - all denied by default
           gtag('consent', 'default', {
@@ -110,8 +131,12 @@ const CookieBanner = () => {
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
           gtag('js', new Date());
-          gtag('config', 'G-BDJ0SBH2Z3');
+          gtag('config', 'G-BDJ0SBH2Z3', {
+            'cookie_flags': 'secure;samesite=none',
+            'send_page_view': false  // We'll send page views after consent
+          });
         `}
       </Script>
 
