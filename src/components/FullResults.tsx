@@ -3,10 +3,36 @@
  */
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { AnalysisResult, AmazonAdData, AnalyzedKeyword, FullAnalysis, PainPoints } from '@/types';
+import { motion } from 'framer-motion';
+import { 
+  DollarSign, CheckCircle2, Target as TargetIcon, TrendingUp, Eye, ShoppingCart, Zap, PauseCircle, SearchX, 
+  HelpCircle, Download, AlertTriangle, BarChart2, CheckCircle, XCircle, 
+  TrendingUp as TrendingUpIcon, TrendingDown as TrendingDownIcon, Eye as EyeIcon 
+} from 'lucide-react';
 import * as XLSX from 'xlsx';
-import PerformanceGauge from './PerformanceGauge'; // Import the new component
-import ActionPlanStepper from './ActionPlanStepper'; // Import the new component
+import ActionPlanStepper from './ActionPlanStepper'; 
+import PerformanceGauge from './PerformanceGauge'; 
+import type { AnalysisResult, AnalyzedKeyword, FullAnalysis, PainPoints, BidRecommendation } from '@/types';
+
+// Style constants adapted from AdBudgetGuardianSummary.tsx
+const highlightCardBaseStyle = "flex items-center p-5 rounded-lg border transition-all duration-300 bg-slate-800/40 backdrop-blur-sm h-full hover:shadow-xl";
+const highlightIconContainerBaseStyle = "w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mr-4 shadow-md";
+const highlightTitleStyle = "text-xs font-medium uppercase tracking-wider opacity-80 mb-0.5";
+const highlightValueStyle = "text-xl md:text-2xl font-bold mb-1";
+const highlightDescStyle = "text-xs opacity-70 leading-snug";
+
+// Animation variants for staggering cards
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.07,
+      duration: 0.4,
+    },
+  }),
+};
 
 interface FullResultsProps {
   analysisResult: AnalysisResult;
@@ -435,143 +461,108 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
       
           {/* --- NEW Top Stats Layout --- */}
           
-          {/* Core 2x2 Financial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          {/* Core 2x2 Financial Grid & Engagement Metrics */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             {/* Total Spend */}
-            <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-indigo-500/10">
-              <div className="flex-shrink-0 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-full p-3 shadow-md">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <motion.div custom={0} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-indigo-700/30 hover:shadow-indigo-500/20`}>
+              <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-indigo-500 to-blue-600`}>
+                <DollarSign className="w-5 h-5 text-indigo-100" />
               </div>
-              <div>
-                <h4 className="text-sm font-medium text-slate-400">Total Spend</h4>
-                <span className="text-2xl font-bold text-slate-100">${fullAnalysis.totalSpend.toFixed(2)}</span>
-                <p className="text-xs text-slate-500 mt-1 max-w-[220px]">The amount you've invested in your Amazon ads campaign</p>
+              <div className="flex-grow">
+                <p className={`${highlightTitleStyle} text-indigo-300`}>Total Spend</p>
+                <p className={`${highlightValueStyle} text-slate-50`}>${fullAnalysis.totalSpend.toFixed(2)}</p>
+                <p className={`${highlightDescStyle} text-slate-400`}>The amount you've invested in your Amazon ads campaign</p>
               </div>
-            </div>
-             {/* Total Sales */}
-             <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-green-500/10">
-               <div className="flex-shrink-0 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full p-3 shadow-md">
-                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-               </div>
-               <div>
-                 <h4 className="text-sm font-medium text-slate-400">Total Sales</h4>
-                 <span className="text-2xl font-bold text-slate-100">${fullAnalysis.totalSales.toFixed(2)}</span>
-                 <p className="text-xs text-slate-500 mt-1 max-w-[220px]">Revenue generated through your Amazon ads</p>
-               </div>
-             </div>
-             {/* Average ACOS */}
-             <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-blue-500/10">
-               <div className="flex-shrink-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full p-3 shadow-md">
-                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                 </svg>
-               </div>
-               <div>
-                 <h4 className="text-sm font-medium text-slate-400">Average ACOS</h4>
-                 <span className="text-2xl font-bold text-slate-100">{(fullAnalysis.averageAcos * 100).toFixed(1)}%</span>
-                 <p className="text-xs text-slate-500 mt-1 max-w-[220px]">Your ad cost per $1 of sales (lower is better)</p>
-               </div>
-             </div>
-             {/* Effective ROAS - Card or Placeholder */}
-             {fullAnalysis.effectiveRoas !== undefined ? (
-                // Render the actual ROAS card if data exists
-                <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-teal-500/10">
-                  <div className="flex-shrink-0 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full p-3 shadow-md">
-                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-10l-4 4m0 0l-4-4m4 4V3" />
-                    </svg>
-                   </div>
-                  <div className="flex-grow">
-                     <PerformanceGauge 
-                        value={fullAnalysis.effectiveRoas} 
-                        label="Effective ROAS"
-                        min={0}
-                        max={3} 
-                        thresholds={[1, 2]}
-                        unit="x"
-                      />
-                     <p className="text-xs text-slate-500 mt-1 text-right max-w-[220px]">Return on Ad Spend: $1 spent brings in ${fullAnalysis.effectiveRoas.toFixed(2)}</p> 
-                  </div>
+            </motion.div>
+
+            {/* Total Sales */}
+            <motion.div custom={1} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-green-700/30 hover:shadow-green-500/20`}>
+              <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-green-500 to-emerald-600`}>
+                <CheckCircle2 className="w-5 h-5 text-green-100" />
+              </div>
+              <div className="flex-grow">
+                <p className={`${highlightTitleStyle} text-green-300`}>Total Sales</p>
+                <p className={`${highlightValueStyle} text-slate-50`}>${fullAnalysis.totalSales.toFixed(2)}</p>
+                <p className={`${highlightDescStyle} text-slate-400`}>Revenue generated through your Amazon ads</p>
+              </div>
+            </motion.div>
+
+            {/* Average ACOS */}
+            <motion.div custom={2} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-blue-700/30 hover:shadow-blue-500/20`}>
+              <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-blue-500 to-cyan-600`}>
+                <TargetIcon className="w-5 h-5 text-blue-100" />
+              </div>
+              <div className="flex-grow">
+                <p className={`${highlightTitleStyle} text-blue-300`}>Average ACOS</p>
+                <p className={`${highlightValueStyle} text-slate-50`}>{(fullAnalysis.averageAcos * 100).toFixed(1)}%</p>
+                <p className={`${highlightDescStyle} text-slate-400`}>Your ad cost per $1 of sales (lower is better)</p>
+              </div>
+            </motion.div>
+
+            {/* Effective ROAS */}
+            {fullAnalysis.effectiveRoas !== undefined ? (
+              <motion.div custom={3} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-teal-700/30 hover:shadow-teal-500/20`}>
+                <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-teal-500 to-emerald-600`}>
+                  <TrendingUp className="w-5 h-5 text-teal-100" />
                 </div>
-             ) : (
-                 // Render a placeholder if ROAS data is missing to maintain grid structure
-                 <div className="bg-slate-700/20 rounded-xl p-5 border border-slate-600/30"> {/* Minimal styling */} 
-                    {/* Intentionally empty */} 
-                 </div>
-             )}
-          </div>
-          
-          {/* Engagement Metrics Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-             {/* Overall CTR */}
-             <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-sky-500/10">
-               <div className="flex-shrink-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-full p-3 shadow-md">
-                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                 </svg>
-               </div>
-               <div className="flex-grow">
-                 <PerformanceGauge 
-                    value={overallCtr} 
-                    label="Overall CTR"
-                    min={0}
-                    max={2} 
-                    thresholds={[0.5, 1]}
-                    unit="%"
-                  />
-                 <p className="text-xs text-slate-500 mt-1 text-right max-w-[220px]">How often people click on your ads when they see them</p>
-               </div>
-             </div>
-             {/* Overall CVR */}
-             <div className="bg-slate-700/50 rounded-xl shadow-lg p-5 border border-slate-600/50 flex items-center space-x-4 transition-all hover:bg-slate-700/80 hover:shadow-lime-500/10">
-               <div className="flex-shrink-0 bg-gradient-to-br from-lime-500 to-green-500 rounded-full p-3 shadow-md">
-                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+                <div className="flex-grow">
+                  <p className={`${highlightTitleStyle} text-teal-300`}>Effective ROAS</p>
+                  {/* PerformanceGauge is kept as per screenshot, value displayed by it */}
+                  <PerformanceGauge value={fullAnalysis.effectiveRoas} label="" min={0} max={3} thresholds={[1, 2]} unit="x" />
+                  <p className={`${highlightDescStyle} text-slate-400 mt-1`}>Return on Ad Spend: $1 spent brings in ${fullAnalysis.effectiveRoas.toFixed(2)}</p> 
+                </div>
+              </motion.div>
+            ) : (
+              <div className="bg-slate-800/20 rounded-lg p-5 border border-slate-700/20 h-full flex items-center justify-center"><p className={`${highlightDescStyle} text-slate-500`}>ROAS data not available</p></div>
+            )}
+
+            {/* Overall CTR */}
+            <motion.div custom={4} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-sky-700/30 hover:shadow-sky-500/20`}>
+              <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-sky-500 to-cyan-600`}>
+                <Eye className="w-5 h-5 text-sky-100" />
               </div>
-               <div className="flex-grow">
-                 <PerformanceGauge 
-                    value={overallCvr} 
-                    label="Overall CVR"
-                    min={0}
-                    max={20} 
-                    thresholds={[5, 10]}
-                    unit="%"
-                  />
-                 <p className="text-xs text-slate-500 mt-1 text-right max-w-[220px]">How often ad clicks lead to actual book purchases</p>
+              <div className="flex-grow">
+                <p className={`${highlightTitleStyle} text-sky-300`}>Overall CTR</p>
+                <PerformanceGauge value={overallCtr} label="" min={0} max={2} thresholds={[0.5, 1]} unit="%" />
+                <p className={`${highlightDescStyle} text-slate-400 mt-1`}>How often people click on your ads when they see them</p>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Overall CVR */}
+            <motion.div custom={5} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} border-lime-700/30 hover:shadow-lime-500/20`}>
+              <div className={`${highlightIconContainerBaseStyle} bg-gradient-to-br from-lime-500 to-green-600`}>
+                <ShoppingCart className="w-5 h-5 text-lime-100" />
+              </div>
+              <div className="flex-grow">
+                <p className={`${highlightTitleStyle} text-lime-300`}>Overall CVR</p>
+                <PerformanceGauge value={overallCvr} label="" min={0} max={20} thresholds={[5, 10]} unit="%" />
+                <p className={`${highlightDescStyle} text-slate-400 mt-1`}>How often ad clicks lead to actual book purchases</p>
+              </div>
+            </motion.div>
           </div>
           
           {/* Net Optimization Potential Row - Highlighted & Centered */}
-          <div className="mb-10"> 
-             <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl shadow-xl p-6 border border-indigo-700/50 flex items-center space-x-5 transition-all hover:shadow-indigo-500/20 hover:shadow-lg transform hover:scale-[1.01] duration-300"> 
-               {/* Icon for Net Impact */}
-               <div className="flex-shrink-0 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full p-4 shadow-lg border border-white/10"> 
-                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /> {/* Lightning bolt icon */}
-                 </svg>
+          <motion.div custom={6} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.02, y: -3 }} className="mb-10">
+             <div className={`${highlightCardBaseStyle} !p-6 border-purple-600/40 hover:shadow-purple-500/25 bg-gradient-to-br from-purple-700/50 via-indigo-700/40 to-purple-700/50 !flex-row`}> 
+               <div className={`${highlightIconContainerBaseStyle} !w-12 !h-12 bg-gradient-to-br from-purple-500 to-indigo-600 !mr-5`}> 
+                 <Zap className="w-6 h-6 text-purple-100" />
                </div>
-               {/* Content */} 
                <div className="text-center flex-grow"> 
-                 <h4 className="text-base font-medium text-indigo-100">Net Optimization Potential</h4> 
+                 <p className={`${highlightTitleStyle} !text-base text-purple-200`}>Net Optimization Potential</p> 
                   <Tooltip text={tooltipExplanation}>
                      <div className="flex items-center justify-center">
-                       <span className="text-3xl font-bold text-white cursor-help underline decoration-dashed decoration-indigo-400/50 underline-offset-2">${netOpt.toFixed(2)}</span> 
-                       {/* Display percentage improvement or fallback text */}
+                       <span className={`${highlightValueStyle} !text-3xl text-slate-50 cursor-help underline decoration-dashed decoration-purple-400/60 underline-offset-2`}>${netOpt.toFixed(2)}</span> 
                        {percentageImprovementText && (
-                         <span className="text-base font-medium text-indigo-200/90 ml-2 bg-white/10 px-2 py-0.5 rounded-lg">
+                         <span className="text-sm font-medium text-purple-200/90 ml-2.5 bg-slate-50/10 px-2.5 py-1 rounded-lg">
                            {percentageImprovementText}
                          </span>
                        )}
                      </div>
                  </Tooltip>
-                 <p className="text-sm text-indigo-200/90 mt-1">Estimated profit increase by implementing our recommendations</p> 
+                 <p className={`${highlightDescStyle} !text-sm text-purple-200/90 mt-1.5`}>Estimated profit increase by implementing our recommendations</p> 
                </div>
              </div>
-           </div>
+           </motion.div>
 
           {/* --- NEW Top Stats Layout --- */}
           
@@ -583,39 +574,50 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
               </svg>
               Campaign Pain Points
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5"> 
-              {/* Keywords to Pause Card - CHANGED TO ORANGE/AMBER */}
-              <div className="bg-gradient-to-br from-orange-500 to-amber-600 p-5 rounded-lg border border-orange-500/50 shadow-lg transform transition-transform hover:scale-105 flex flex-col justify-between min-h-[180px]">
-                 <div>
-                    <p className="text-base font-semibold text-white mb-2">Keywords to Pause</p>
-                    <p className="text-4xl font-bold text-white">{painPoints.keywordsWithNoSales}</p> 
-                    {/* Updated text color to match orange theme */}
-                    <p className="text-sm font-semibold text-orange-100 mt-2">Wasted Spend: <span className="text-white">${painPoints.wastedSpend.toFixed(2)}</span></p> 
-                 </div>
-                 {/* Updated text color to match orange theme */}
-                 <p className="text-sm text-orange-100/80 mt-3">Action: Pause or add as Negative Exact.</p>
-              </div>
-              
-              {/* Savings Potential (Bid Cuts) Card - CHANGED TO RED */}
-              <div className="bg-gradient-to-br from-rose-600 to-red-700 p-5 rounded-lg border border-red-600/50 shadow-lg transform transition-transform hover:scale-105 flex flex-col justify-between min-h-[180px]"> 
-                <div>
-                   <p className="text-base font-semibold text-white mb-2">Savings Potential (Bid Cuts)</p>
-                   <p className="text-4xl font-bold text-white">${fullAnalysis.potentialSavings.toFixed(2)}</p>
-                   {/* Text color matches red theme */}
-                   <p className="text-sm text-rose-100 mt-2">On {bidDecreaseCount} keywords</p> 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {/* Keywords to Pause Card */}
+              <motion.div custom={7} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} !flex-col !items-start !justify-between border-orange-600/40 hover:shadow-orange-500/25 bg-gradient-to-br from-orange-700/40 to-amber-800/50 min-h-[170px]`}>
+                <div className="w-full">
+                  <div className="flex items-center mb-2">
+                    <div className={`${highlightIconContainerBaseStyle} !mr-3 bg-gradient-to-br from-orange-500 to-amber-600`}>
+                      <PauseCircle className="w-5 h-5 text-orange-100" />
+                    </div>
+                    <p className={`${highlightTitleStyle} text-orange-200 !text-sm`}>Keywords to Pause</p>
+                  </div>
+                  <p className={`${highlightValueStyle} !text-4xl text-slate-50`}>{painPoints.keywordsWithNoSales}</p>
+                  <p className={`${highlightDescStyle} text-orange-200/90`}>Wasted Spend: <span className="font-semibold text-slate-100">${painPoints.wastedSpend.toFixed(2)}</span></p>
                 </div>
-                {/* Text color matches red theme */}
-                <p className="text-sm text-rose-100/80 mt-3">Action: Lower bids as recommended.</p>
-              </div>
-              
-              {/* Yellow Card: Keywords with Low CTR */}
-              <div className="bg-gradient-to-br from-amber-400 to-yellow-500 p-5 rounded-lg border border-yellow-500/50 shadow-lg transform transition-transform hover:scale-105 flex flex-col justify-between min-h-[180px]">
-                <div>
-                   <p className="text-base font-semibold text-yellow-900 mb-2">Keywords with Low CTR</p>
-                   <p className="text-4xl font-bold text-yellow-900">{painPoints.keywordsWithLowCtr}</p>
+                <p className={`${highlightDescStyle} text-orange-200/80 mt-2 self-start`}>Action: Pause or add as Negative Exact.</p>
+              </motion.div>
+
+              {/* Savings Potential (Bid Cuts) Card */}
+              <motion.div custom={8} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} !flex-col !items-start !justify-between border-rose-600/40 hover:shadow-rose-500/25 bg-gradient-to-br from-rose-700/40 to-red-800/50 min-h-[170px]`}>
+                <div className="w-full">
+                  <div className="flex items-center mb-2">
+                    <div className={`${highlightIconContainerBaseStyle} !mr-3 bg-gradient-to-br from-rose-500 to-red-600`}>
+                      <DollarSign className="w-5 h-5 text-rose-100" />
+                    </div>
+                    <p className={`${highlightTitleStyle} text-rose-200 !text-sm`}>Savings Potential (Bid Cuts)</p>
+                  </div>
+                  <p className={`${highlightValueStyle} !text-4xl text-slate-50`}>${fullAnalysis.potentialSavings.toFixed(2)}</p>
+                  <p className={`${highlightDescStyle} text-rose-200/90`}>On {bidDecreaseCount} keywords</p>
                 </div>
-                 <p className="text-sm text-yellow-800/90 mt-3">Action: Check search terms, improve copy, or lower bids.</p>
-              </div>
+                <p className={`${highlightDescStyle} text-rose-200/80 mt-2 self-start`}>Action: Lower bids as recommended.</p>
+              </motion.div>
+
+              {/* Keywords with Low CTR Card */}
+              <motion.div custom={9} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className={`${highlightCardBaseStyle} !flex-col !items-start !justify-between border-yellow-600/40 hover:shadow-yellow-500/25 bg-gradient-to-br from-amber-700/40 to-yellow-800/50 min-h-[170px]`}>
+                <div className="w-full">
+                  <div className="flex items-center mb-2">
+                    <div className={`${highlightIconContainerBaseStyle} !mr-3 bg-gradient-to-br from-amber-500 to-yellow-600`}>
+                      <SearchX className="w-5 h-5 text-yellow-100" />
+                    </div>
+                    <p className={`${highlightTitleStyle} text-yellow-200 !text-sm`}>Keywords with Low CTR</p>
+                  </div>
+                  <p className={`${highlightValueStyle} !text-4xl text-slate-50`}>{painPoints.keywordsWithLowCtr}</p>
+                </div>
+                <p className={`${highlightDescStyle} text-yellow-200/80 mt-2 self-start`}>Action: Check search terms, improve copy, or lower bids.</p>
+              </motion.div>
             </div>
           </div>
           
