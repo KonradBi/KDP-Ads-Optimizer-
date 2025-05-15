@@ -12,7 +12,7 @@ interface FreePreviewProps {
 
 export default function FreePreview({ analysisResult, onUnlock }: FreePreviewProps) {
   const { painPoints, fullAnalysis } = analysisResult;
-  const price = process.env.NEXT_PUBLIC_PRICE_AMOUNT || '4.99';
+  const price = process.env.NEXT_PUBLIC_PRICE_AMOUNT || '6.99';
   const currency = 'USD';
   const HIGH_ACOS_THRESHOLD = 0.5; // Consistent threshold
   

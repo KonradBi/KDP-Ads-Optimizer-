@@ -92,13 +92,13 @@ const PricingSection = () => {
               <div className="mb-8">
                 <div className="flex items-center mb-4">
                   <span className="text-slate-300 text-lg font-medium line-through mr-2">$9.99</span>
-                  <span className="bg-amber-500/20 text-amber-300 text-xs py-1 px-2 rounded">50% OFF</span>
+                  <span className="bg-amber-500/20 text-amber-300 text-xs py-1 px-2 rounded">30% OFF</span>
                 </div>
                 <div className="flex items-end mb-1">
-                  <span className="text-4xl md:text-5xl font-bold text-white">$4.99</span>
+                  <span className="text-4xl md:text-5xl font-bold text-white">$6.99</span>
                   <span className="text-slate-400 ml-2 pb-1">USD</span>
                 </div>
-                <p className="text-slate-400">$4.99 per analysis</p>
+                <p className="text-slate-400">$6.99 per analysis</p>
               </div>
 
               <div className="mb-8 py-4 px-5 bg-amber-500/10 border border-amber-500/20 rounded-lg">
