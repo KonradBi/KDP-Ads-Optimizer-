@@ -83,3 +83,5 @@ This project is proprietary and confidential.
 ## Contact
 
 For support or inquiries, please contact support@kdpadsoptimizer.com.
+
+<!-- Triggering redeploy for Vercel -->
