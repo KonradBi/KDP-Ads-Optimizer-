@@ -507,9 +507,21 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
                 </div>
                 <div className="flex-grow">
                   <p className={`${highlightTitleStyle} text-teal-300`}>Effective ROAS</p>
-                  {/* PerformanceGauge is kept as per screenshot, value displayed by it */}
-                  <PerformanceGauge value={fullAnalysis.effectiveRoas} label="" min={0} max={3} thresholds={[1, 2]} unit="x" />
-                  <p className={`${highlightDescStyle} text-slate-400 mt-1`}>Return on Ad Spend: $1 spent brings in ${fullAnalysis.effectiveRoas.toFixed(2)}</p> 
+                  <div className="mt-1 mb-2">
+                    <p className={`${highlightValueStyle} text-slate-50 mb-0.5`}>{fullAnalysis.effectiveRoas.toFixed(2)}x</p>
+                    <div className="relative h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                      <div 
+                        className={`absolute top-0 left-0 h-full rounded-full ${fullAnalysis.effectiveRoas >= 2 ? 'bg-green-500' : fullAnalysis.effectiveRoas >= 1 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                        style={{ width: `${Math.min(fullAnalysis.effectiveRoas / 3 * 100, 100)}%` }}
+                      ></div>
+                    </div>
+                    <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                      <span>0x</span>
+                      <span>1.5x</span>
+                      <span>3x+</span>
+                    </div>
+                  </div>
+                  <p className={`${highlightDescStyle} text-slate-400`}>Return on Ad Spend: $1 spent brings in ${fullAnalysis.effectiveRoas.toFixed(2)}</p> 
                 </div>
               </motion.div>
             ) : (
@@ -523,8 +535,21 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
               </div>
               <div className="flex-grow">
                 <p className={`${highlightTitleStyle} text-sky-300`}>Overall CTR</p>
-                <PerformanceGauge value={overallCtr} label="" min={0} max={2} thresholds={[0.5, 1]} unit="%" />
-                <p className={`${highlightDescStyle} text-slate-400 mt-1`}>How often people click on your ads when they see them</p>
+                <div className="mt-1 mb-2">
+                  <p className={`${highlightValueStyle} text-slate-50 mb-0.5`}>{overallCtr.toFixed(2)}%</p>
+                  <div className="relative h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                    <div 
+                      className={`absolute top-0 left-0 h-full rounded-full ${overallCtr >= 1 ? 'bg-green-500' : overallCtr >= 0.5 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                      style={{ width: `${Math.min(overallCtr / 2 * 100, 100)}%` }}
+                    ></div>
+                  </div>
+                  <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                    <span>0%</span>
+                    <span>1%</span>
+                    <span>2%+</span>
+                  </div>
+                </div>
+                <p className={`${highlightDescStyle} text-slate-400`}>How often people click on your ads when they see them</p>
               </div>
             </motion.div>
 
@@ -535,31 +560,44 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
               </div>
               <div className="flex-grow">
                 <p className={`${highlightTitleStyle} text-lime-300`}>Overall CVR</p>
-                <PerformanceGauge value={overallCvr} label="" min={0} max={20} thresholds={[5, 10]} unit="%" />
-                <p className={`${highlightDescStyle} text-slate-400 mt-1`}>How often ad clicks lead to actual book purchases</p>
+                <div className="mt-1 mb-2">
+                  <p className={`${highlightValueStyle} text-slate-50 mb-0.5`}>{overallCvr.toFixed(2)}%</p>
+                  <div className="relative h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                    <div 
+                      className={`absolute top-0 left-0 h-full rounded-full ${overallCvr >= 10 ? 'bg-green-500' : overallCvr >= 5 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                      style={{ width: `${Math.min(overallCvr / 20 * 100, 100)}%` }}
+                    ></div>
+                  </div>
+                  <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                    <span>0%</span>
+                    <span>10%</span>
+                    <span>20%+</span>
+                  </div>
+                </div>
+                <p className={`${highlightDescStyle} text-slate-400`}>How often ad clicks lead to actual book purchases</p>
               </div>
             </motion.div>
           </div>
           
           {/* Net Optimization Potential Row - Highlighted & Centered */}
-          <motion.div custom={6} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.02, y: -3 }} className="mb-10">
-             <div className={`${highlightCardBaseStyle} !p-6 border-purple-600/40 hover:shadow-purple-500/25 bg-gradient-to-br from-purple-700/50 via-indigo-700/40 to-purple-700/50 !flex-row`}> 
-               <div className={`${highlightIconContainerBaseStyle} !w-12 !h-12 bg-gradient-to-br from-purple-500 to-indigo-600 !mr-5`}> 
-                 <Zap className="w-6 h-6 text-purple-100" />
+          <motion.div custom={6} variants={cardVariants} initial="hidden" animate="visible" whileHover={{ scale: 1.03, y: -4 }} className="mb-10">
+             <div className={`${highlightCardBaseStyle} !p-6 border-purple-500/50 hover:shadow-purple-400/30 bg-gradient-to-br from-purple-600/60 via-indigo-600/50 to-purple-600/60 !flex-row shadow-lg`}> 
+               <div className={`${highlightIconContainerBaseStyle} !w-14 !h-14 bg-gradient-to-br from-purple-400 to-indigo-500 !mr-6 shadow-md`}> 
+                 <Zap className="w-7 h-7 text-white" />
                </div>
                <div className="text-center flex-grow"> 
-                 <p className={`${highlightTitleStyle} !text-base text-purple-200`}>Net Optimization Potential</p> 
+                 <p className={`${highlightTitleStyle} !text-base !tracking-widest !uppercase text-purple-100 mb-1`}>Net Optimization Potential</p> 
                   <Tooltip text={tooltipExplanation}>
                      <div className="flex items-center justify-center">
-                       <span className={`${highlightValueStyle} !text-3xl text-slate-50 cursor-help underline decoration-dashed decoration-purple-400/60 underline-offset-2`}>${netOpt.toFixed(2)}</span> 
+                       <span className={`${highlightValueStyle} !text-4xl text-white font-bold cursor-help underline decoration-dashed decoration-purple-300/70 underline-offset-4`}>${netOpt.toFixed(2)}</span> 
                        {percentageImprovementText && (
-                         <span className="text-sm font-medium text-purple-200/90 ml-2.5 bg-slate-50/10 px-2.5 py-1 rounded-lg">
+                         <span className="text-sm font-medium text-white ml-3 bg-purple-500/30 px-3 py-1.5 rounded-lg shadow-inner">
                            {percentageImprovementText}
                          </span>
                        )}
                      </div>
                  </Tooltip>
-                 <p className={`${highlightDescStyle} !text-sm text-purple-200/90 mt-1.5`}>Estimated profit increase by implementing our recommendations</p> 
+                 <p className={`${highlightDescStyle} !text-sm text-purple-100 mt-2.5`}>Estimated profit increase by implementing our recommendations</p> 
                </div>
              </div>
            </motion.div>
