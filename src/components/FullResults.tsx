@@ -878,64 +878,6 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
           )}
         </div>
         
-          {/* Bid Recommendations Section - Dark Theme */}
-        {fullAnalysis.bidRecommendations.length > 0 && (
-             <div className="mt-8 bg-slate-800/50 shadow-lg rounded-xl overflow-hidden border border-blue-500/30">
-              <div className="px-5 py-4 border-b border-blue-500/30 bg-gradient-to-r from-blue-900/40 to-blue-800/30">
-                 <h3 className="text-lg font-semibold text-blue-200">Top Bid Adjustments</h3>
-                 <p className="mt-1 text-sm text-blue-300/80">
-                  Focus on these bid changes for potential ACOS improvements
-              </p>
-            </div>
-            <div className="p-4">
-                <div className="overflow-x-auto rounded">
-                   <table className="min-w-full divide-y divide-slate-700">
-                     <thead className="bg-slate-700/50">
-                      <tr>
-                        <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">Keyword</th>
-                        <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">Match</th>
-                        <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase tracking-wider">Current</th>
-                        <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase tracking-wider">Recommended</th>
-                        <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase tracking-wider">Action</th>
-                        <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">Impact</th>
-                    </tr>
-                  </thead>
-                    <tbody className="bg-slate-800 divide-y divide-slate-700">
-                    {fullAnalysis.bidRecommendations
-                        .filter(rec => rec.action !== 'maintain') 
-                        .slice(0, 5) 
-                      .map((rec, index) => (
-                        <tr key={index} className="hover:bg-slate-700/40 transition-colors">
-                          <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-300 truncate max-w-xs">{rec.keyword}</td>
-                          <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-400">{rec.matchType}</td>
-                          <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-400 text-right">${rec.currentBid.toFixed(2)}</td>
-                          <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-right">
-                            <span className={`${rec.action === 'increase' ? 'text-green-400' : 'text-red-400'}`}>
-                            ${rec.recommendedBid.toFixed(2)}
-                          </span>
-                        </td>
-                          <td className="px-4 py-2 whitespace-nowrap text-center text-sm">
-                            <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold
-                              ${rec.action === 'increase' ? 'bg-green-500/20 text-green-300 ring-1 ring-inset ring-green-500/30' : 
-                                rec.action === 'decrease' ? 'bg-red-500/20 text-red-300 ring-1 ring-inset ring-red-500/30' : 
-                                'bg-yellow-500/20 text-yellow-300 ring-1 ring-inset ring-yellow-500/30'}`}>
-                            {rec.action === 'increase' ? 'Increase' : rec.action === 'decrease' ? 'Decrease' : 'Maintain'}
-                          </span>
-                        </td>
-                          <td className="px-4 py-2 text-sm text-slate-400">{rec.potentialImpact}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                  {fullAnalysis.bidRecommendations.filter(r => r.action !== 'maintain').length > 5 && (
-                    <p className="text-xs text-slate-500 mt-3 text-center py-2 bg-slate-700/30 rounded-b">
-                      Showing top 5 of {fullAnalysis.bidRecommendations.filter(r => r.action !== 'maintain').length} actionable bid recommendations
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* ---- NEW SECTION: Suggested Negative Keywords ---- */}
