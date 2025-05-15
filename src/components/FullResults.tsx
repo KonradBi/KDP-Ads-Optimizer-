@@ -910,28 +910,6 @@ export default function FullResults({ analysisResult, isProfitOptimized }: FullR
         </div>
       )}
       {/* ---- END NEW SECTION ---- */}
-    
-      {/* Buttons for Export and Toggling Inactive Keywords */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4 px-6 pb-6">
-         <button
-           onClick={exportToExcel}
-           className="inline-flex items-center px-6 py-2.5 text-sm font-bold rounded-full bg-gradient-to-r from-fuchsia-500 via-indigo-500 to-blue-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-fuchsia-400/40 border-0"
-         >
-           <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-           Export Enhanced Data
-         </button>
-         <button
-           onClick={() => setShowInactiveKeywords(!showInactiveKeywords)}
-           className="text-sm font-medium text-indigo-400 hover:text-indigo-300 focus:outline-none transition-colors"
-         >
-           {showInactiveKeywords ? 'Hide keywords with no activity' : `Show ${inactiveKeywords.length} keywords with no activity`}
-           {showInactiveKeywords ? (
-             <svg className="inline-block ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" /></svg>
-           ) : (
-             <svg className="inline-block ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-           )}
-         </button>
-       </div>
       </div> {/* Closing tag for the inner container */} 
     </>
   );
