@@ -74,15 +74,19 @@ Dieser Plan verfolgt einen schlanken Ansatz, um Komplexität und Kosten initial 
 ### 3.4. Schritt 3: Darstellung der Landingpages (Next.js / Vercel)
 
 *   **Dynamische Route:** In der KDP Ads Optimizer Next.js-Anwendung wird eine dynamische Route erstellt, z.B. `/seo-pages/[slug].tsx` (oder `/app/seo-pages/[slug]/page.tsx` bei App Router).
+*   **Globales Layout:** Die SEO-Landingpages müssen das Standard-Layout der Next.js-Anwendung verwenden (z.B. `Layout.tsx` oder entsprechende Layout-Dateien im App Router). Dies stellt sicher, dass der Header (mit Logo und Link zur Hauptseite "KDP Ads Optimizer") und der Footer konsistent auf allen Seiten vorhanden sind und eine klare Navigation zur Hauptanwendung ermöglichen.
 *   **Datenabruf:**
     *   Die Seitenkomponente ruft den Inhalt (Titel, Meta-Beschreibung, Markdown) für den jeweiligen `slug` aus der `landing_pages`-Tabelle via Supabase Client ab.
     *   Bei nicht gefundenem Slug wird eine 404-Seite angezeigt.
+*   **Einfache interne Verlinkung (Option B):**
+    *   Zusätzlich zum Hauptinhalt ruft die Seitenkomponente die Titel und Slugs von z.B. 3-5 anderen zufälligen oder den neuesten Landingpages aus der `landing_pages`-Tabelle ab.
+    *   Diese Links werden am Ende des Artikels oder in einer Seitenleiste als "Weitere interessante Artikel" oder ähnlich dargestellt, um die Nutzerbindung und interne Verlinkungsstruktur zu verbessern.
 *   **Incremental Static Regeneration (ISR):**
     *   Die Seiten werden mit ISR konfiguriert (`revalidate` Option).
     *   Vercel generiert die Seite beim ersten Aufruf, speichert sie zwischen und aktualisiert sie im Hintergrund nach der `revalidate`-Zeit (z.B. täglich oder wöchentlich).
     *   Neue Seiten werden bei Bedarf on-demand generiert, ohne dass ein neuer Vercel-Deploy nötig ist.
 *   **Styling:**
-    *   Die Seiten nutzen das globale Layout der Next.js-Anwendung (inkl. Navbar, Footer).
+    *   Die Seiten nutzen das globale Layout der Next.js-Anwendung (inkl. Navbar, Footer), wie oben unter "Globales Layout" beschrieben.
     *   Tailwind CSS wird für das Styling verwendet. Das `@tailwindcss/typography`-Plugin wird empfohlen, um den Markdown-Inhalt ansprechend darzustellen (`<article class="prose">...`).
 
 ### 3.5. Schritt 4: Sitemap
