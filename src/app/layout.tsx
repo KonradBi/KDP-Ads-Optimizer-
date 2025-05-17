@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.kdpninja.app/',
   },
+  verification: {
+    google: 'xokKnSN_5nHnsYZylSgZFLv2WvjaMHNtjWiWvaMgdIw',
+  },
   openGraph: {
     type: 'website',
     url: 'https://www.kdpninja.app/',
