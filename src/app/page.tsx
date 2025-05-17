@@ -498,7 +498,7 @@ export default function Home() {
                 </h1>
                 
                 <p className="text-xl md:text-2xl text-white font-medium mb-8">
-                  Turn Ad Spend <span className="text-amber-400 font-bold">Disasters</span> into Publishing <span className="text-amber-400 font-bold">Profit Machines</span>
+                  Transform Your <span className="text-amber-400 font-bold">Amazon Ads</span> into <span className="text-amber-400 font-bold">Book-Selling Machines</span>
                 </p>
                 
                 <div className="space-y-4 text-lg text-slate-300 mb-8">
