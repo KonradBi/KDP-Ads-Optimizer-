@@ -50,14 +50,14 @@ export default function Header() {
             ) : (
               <button
                 onClick={openLogin}
-                className="relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-full text-white bg-slate-700 hover:bg-slate-600 transition"
+                className="relative inline-flex items-center px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium rounded-full text-white bg-slate-700 hover:bg-slate-600 transition"
               >
                 Login / Signup
               </button>
             )}
             <Link
               href="/upload"
-              className="relative inline-flex items-center px-5 py-2.5 overflow-hidden border border-amber-500/30 text-sm font-medium rounded-full shadow-md shadow-amber-500/10 text-white bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hover:scale-105 transition-all duration-300"
+              className="relative inline-flex items-center px-2.5 py-1.5 text-xs sm:px-5 sm:py-2.5 sm:text-sm font-medium rounded-full shadow-md shadow-amber-500/10 text-white bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hover:scale-105 transition-all duration-300 overflow-hidden border border-amber-500/30"
             >
               <span className="relative z-10 flex items-center">
                 Analyze New Report
