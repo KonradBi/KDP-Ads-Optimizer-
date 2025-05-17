@@ -32,25 +32,25 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    // 1. Fetch an unprocessed keyword
-    console.log('Fetching unprocessed keyword...');
-    const { data: keywordData, error: keywordError } = await supabaseClient
+    // 1. Fetch up to 5 unprocessed keywords
+    const MAX_KEYWORDS_TO_PROCESS = 5;
+    console.log(`Fetching up to ${MAX_KEYWORDS_TO_PROCESS} unprocessed keywords...`);
+    const { data: keywordsData, error: keywordsError } = await supabaseClient
       .from('generated_keywords')
       .select('*')
       .eq('status', 'new')
       .order('created_at', { ascending: true })
-      .limit(1)
-      .single();
+      .limit(MAX_KEYWORDS_TO_PROCESS);
 
-    if (keywordError && keywordError.code !== 'PGRST116') { // PGRST116: single row not found
-      console.error('Error fetching keyword:', keywordError);
-      return new Response(JSON.stringify({ error: `Error fetching keyword: ${keywordError.message}` }), {
+    if (keywordsError) {
+      console.error('Error fetching keywords:', keywordsError);
+      return new Response(JSON.stringify({ error: `Error fetching keywords: ${keywordsError.message}` }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    if (!keywordData) {
+    if (!keywordsData || keywordsData.length === 0) {
       console.log('No new keywords to process.');
       return new Response(JSON.stringify({ message: 'No new keywords to process.' }), {
         status: 200,
@@ -58,15 +58,21 @@ serve(async (req) => {
       });
     }
 
-    const { id: keywordId, keyword_text: keywordText } = keywordData;
-    console.log(`Processing keyword: ${keywordText} (ID: ${keywordId})`);
+    console.log(`Found ${keywordsData.length} keywords to process.`);
+    const processedItems: any[] = [];
+    const failedItems: any[] = [];
 
-    // 2. Generate landing page content using OpenAI
-    console.log('Requesting landing page content from OpenAI...');
-    const mainTopic = keywordText;
-    const targetAudience = 'Kindle Direct Publishing (KDP) authors and indie writers'; // Be more specific if needed
+    for (const keyword of keywordsData) {
+      const { id: keywordId, keyword_text: keywordText } = keyword;
+      console.log(`Processing keyword: "${keywordText}" (ID: ${keywordId})`);
 
-    const completionPrompt = `
+      try {
+        // 2. Generate landing page content using OpenAI
+        console.log(`Requesting landing page content from OpenAI for keyword: "${keywordText}"...`);
+        const mainTopic = keywordText;
+        const targetAudience = 'Kindle Direct Publishing (KDP) authors and indie writers';
+
+        const completionPrompt = `
 You are an expert SEO content generator. Your task is to generate comprehensive, high-quality landing page content in **English** for the keyword: "${mainTopic}".
 The target audience is: ${targetAudience}.
 
@@ -134,100 +140,99 @@ To ensure the article is not just informative but also engaging and resonates wi
 Before outputting the JSON, re-verify that the "article_markdown" content fulfills all structural requirements, all H2 sections are substantially developed (250-350 words each), and that the total word count meets the 800-1200 word target. An article that is too short, or has underdeveloped H2 sections, is not acceptable.
 `;
 
-    const chatCompletion = await openai.chat.completions.create({
-      model: 'gpt-4o', // Or your preferred model, e.g., gpt-3.5-turbo
-      messages: [
-        {
-          role: 'system',
-          content: 'You are an expert SEO content writer specializing in creating engaging and informative landing pages for online businesses. You always respond with valid JSON as per the user\'s instructions.',
-        },
-        { role: 'user', content: completionPrompt },
-      ],
-      response_format: { type: "json_object" }, // Ensures the output is JSON (for compatible models)
-      temperature: 0.7, // Adjust for creativity vs. factuality
-    });
+        const chatCompletion = await openai.chat.completions.create({
+          model: 'gpt-4o', // Or your preferred model
+          messages: [
+            {
+              role: 'system',
+              content: 'You are an expert SEO content writer specializing in creating engaging and informative landing pages for online businesses. You always respond with valid JSON as per the user\'s instructions.',
+            },
+            { role: 'user', content: completionPrompt },
+          ],
+          response_format: { type: "json_object" },
+          temperature: 0.7,
+        });
 
-    const openAIResponse = chatCompletion.choices[0]?.message?.content;
-    if (!openAIResponse) {
-      console.error('OpenAI response was empty or in an unexpected format.');
-      // Potentially update keyword status to 'error' here
-      return new Response(JSON.stringify({ error: 'Failed to get a valid response from OpenAI.' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+        const openAIResponse = chatCompletion.choices[0]?.message?.content;
+        if (!openAIResponse) {
+          console.error(`OpenAI response was empty for keyword ID: ${keywordId}.`);
+          throw new Error('Failed to get a valid response from OpenAI.');
+        }
 
-    let parsedContent;
-    try {
-      parsedContent = JSON.parse(openAIResponse);
-    } catch (e: any) {
-      console.error('Failed to parse OpenAI JSON response:', e.message);
-      console.error('Raw OpenAI response:', openAIResponse);
-       // Potentially update keyword status to 'error' here
-      return new Response(JSON.stringify({ error: 'Failed to parse OpenAI JSON response.', rawResponse: openAIResponse }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+        let parsedContent;
+        try {
+          parsedContent = JSON.parse(openAIResponse);
+        } catch (e: any) {
+          console.error(`Failed to parse OpenAI JSON response for keyword ID: ${keywordId}:`, e.message);
+          console.error('Raw OpenAI response:', openAIResponse);
+          throw new Error('Failed to parse OpenAI JSON response.');
+        }
 
-    const { title, meta_description, article_markdown } = parsedContent;
+        const { title, meta_description, article_markdown } = parsedContent;
 
-    if (!title || !meta_description || !article_markdown) {
-      console.error('OpenAI response missing required fields (title, meta_description, article_markdown).');
-      // Potentially update keyword status to 'error' here
-      return new Response(JSON.stringify({ error: 'OpenAI response missing required fields.' , receivedContent: parsedContent }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+        if (!title || !meta_description || !article_markdown) {
+          console.error(`OpenAI response missing required fields for keyword ID: ${keywordId}.`);
+          throw new Error('OpenAI response missing required fields.');
+        }
 
-    // 3. Generate slug
-    const slug = generateSlug(title); // Or use keywordText if preferred
-    console.log(`Generated slug: ${slug}`);
+        // 3. Generate slug
+        const slug = generateSlug(title);
+        console.log(`Generated slug: ${slug} for keyword ID: ${keywordId}`);
 
-    // 4. Save content to seo_landing_pages table
-    console.log('Saving content to seo_landing_pages table...');
-    const { data: newPageData, error: newPageError } = await supabaseClient
-      .from('seo_landing_pages')
-      .insert({
-        keyword_id: keywordId,
-        keyword_text: keywordText,
-        slug: slug,
-        title: title,
-        meta_description: meta_description,
-        content_markdown: article_markdown,
-        status: 'published', // Articles are published immediately
-      })
-      .select()
-      .single();
+        // 4. Save content to seo_landing_pages table
+        console.log(`Saving content to seo_landing_pages for keyword ID: ${keywordId}...`);
+        const { data: newPageData, error: newPageError } = await supabaseClient
+          .from('seo_landing_pages')
+          .insert({
+            keyword_id: keywordId,
+            keyword_text: keywordText,
+            slug: slug,
+            title: title,
+            meta_description: meta_description,
+            content_markdown: article_markdown,
+            status: 'published',
+            published_at: new Date().toISOString(),
+          })
+          .select()
+          .single(); 
 
-    if (newPageError) {
-      console.error('Error saving new page:', newPageError);
-      // Potentially update keyword status back to 'new' or to 'error' to retry
-      return new Response(JSON.stringify({ error: `Error saving new page: ${newPageError.message}` }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+        if (newPageError) {
+          console.error(`Error saving new page for keyword ID: ${keywordId}:`, newPageError);
+          throw new Error(`Error saving new page: ${newPageError.message}`);
+        }
+        console.log(`New page created successfully with ID: ${newPageData.id} for keyword "${keywordText}"`);
 
-    console.log(`New page created successfully with ID: ${newPageData.id}`);
+        // 5. Update keyword status to 'completed'
+        console.log(`Updating keyword status to 'completed' for keyword ID: ${keywordId}...`);
+        const { error: updateKeywordError } = await supabaseClient
+          .from('generated_keywords')
+          .update({ status: 'completed' })
+          .eq('id', keywordId);
 
-    // 5. Update keyword status to 'processed'
-    console.log('Updating keyword status to processed...');
-    const { error: updateKeywordError } = await supabaseClient
-      .from('generated_keywords')
-      .update({ status: 'completed' })
-      .eq('id', keywordId);
+        if (updateKeywordError) {
+          // Log critical error but don't stop processing other keywords
+          console.error(`CRITICAL: Error updating keyword status to 'completed' for ID ${keywordId}:`, updateKeywordError);
+          // Decide if this keyword should be added to failedItems or if the page creation is still a success
+          // For now, we assume page creation was a success if it reached here, but keyword update failed.
+        }
+        processedItems.push({ keywordId, keywordText, pageId: newPageData.id, title });
 
-    if (updateKeywordError) {
-      console.error('CRITICAL: Error updating keyword status to completed:', updateKeywordError);
-      return new Response(JSON.stringify({ error: `Failed to update keyword status: ${updateKeywordError.message}` }), {
-        status: 500, // Internal Server Error
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+      } catch (error: any) {
+        console.error(`Failed to process keyword "${keywordText}" (ID: ${keywordId}): ${error.message}`);
+        failedItems.push({ keywordId, keywordText, error: error.message });
+        // Optionally, update keyword status to 'error' in DB if you want to track processing errors
+        // await supabaseClient.from('generated_keywords').update({ status: 'error' }).eq('id', keywordId);
+      }
+    } // End of for loop
 
-    return new Response(JSON.stringify({ message: 'Landing page generated successfully!', page: newPageData }), {
+    console.log('Batch processing finished.');
+    return new Response(JSON.stringify({
+      message: 'Batch landing page generation process completed.',
+      processedCount: processedItems.length,
+      failedCount: failedItems.length,
+      processed: processedItems,
+      failed: failedItems,
+    }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
