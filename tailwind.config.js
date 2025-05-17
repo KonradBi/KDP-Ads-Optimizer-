@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: ({ theme }) => ({
+        invert: {
+          css: {
+            '--tw-prose-headings': theme('colors.amber.300'), // Default for h1, h3, h4 etc. in prose
+            'h2': {
+              'color': theme('colors.orange.500'), // Explicitly set h2 to orange-500
+            },
+          },
+        },
+      }),
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -17,5 +27,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 } 
