@@ -72,8 +72,9 @@ serve(async (req) => {
         const mainTopic = keywordText;
         const targetAudience = 'Kindle Direct Publishing (KDP) authors and indie writers';
 
-        const completionPrompt = `
-You are an expert SEO content generator. Your task is to generate comprehensive, high-quality landing page content in **English** for the keyword: "${mainTopic}".
+        const outlineGenerationPromptFn = (mainTopic: string, targetAudience: string) => `
+You are 'KDP AdNinja', an expert SEO content strategist and direct response copywriter specializing in Amazon KDP ad optimization for indie authors.
+Your task is to generate a detailed plan for a comprehensive, high-quality blog article in **English** based on the main topic: "${mainTopic}".
 The target audience is: ${targetAudience}.
 
 **Output Format Specification (Strict JSON Schema):**
@@ -84,95 +85,214 @@ The JSON object MUST conform to the following schema:
   "properties": {
     "title": {
       "type": "string",
-      "description": "A compelling, SEO-optimized title for the landing page (around 60-70 characters), in English."
+      "description": "A compelling, SEO-optimized title for the article (around 60-70 characters), in English. It should be benefit-driven or curiosity-inducing for ${targetAudience}."
     },
     "meta_description": {
       "type": "string",
-      "description": "A concise and engaging meta description (around 150-160 characters), summarizing the page content and including the keyword, in English."
+      "description": "A concise and engaging meta description (around 150-160 characters), summarizing the article's value and including the main topic, in English."
     },
-    "article_markdown": {
+    "introduction_concept": {
       "type": "string",
-      "description": "The main article content in well-structured English Markdown. See detailed requirements below."
+      "description": "A 1-2 sentence concept for the article's introduction. It should state the primary problem or goal related to '${mainTopic}' for ${targetAudience} and briefly outline what the article will deliver."
+    },
+    "h2_sections": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "h2_title": {
+            "type": "string",
+            "description": "A clear and benefit-oriented H2 heading for a main section of the article."
+          },
+          "core_sub_points": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "items": {
+              "type": "string",
+              "description": "A specific, actionable, and in-depth core thematic sub-point (talking point) to be elaborated within this H2 section. Each point should form the basis of a detailed explanation, example, or step-by-step advice. Focus on unique insights or advanced tips, not just common knowledge."
+            }
+          },
+          "h2_concept": {
+             "type": "string",
+             "description": "A 1-2 sentence concept for this H2 section, summarizing its purpose and the value it provides to ${targetAudience} related to '${mainTopic}' and its core_sub_points."
+          }
+        },
+        "required": ["h2_title", "core_sub_points", "h2_concept"]
+      }
+    },
+    "conclusion_concept": {
+      "type": "string",
+      "description": "A 1-2 sentence concept for the article's conclusion. It should summarize the key actionable takeaways and offer an encouraging final thought for ${targetAudience}."
     }
   },
-  "required": ["title", "meta_description", "article_markdown"]
+  "required": ["title", "meta_description", "introduction_concept", "h2_sections", "conclusion_concept"]
 }
 
-**Detailed Requirements for \"article_markdown\" Property:**
-The content MUST be EXTREMELY comprehensive, deeply insightful, and meticulously well-researched, providing substantial value to ${targetAudience}.
+**Instructions for 'h2_sections.core_sub_points':**
+For each H2 section, the 'core_sub_points' MUST be distinct and designed to build a comprehensive, in-depth exploration of the H2's topic. These points are CRITICAL as they will guide the detailed content generation later. They should not be generic, but rather specific aspects that allow for deep dives, examples, and actionable advice. Think about what truly advanced or incredibly practical insights an expert would share for each sub-point.
+Each generated H2 section (based on these sub-points) will later need to be 250-350 words.
 
-**Critical Structural and Length Requirements for \"article_markdown\":**
-The article MUST be structured as follows AND adhere to the specified word counts to achieve the total length:
-  1.  **Introduction:** A compelling introduction to "${mainTopic}".
-  2.  **Main Sections (H2 Headings):** You MUST create **3 to 4 distinct H2 main sections**. Each H2 section MUST explore a significant sub-topic of "${mainTopic}" in great detail and depth.
-      *   **Individual H2 Section Elaboration & Length:** THIS IS CRITICAL. Each H2 main section, on its own, MUST be **approximately 250 to 350 words long**. To achieve this depth and length:
-          *   Identify **2 to 3 core thematic points** for the sub-topic of that H2 section.
-          *   For each core point, provide **extensive, in-depth explanation (at least 3-5 sentences)**. This MUST include **concrete examples, actionable step-by-step advice, or profound analysis**. The goal is to provide advice so practical that the reader can implement it immediately after reading. Avoid high-level or vague suggestions. Focus on 'how-to' and 'why it matters' for ${targetAudience}.
-          *   Ensure the H2 section flows logically, comprehensively covers its sub-topic with genuine depth, and meets the 250-350 word count. Do not make these sections superficial or brief.
-          *   Use H3 sub-headings within H2 sections if it helps to organize the detailed content further, but ensure the H2 section as a whole meets the length and depth requirements.
-  3.  **Conclusion:** A thoughtful conclusion summarizing the key actionable takeaways and encouraging the reader.
-
-**Total Article Length for \"article_markdown\":**
-The ENTIRE "article_markdown" (sum of introduction, all H2 sections, and conclusion) MUST meet a **STRICT MINIMUM of 800 words, with an IDEAL TARGET of 1000-1200 words.** This total word count is a NON-NEGOTIABLE, KEY REQUIREMENT. The primary way to achieve this is by ensuring each of the 3-4 H2 sections robustly meets its individual length requirement of 250-350 words through detailed, actionable elaboration.
-
-**Content Style for \"article_markdown\":**
-Naturally incorporate the keyword "${mainTopic}" where it feels organic. Avoid generic statements; the goal is in-depth expertise. Do not use H1 in the article_markdown, as the 'title' property will be used for H1.
-
-**Achieving Depth and Actionability:**
-*   **Concrete & Actionable:** Every piece of advice or information MUST be highly concrete and directly actionable for ${targetAudience}. Instead of saying "Optimize your ads," explain *how* to optimize them with specific examples or steps.
-*   **Go Deep, Not Broad:** For each H2 sub-topic, focus on providing profound insights and comprehensive explanations on a few key aspects rather than superficially touching on many. Explain the 'why' behind the 'what' and 'how'.
-*   **Show, Don't Just Tell:** Use relatable examples relevant to KDP authors to illustrate your points. If you mention a strategy, briefly outline how it would play out.
-*   **Value-Driven:** Continuously ask: "What is the immediate, practical takeaway for the reader here?" Ensure every paragraph offers clear value.
-
-**Making the Content More Engaging and Less Dry:**
-To ensure the article is not just informative but also engaging and resonates with indie KDP authors, please adhere to the following stylistic guidelines:
-*   **Conversational & Encouraging Tone:** Write as if you're directly advising a fellow author. Use "you" and "your." Acknowledge their challenges and offer solutions in an encouraging way. (Example: "As an indie author, you know how challenging it can be to stand out. But what if you could...?").
-*   **Relatability and Empathy:** Show understanding of the indie author's journey and pain points. Frame advice in a way that feels like it's coming from someone who 'gets it'.
-*   **Benefit-Driven Language:** Clearly connect each piece of advice to tangible benefits for the author (e.g., "This simple tweak can significantly boost your visibility and save you hours of guesswork," or "Imagine your book climbing the ranks without breaking the bank...").
-*   **Active Voice & Strong Verbs:** Prioritize active voice and use dynamic, impactful verbs to make the text more lively. Avoid overly passive or academic phrasing.
-*   **Illustrative Language (Keep it Concise):** Where appropriate, use short, relatable examples or analogies to clarify complex points. For instance, instead of just saying "target your ads," you could say "Think of targeting your ads like finding the perfect fishing spot: you want to cast your line where the fish you're seeking actually swim." Avoid lengthy, fabricated case studies.
-*   **Rhetorical Questions:** Occasionally use well-placed rhetorical questions to engage the reader and prompt them to reflect (e.g., "Struggling to make your ad budget stretch? You're not alone. But what if there was a smarter way?").
-*   **Positive & Empowering Framing:** Present information in a way that empowers authors and makes them feel capable of implementing the strategies successfully.
-*   **Varied Sentence Structure:** Mix short, punchy sentences with longer, more explanatory ones to improve readability and flow.
-*   **Avoid Jargon (or Explain It):** If technical terms are necessary, briefly explain them in simple language suitable for a broad author audience.
-
-**Final Check:**
-Before outputting the JSON, re-verify that the "article_markdown" content fulfills all structural requirements, all H2 sections are substantially developed (250-350 words each), and that the total word count meets the 800-1200 word target. An article that is too short, or has underdeveloped H2 sections, is not acceptable.
+**Overall Goal:**
+This plan will be used to generate a full article of 800-1200 words. The quality of this plan, especially the specificity and actionability of the 'core_sub_points', is paramount for creating a high-value final article.
 `;
 
-        const chatCompletion = await openai.chat.completions.create({
-          model: 'gpt-4o', // Or your preferred model
+        // Helper function to generate content for a specific section
+        async function generateSectionContent(
+          openaiClient: OpenAI,
+          sectionType: 'introduction' | 'h2' | 'conclusion',
+          mainTopic: string,
+          targetAudience: string,
+          articleTitle: string, // Overall article title
+          sectionData: any // Contains section-specific details like concepts, h2_title, core_sub_points
+        ): Promise<string> {
+          let sectionPrompt = `You are 'KDP AdNinja', an expert SEO content writer and KDP advertising specialist with over 10 years of experience. Your goal is to write a compelling, insightful, and highly actionable piece of content in English.
+Focus on providing extreme value to ${targetAudience}.
+
+**Main Topic of the Article:** "${mainTopic}"
+**Overall Article Title:** "${articleTitle}"
+**Target Audience:** ${targetAudience}
+
+`;
+
+          let wordCountGoal = "";
+
+          if (sectionType === 'introduction') {
+            sectionPrompt += `**Task:** Write a compelling introduction for this article.
+**Concept to expand upon:** "${sectionData.introduction_concept}"
+**Length:** Approximately 100-150 words.
+
+**Instructions:**
+*   Hook the reader immediately by addressing a key pain point or aspiration related to "${mainTopic}" for KDP authors.
+*   Clearly state what the article will help them achieve.
+*   Set an encouraging and expert tone.
+`;
+            wordCountGoal = "100-150 words";
+          } else if (sectionType === 'h2') {
+            sectionPrompt += `**Task:** Write a detailed H2 main section for this article.
+**H2 Section Title:** "${sectionData.h2_title}"
+**Concept for this H2 section:** "${sectionData.h2_concept}"
+**Core Sub-Points to Elaborate In-Depth:**
+${sectionData.core_sub_points.map((point: string, index: number) => `  ${index + 1}. ${point}`).join('\n')}
+
+**CRITICAL Length & Depth Requirement for THIS H2 SECTION:** This H2 section, on its own, MUST be **approximately 250 to 350 words long.**
+
+**Instructions for this H2 Section:**
+*   Start with the H2 heading: "## ${sectionData.h2_title}".
+*   For EACH of the 'Core Sub-Points' listed above, provide extensive, in-depth explanation (at least 3-5 detailed sentences per sub-point). This MUST include concrete examples, actionable step-by-step advice, or profound analysis. The goal is to provide advice so practical that the reader can implement it immediately.
+*   Focus on 'how-to' and 'why it matters' for ${targetAudience}.
+*   Ensure this H2 section flows logically, comprehensively covers its sub-topic with genuine depth, and robustly meets the 250-350 word count. Do not make this section superficial or brief.
+*   You can use H3 sub-headings if it helps organize the detailed content within this H2, but ensure the overall H2 section meets its length and depth requirements.
+`;
+            wordCountGoal = "250-350 words for this H2 section";
+          } else if (sectionType === 'conclusion') {
+            sectionPrompt += `**Task:** Write a thoughtful conclusion for this article.
+**Concept to expand upon:** "${sectionData.conclusion_concept}"
+**Length:** Approximately 100-150 words.
+
+**Instructions:**
+*   Summarize the 2-3 most important actionable takeaways from the entire article.
+*   Reinforce the main benefits or solutions offered.
+*   End with an encouraging and empowering message for KDP authors, possibly with a call to action or a reflective question.
+`;
+            wordCountGoal = "100-150 words";
+          }
+
+          sectionPrompt += `
+**Shared Content Style & Quality Guidelines for this Section (Adhere Strictly):**
+*   **Tone:** Conversational, encouraging, empathetic, and expert. Write as if directly advising a fellow author. Use "you" and "your."
+*   **Actionability:** Every piece of advice MUST be highly concrete and directly actionable.
+*   **Depth:** Go deep, not broad. Explain the 'why' behind the 'what' and 'how'.
+*   **Examples:** Use short, relatable examples relevant to KDP authors if they help clarify points. (e.g., "Think of targeting your ads like finding the perfect fishing spot...").
+*   **Value-Driven:** Ensure every paragraph offers clear value.
+*   **Language:** Use benefit-driven language, active voice, strong verbs. Avoid jargon or explain it simply.
+*   **Engagement:** Use varied sentence structure. Rhetorical questions can be used sparingly.
+*   **Keyword Integration:** Naturally incorporate terms related to "${mainTopic}" where organic, but prioritize natural language and value.
+*   **Output:** Provide ONLY the Markdown content for this specific section, adhering to the ~${wordCountGoal} length. Do NOT include any other text, titles (unless it's the H2 title itself), or JSON formatting.
+`;
+
+          console.log(`Requesting content for section: ${sectionType} - ${sectionData.h2_title || articleTitle} from OpenAI...`);
+          const chatCompletion = await openaiClient.chat.completions.create({
+            model: 'gpt-4o', 
+            messages: [
+              {
+                role: 'system',
+                content: 'You are \'KDP AdNinja\', an expert SEO content writer and KDP advertising specialist. You write in clear, engaging, and actionable English Markdown. You will only output the requested Markdown content for the specific section, without any extra text or formatting.',
+              },
+              { role: 'user', content: sectionPrompt },
+            ],
+            temperature: 0.7,
+          });
+
+          const sectionMarkdown = chatCompletion.choices[0]?.message?.content;
+          if (!sectionMarkdown) {
+            console.error(`OpenAI response was empty for section: ${sectionType} - ${sectionData.h2_title || articleTitle}.`);
+            throw new Error('Failed to get a valid response from OpenAI for section content.');
+          }
+          return sectionMarkdown.trim();
+        }
+
+        // --- Phase 1: Generate Outline, Title, Meta Description ---
+        console.log(`Requesting article outline from OpenAI for keyword: "${keywordText}"...`);
+        const currentOutlinePrompt = outlineGenerationPromptFn(mainTopic, targetAudience);
+        const outlineCompletion = await openai.chat.completions.create({
+          model: 'gpt-4o',
           messages: [
             {
               role: 'system',
-              content: 'You are an expert SEO content writer specializing in creating engaging and informative landing pages for online businesses. You always respond with valid JSON as per the user\'s instructions.',
+              content: "You are 'KDP AdNinja', an expert SEO content strategist. You always respond with valid JSON as per the user's instructions.",
             },
-            { role: 'user', content: completionPrompt },
+            { role: 'user', content: currentOutlinePrompt },
           ],
           response_format: { type: "json_object" },
-          temperature: 0.7,
+          temperature: 0.6, // Slightly lower temp for structured output
         });
 
-        const openAIResponse = chatCompletion.choices[0]?.message?.content;
-        if (!openAIResponse) {
-          console.error(`OpenAI response was empty for keyword ID: ${keywordId}.`);
-          throw new Error('Failed to get a valid response from OpenAI.');
+        const outlineResponseJson = outlineCompletion.choices[0]?.message?.content;
+        if (!outlineResponseJson) {
+          console.error(`OpenAI outline response was empty for keyword ID: ${keywordId}.`);
+          throw new Error('Failed to get a valid outline response from OpenAI.');
         }
 
-        let parsedContent;
+        let outlineData;
         try {
-          parsedContent = JSON.parse(openAIResponse);
+          outlineData = JSON.parse(outlineResponseJson);
         } catch (e: any) {
-          console.error(`Failed to parse OpenAI JSON response for keyword ID: ${keywordId}:`, e.message);
-          console.error('Raw OpenAI response:', openAIResponse);
-          throw new Error('Failed to parse OpenAI JSON response.');
+          console.error(`Failed to parse OpenAI JSON outline for keyword ID: ${keywordId}:`, e.message);
+          console.error('Raw OpenAI outline response:', outlineResponseJson);
+          throw new Error('Failed to parse OpenAI JSON outline.');
         }
 
-        const { title, meta_description, article_markdown } = parsedContent;
+        const { title, meta_description, introduction_concept, h2_sections, conclusion_concept } = outlineData;
 
-        if (!title || !meta_description || !article_markdown) {
-          console.error(`OpenAI response missing required fields for keyword ID: ${keywordId}.`);
-          throw new Error('OpenAI response missing required fields.');
+        if (!title || !meta_description || !introduction_concept || !h2_sections || !conclusion_concept) {
+          console.error(`OpenAI outline response missing required fields for keyword ID: ${keywordId}. Received:`, outlineData);
+          throw new Error('OpenAI outline response missing required fields.');
+        }
+
+        // --- Phase 2: Generate Content for Each Section ---
+        let fullArticleMarkdown = "";
+
+        // Generate Introduction
+        const introMarkdown = await generateSectionContent(openai, 'introduction', mainTopic, targetAudience, title, { introduction_concept });
+        fullArticleMarkdown += introMarkdown + "\n\n";
+
+        // Generate H2 Sections
+        for (const h2Section of h2_sections) {
+          const h2Markdown = await generateSectionContent(openai, 'h2', mainTopic, targetAudience, title, h2Section);
+          fullArticleMarkdown += h2Markdown + "\n\n";
+        }
+
+        // Generate Conclusion
+        const conclusionMarkdown = await generateSectionContent(openai, 'conclusion', mainTopic, targetAudience, title, { conclusion_concept });
+        fullArticleMarkdown += conclusionMarkdown;
+        
+        const article_markdown = fullArticleMarkdown.trim();
+
+        if (article_markdown.length < 500) { // Basic sanity check for total length
+            console.warn(`Generated article for keyword ID ${keywordId} is shorter than expected: ${article_markdown.length} characters. Title: ${title}`);
         }
 
         // 3. Generate slug
