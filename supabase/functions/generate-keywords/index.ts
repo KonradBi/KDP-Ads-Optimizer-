@@ -75,29 +75,66 @@ serve(async (req: Request) => {
     const mainTopic = diverseMainTopics[Math.floor(Math.random() * diverseMainTopics.length)];
     console.log(`[generate-keywords] Selected main topic for this run: ${mainTopic}`); 
 
-    const numberOfKeywords = 5;
+    // const numberOfKeywords = 5; // No longer directly used in prompt, determined by JSON structure request
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o', // Oder ein anderes Modell wie 'gpt-3.5-turbo'
       messages: [
         {
           role: 'system',
-          content: `You are an expert SEO keyword generator. Your goal is to generate ${numberOfKeywords} NEW, DIVERSE, and VERY SPECIFIC long-tail keywords in English related to the main topic provided by the user. Each keyword should explore a DISTINCT niche aspect, user problem, or unique angle within that broader topic. Avoid generic phrasings. Prioritize keywords that indicate a clear user intent (e.g., how-to, best-for, compare, alternatives). Return only the keywords, each on a new line, without any numbering, introductory text, or conversational filler.`,
+          content: `You are "KDP Keyword Ninja", an AI assistant with deep expertise in Amazon's search algorithm, KDP-specific marketing funnels, and the pain points of self-publishing authors. 
+          Your mission is to unearth highly relevant, actionable, and potentially untapped keywords for the main topic: "${mainTopic}".
+          Generate a JSON object with the following structure:
+          {
+            "long_tail_specific": ["keyword1", "keyword2", "keyword3"], 
+            "question_based": ["keyword1", "keyword2"],
+            "problem_solving": ["keyword1", "keyword2"],
+            "comparison_or_alternative": ["keyword1"]
+          }
+          Ensure each keyword string is between 3 and 10 words long. All keywords should be in English.
+          Ensure each keyword explores a DISTINCT aspect. Avoid generic phrasings. 
+          Prioritize keywords that indicate clear user intent.
+          Return ONLY the valid JSON object, without any other text, comments, or explanation. Do not wrap the JSON in markdown code blocks. Just the raw JSON.`, 
         },
         { role: 'user', content: `Main topic: "${mainTopic}"` },
       ],
-      temperature: 0.85, // Temperatur leicht erhöht für mehr Vielfalt
-      max_tokens: 150, // Genug für ca. 5-7 Keywords
+      temperature: 0.8, // Temperatur etwas gesenkt für präzisere JSON-Struktur
+      max_tokens: 400, // Erhöht für JSON-Struktur und mehrere Keyword-Kategorien
+      response_format: { type: "json_object" }, // Wichtig für garantierte JSON-Ausgabe bei kompatiblen Modellen
       n: 1,
     });
 
-    const keywordsText = completion.choices[0].message?.content?.trim();
-    if (!keywordsText) {
-      throw new Error('OpenAI did not return any keywords.');
+    const keywordsResponse = completion.choices[0].message?.content;
+    if (!keywordsResponse) {
+      throw new Error('OpenAI did not return any content.');
     }
 
-    const keywords = keywordsText.split('\n').map((kw: string) => kw.trim()).filter((kw: string) => kw.length > 0);
-    console.log('Generated keywords:', keywords);
+    let parsedKeywords;
+    try {
+      parsedKeywords = JSON.parse(keywordsResponse);
+    } catch (parseError) {
+      console.error('Failed to parse JSON response from OpenAI:', parseError);
+      console.error('OpenAI Response:', keywordsResponse); // Log the problematic response
+      throw new Error('OpenAI did not return valid JSON. Check logs for OpenAI response.');
+    }
+
+    const allKeywords: string[] = [];
+    if (parsedKeywords.long_tail_specific && Array.isArray(parsedKeywords.long_tail_specific)) {
+      allKeywords.push(...parsedKeywords.long_tail_specific.map((kw: string) => kw.trim()).filter((kw: string) => kw.length > 0));
+    }
+    if (parsedKeywords.question_based && Array.isArray(parsedKeywords.question_based)) {
+      allKeywords.push(...parsedKeywords.question_based.map((kw: string) => kw.trim()).filter((kw: string) => kw.length > 0));
+    }
+    if (parsedKeywords.problem_solving && Array.isArray(parsedKeywords.problem_solving)) {
+      allKeywords.push(...parsedKeywords.problem_solving.map((kw: string) => kw.trim()).filter((kw: string) => kw.length > 0));
+    }
+    if (parsedKeywords.comparison_or_alternative && Array.isArray(parsedKeywords.comparison_or_alternative)) {
+      allKeywords.push(...parsedKeywords.comparison_or_alternative.map((kw: string) => kw.trim()).filter((kw: string) => kw.length > 0));
+    }
+    // Remove duplicates that might have been generated across categories
+    const keywords = [...new Set(allKeywords)];
+
+    console.log('Generated and parsed keywords:', keywords);
 
     if (keywords.length === 0) {
       return new Response(JSON.stringify({ message: 'No keywords generated or failed to parse.' }), {
@@ -154,14 +191,3 @@ serve(async (req: Request) => {
     });
   }
 });
-
-/* To invoke locally:
-
-  1. Run `supabase start` (see: https://supabase.com/docs/reference/cli/supabase-start)
-  2. Make an HTTP request:
-  curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/generate-keywords' \
-    --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0' \
-    --header 'Content-Type: application/json' \
-    --data '{"name":"Functions"}'
-
-*/
