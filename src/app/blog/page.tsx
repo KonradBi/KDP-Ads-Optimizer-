@@ -21,12 +21,6 @@ async function getAllLandingPages(
   pageSize: number = 10,
   query?: string // Optionaler Suchparameter
 ): Promise<{ pages: LandingPageTeaser[]; totalCount: number }> {
-  console.log('--- VERCEL BUILD TEST ---');
-  console.log('Attempting to read NEXT_PUBLIC_SUPABASE_URL from process.env:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-  console.log('Attempting to read NEXT_PUBLIC_SUPABASE_ANON_KEY from process.env:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-  console.log('Value of imported publicSupabaseUrl:', publicSupabaseUrl);
-  console.log('Value of imported publicSupabaseAnonKey:', publicSupabaseAnonKey);
-  console.log('--- END VERCEL BUILD TEST ---');
   if (!publicSupabaseUrl || !publicSupabaseAnonKey) {
     console.error('Supabase URL or Anon Key is not defined for server-side client (getAllLandingPages).');
     return { pages: [], totalCount: 0 };
