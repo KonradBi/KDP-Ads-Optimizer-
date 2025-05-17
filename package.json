@@ -31,12 +31,16 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.2.3",
+    "react-markdown": "^10.1.0",
     "recharts": "^2.15.3",
+    "remark-gfm": "^4.0.1",
     "stripe": "^14.20.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/papaparse": "^5.3.14",
     "@types/react": "^19",
