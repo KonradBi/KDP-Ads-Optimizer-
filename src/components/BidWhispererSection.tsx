@@ -181,16 +181,6 @@ export default function BidWhispererSection() {
                   </motion.tbody>
                 </table>
               </div>
-              <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-3 border-t border-slate-700/30 text-xs text-slate-400 flex justify-between items-center">
-                <span>Showing 5 of 26 recommendations</span>
-                <motion.button 
-                  className="text-indigo-400 hover:text-indigo-300 flex items-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View all recommendations <ArrowRight className="w-3 h-3 ml-1" />
-                </motion.button>
-              </div>
             </div>
           </div>
         </div>

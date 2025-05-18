@@ -452,12 +452,6 @@ const HeroBidRecommendationsPreview = () => {
           </motion.tbody>
         </table>
       </div>
-      <div className="bg-gradient-to-r from-slate-800/70 to-slate-800/90 px-4 py-2.5 border-t border-slate-700/50 text-[11px] text-slate-400 flex justify-between items-center">
-        <span>Showing 5 of 26 example recommendations</span>
-        <Link href="#bid-whisperer-section" className="text-indigo-400 hover:text-indigo-300 flex items-center font-medium">
-          More Details <ArrowRight className="w-3 h-3 ml-1" />
-        </Link>
-      </div>
     </motion.div>
   );
 };
