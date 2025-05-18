@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
-  description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales. No signup required.',
+  description: 'KDP AdNinja: Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales. No signup required.',
   icons: {
     icon: '/favicon.ico', // Link to the generated favicon
   },
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://www.kdpninja.app/',
     title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
-    description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales.',
+    description: 'KDP AdNinja: Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales.',
     images: [
       {
-        url: 'https://www.kdpninja.app/og-image.png',
+        url: 'https://www.kdpninja.app/screenshots/kdpadninja.png',
         width: 1200,
         height: 630,
         alt: 'KDP AdNinja dashboard preview',
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'KDP AdNinja — Turn KDP Ad Disasters into Profit Machines',
-    description: 'Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost your book sales.',
-    images: ['https://www.kdpninja.app/og-image.png'],
-    creator: '@kdpadninja',
+    description: 'KDP AdNinja: Stop wasting money on ineffective KDP ads. Our free tool analyzes your Amazon advertising CSV to cut wasted spend and boost book sales.',
+    images: ['https://www.kdpninja.app/screenshots/kdpadninja.png'],
+    creator: '@kdpninja_app', // Or your actual Twitter handle if different
   },
 };
 
