@@ -110,10 +110,24 @@ export default async function BlogIndexPage({ searchParams }: { searchParams?: {
   const { pages: initialPages, totalCount: initialTotalCount } = await getAllLandingPages(initialPage, pageSize, initialSearchQuery);
 
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-8">
-      <header className="mb-12 text-center">
-        <h1 className="text-5xl font-bold text-amber-400 mb-4">KDP AdNinja Blog</h1>
-        <p className="text-xl text-slate-300">Insights and strategies for Amazon KDP Ads optimization.</p>
+    <div className="max-w-5xl mx-auto p-4 md:p-8">
+      <header className="mb-16 text-center relative">
+        {/* Dekorative Elemente - subtile Kreise im Hintergrund */}
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl"></div>
+        
+        {/* Haupttitel mit verbessertem Styling */}
+        <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 mb-6 relative z-10">
+          KDP AdNinja Blog
+        </h1>
+        
+        {/* Untertitel mit verbessertem Styling */}
+        <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Insights and strategies for Amazon KDP Ads optimization to help authors maximize their book sales and visibility.
+        </p>
+        
+        {/* Dekorative Linie */}
+        <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mt-8 rounded-full"></div>
       </header>
 
       <BlogPostsDisplay 

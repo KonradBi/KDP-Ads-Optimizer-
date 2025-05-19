@@ -115,14 +115,24 @@ export default function BlogPostsDisplay({
 
   return (
     <div>
-      <div className="mb-8">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search articles by title or description..."
-          className="w-full p-3 text-lg bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none placeholder-slate-400 text-white"
-        />
+      <div className="mb-12 relative">
+        <div className="relative">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search articles by title or description..."
+            className="w-full p-4 pl-12 text-lg bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none placeholder-slate-400 text-white transition-all duration-300 hover:bg-slate-700/80"
+          />
+          <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+        {searchTerm && (
+          <p className="mt-2 text-sm text-slate-400 italic">Showing results for "{searchTerm}"</p>
+        )}
       </div>
 
       {isLoading ? (
@@ -134,25 +144,42 @@ export default function BlogPostsDisplay({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {pages && pages.map((page) => (
-            <article key={page.id} className="flex flex-col p-6 bg-slate-800/70 rounded-xl shadow-lg hover:shadow-xl hover:shadow-amber-500/20 hover:scale-[1.02] transform transition-all duration-300 border border-slate-700/50">
-              <h2 className="text-2xl font-semibold text-amber-300 mb-2">
-                <Link href={`/blog/${page.slug}`} className="hover:text-amber-200 transition-colors">
-                  {page.title}
-                </Link>
-              </h2>
-              {page.published_at && (
-                <p className="text-xs text-slate-400 mb-3">
-                  Published: {new Date(page.published_at).toLocaleDateString('en-US', {
-                    year: 'numeric', month: 'long', day: 'numeric'
-                  })}
+            <article key={page.id} className="flex flex-col p-0 bg-slate-800/80 rounded-xl shadow-lg hover:shadow-xl hover:shadow-teal-500/20 hover:scale-[1.02] transform transition-all duration-300 border border-slate-700/50 overflow-hidden group">
+              {/* Farbiger oberer Rand - Blau-Türkis Verlauf */}
+              <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 to-teal-400"></div>
+              
+              <div className="p-6 flex flex-col h-full">
+                <h2 className="text-2xl font-bold text-amber-300 mb-3 group-hover:text-amber-200 transition-colors line-clamp-2">
+                  <Link href={`/blog/${page.slug}`} className="hover:text-amber-200 transition-colors">
+                    {page.title}
+                  </Link>
+                </h2>
+                
+                {page.published_at && (
+                  <p className="text-xs text-slate-400 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    {new Date(page.published_at).toLocaleDateString('en-US', {
+                      year: 'numeric', month: 'long', day: 'numeric'
+                    })}
+                  </p>
+                )}
+                
+                <p className="text-slate-300 mb-5 line-clamp-3 flex-grow">
+                  {page.meta_description}
                 </p>
-              )}
-              <p className="text-slate-300 mb-4 line-clamp-3 flex-grow">
-                {page.meta_description}
-              </p>
-              <Link href={`/blog/${page.slug}`} className="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium transition-colors mt-auto">
-                Read more &rarr;
-              </Link>
+                
+                <Link 
+                  href={`/blog/${page.slug}`} 
+                  className="inline-flex items-center px-4 py-2 bg-slate-700/50 hover:bg-teal-500/20 rounded-lg text-teal-400 hover:text-blue-300 font-medium transition-all duration-300 mt-auto group-hover:bg-slate-700/80 text-sm"
+                >
+                  Read article
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
             </article>
           ))}
         </div>
