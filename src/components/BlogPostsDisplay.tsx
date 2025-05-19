@@ -132,9 +132,9 @@ export default function BlogPostsDisplay({
       ) : pages && pages.length === 0 ? (
          <p className="text-center text-slate-400">No blog posts published yet. Check back soon!</p>
       ) : (
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {pages && pages.map((page) => (
-            <article key={page.id} className="p-6 bg-slate-800/70 rounded-xl shadow-lg hover:shadow-amber-500/10 transition-shadow duration-300 border border-slate-700/50">
+            <article key={page.id} className="flex flex-col p-6 bg-slate-800/70 rounded-xl shadow-lg hover:shadow-xl hover:shadow-amber-500/20 hover:scale-[1.02] transform transition-all duration-300 border border-slate-700/50">
               <h2 className="text-2xl font-semibold text-amber-300 mb-2">
                 <Link href={`/blog/${page.slug}`} className="hover:text-amber-200 transition-colors">
                   {page.title}
@@ -147,10 +147,10 @@ export default function BlogPostsDisplay({
                   })}
                 </p>
               )}
-              <p className="text-slate-300 mb-4 line-clamp-3">
+              <p className="text-slate-300 mb-4 line-clamp-3 flex-grow">
                 {page.meta_description}
               </p>
-              <Link href={`/blog/${page.slug}`} className="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium transition-colors">
+              <Link href={`/blog/${page.slug}`} className="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium transition-colors mt-auto">
                 Read more &rarr;
               </Link>
             </article>

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { createSupabaseClient, publicSupabaseUrl, publicSupabaseAnonKey } from '@/lib/utils/supabase';
+import SidebarSearchField from '@/components/SidebarSearchField';
 
 // Define the expected shape of our landing page data
 interface LandingPage {
@@ -58,12 +59,35 @@ async function getRelatedPublishedArticles(count: number, currentArticleId: stri
     .from('seo_landing_pages')
     .select('id, title, slug')
     .eq('status', 'published')
-    .neq('id', currentArticleId)
-    .order('published_at', { ascending: false })
+    .not('id', 'eq', currentArticleId)
+    .order('title', { ascending: true })
     .limit(count);
 
   if (error) {
     console.error('Error fetching related articles:', error.message);
+    return null;
+  }
+  return articles as RelatedArticle[];
+}
+
+// Function to fetch latest published articles
+async function getLatestPublishedArticles(count: number): Promise<RelatedArticle[] | null> {
+  if (!publicSupabaseUrl || !publicSupabaseAnonKey) {
+    console.error('Supabase URL or Anon Key is not defined for server-side client (getLatestPublishedArticles).');
+    return null;
+  }
+  const supabase = createSupabaseClient(publicSupabaseUrl, publicSupabaseAnonKey);
+
+  const { data: articles, error } = await supabase
+    .from('seo_landing_pages')
+    .select('id, title, slug')
+    .eq('status', 'published') // Ensure we only get published articles
+    // .not('published_at', 'is', null) // Alternative if you prefer checking published_at directly
+    .order('published_at', { ascending: false })
+    .limit(count);
+
+  if (error) {
+    console.error('Error fetching latest articles:', error.message);
     return null;
   }
   return articles as RelatedArticle[];
@@ -107,54 +131,102 @@ export default async function BlogArticlePage({ params }: { params: { slug: stri
   }
 
   const relatedArticles = await getRelatedPublishedArticles(3, page.id);
+  const latestPosts = await getLatestPublishedArticles(3); // Fetch 3 latest posts
 
   return (
-    <article className="prose prose-invert lg:prose-xl mx-auto p-4 md:p-8">
-      <header className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">{page.title}</h1>
-        {page.published_at && (
-          <p className="text-sm text-slate-400">
-            Published on: {new Date(page.published_at).toLocaleDateString('en-US', {
-              year: 'numeric', month: 'long', day: 'numeric'
-            })}
-          </p>
-        )}
-        <p className="text-slate-300 mt-2 italic">{page.meta_description}</p>
-      </header>
+    <div className="container mx-auto p-4 md:p-8 lg:max-w-screen-xl flex flex-col lg:flex-row gap-8 lg:gap-12">
       
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {page.content_markdown}
-      </ReactMarkdown>
-      
-      {/* Related Articles Section */}
-      {relatedArticles && relatedArticles.length > 0 && (
-        <section className="mt-16 pt-10 border-t border-slate-600/50">
-          <h2 className="text-2xl md:text-3xl font-bold text-amber-400 mb-12 text-center">
-            You Might Also Like
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {relatedArticles.map((article) => (
-              <Link 
-                href={`/blog/${article.slug}`} 
-                key={article.id} 
-                className="group block"
-              >
-                <div className="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl shadow-2xl border border-slate-700/30 hover:border-amber-500/30 transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-amber-500/20 min-h-[220px] flex flex-col justify-between">
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full -mr-20 -mt-20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-sky-500/10 to-transparent rounded-full -ml-16 -mb-16 opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                  
-                  <div className="relative z-10 flex flex-col h-full justify-center items-center text-center">
-                    <h3 className="text-lg font-bold text-amber-300 group-hover:text-amber-200 transition-colors duration-200">
+      {/* Main Content Spalte */}
+      <main className="lg:w-2/3 w-full">
+        <article className="prose prose-invert lg:prose-xl max-w-none">
+          <header className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">{page.title}</h1>
+            {page.published_at && (
+              <p className="text-sm text-slate-400">
+                Published on: {new Date(page.published_at).toLocaleDateString('en-US', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </p>
+            )}
+            <p className="text-slate-300 mt-2 italic">{page.meta_description}</p>
+          </header>
+          
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {page.content_markdown}
+          </ReactMarkdown>
+        </article>
+      </main>
+
+      {/* Sidebar Spalte */}
+      <aside className="lg:w-1/3 w-full lg:mt-0 mt-12">
+        <div className="sticky top-24 space-y-8">
+          
+          {/* Suchfeld */}
+          <section>
+            <h2 className="text-xl font-semibold text-amber-400 mb-4">Search Articles</h2>
+            <SidebarSearchField />
+          </section>
+
+          {/* Verwandte Artikel */}
+          {relatedArticles && relatedArticles.length > 0 && (
+            <section>
+              <h2 className="text-xl font-semibold text-amber-400 mb-4">
+                You Might Also Like
+              </h2>
+              <div className="space-y-4">
+                {relatedArticles.map((article) => (
+                  <Link 
+                    href={`/blog/${article.slug}`} 
+                    key={article.id} 
+                    className="block p-4 bg-slate-800/70 rounded-lg hover:bg-slate-700/70 transition-colors duration-200 border border-slate-700/50 hover:border-amber-500/30"
+                  >
+                    <h3 className="font-medium text-amber-300 group-hover:text-amber-200 transition-colors duration-200 text-sm">
                       {article.title}
                     </h3>
-                  </div>
-                </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Neueste Artikel */}
+          {latestPosts && latestPosts.length > 0 && (
+            <section>
+              <h2 className="text-xl font-semibold text-amber-400 mb-4">Latest Posts</h2>
+              <div className="space-y-4">
+                {latestPosts.map((article) => (
+                  <Link 
+                    href={`/blog/${article.slug}`} 
+                    key={article.id} 
+                    className="block p-4 bg-slate-800/70 rounded-lg hover:bg-slate-700/70 transition-colors duration-200 border border-slate-700/50 hover:border-amber-500/30"
+                  >
+                    <h3 className="font-medium text-amber-300 group-hover:text-amber-200 transition-colors duration-200 text-sm">
+                      {article.title}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Call to Action (Placeholder) */}
+          <section>
+            <div className="p-6 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg text-center shadow-lg">
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Boost Your KDP Ads!</h3>
+              <p className="text-sm text-slate-800 mb-4">
+                Let KDP AdNinja A.I. optimize your campaigns and save you time.
+              </p>
+              <Link 
+                href="/" 
+                className="inline-block bg-slate-900 text-white font-semibold py-2 px-5 rounded-md hover:bg-slate-800 transition-colors duration-200"
+              >
+                Try KDP AdNinja A.I.
               </Link>
-            ))}
-          </div>
-        </section>
-      )}
-    </article>
+            </div>
+          </section>
+
+        </div>
+      </aside>
+    </div>
   );
 }
